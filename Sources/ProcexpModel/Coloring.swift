@@ -40,16 +40,17 @@ public struct ProcessColorRule: Sendable, Codable, Hashable, Identifiable {
         self.backgroundDark = backgroundDark
     }
 
-    /// The default legend, mirroring Process Explorer's colors. Order matters:
+    /// The default legend. Only new/dead/suspended are on by default; the category
+    /// rules stay listed so Settings can switch them back on. Order matters:
     /// earlier rules win when multiple flags are set (new/dead take priority).
     public static let defaults: [ProcessColorRule] = [
         .init(flag: .newProcess,  isEnabled: true, backgroundLight: RGBA(198, 246, 198), backgroundDark: RGBA(40, 90, 40)),
         .init(flag: .deadProcess, isEnabled: true, backgroundLight: RGBA(246, 198, 198), backgroundDark: RGBA(110, 40, 40)),
         .init(flag: .suspended,   isEnabled: true, backgroundLight: RGBA(200, 200, 200), backgroundDark: RGBA(70, 70, 70)),
-        .init(flag: .service,     isEnabled: true, backgroundLight: RGBA(255, 208, 208), backgroundDark: RGBA(90, 55, 55)),
-        .init(flag: .ownProcess,  isEnabled: true, backgroundLight: RGBA(208, 208, 255), backgroundDark: RGBA(55, 55, 90)),
-        .init(flag: .sandboxed,   isEnabled: true, backgroundLight: RGBA(208, 246, 246), backgroundDark: RGBA(40, 80, 80)),
-        .init(flag: .packed,      isEnabled: true, backgroundLight: RGBA(230, 208, 246), backgroundDark: RGBA(70, 50, 90)),
+        .init(flag: .service,     isEnabled: false, backgroundLight: RGBA(255, 208, 208), backgroundDark: RGBA(90, 55, 55)),
+        .init(flag: .ownProcess,  isEnabled: false, backgroundLight: RGBA(208, 208, 255), backgroundDark: RGBA(55, 55, 90)),
+        .init(flag: .sandboxed,   isEnabled: false, backgroundLight: RGBA(208, 246, 246), backgroundDark: RGBA(40, 80, 80)),
+        .init(flag: .packed,      isEnabled: false, backgroundLight: RGBA(230, 208, 246), backgroundDark: RGBA(70, 50, 90)),
     ]
 
     /// Resolve the background color for a process given the active rules.

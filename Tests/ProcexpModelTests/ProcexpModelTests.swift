@@ -221,6 +221,17 @@ struct ProcexpModelTests {
         #expect(bg == newColor)
     }
 
+    @Test("Only new/dead/suspended colors are on by default; category rules stay switchable")
+    func categoryColorsOffByDefault() {
+        let defaults = ProcessColorRule.defaults
+        #expect(Set(defaults.filter(\.isEnabled).map(\.flag)) == [.newProcess, .deadProcess, .suspended])
+        #expect(ProcessColorRule.background(for: [.service], rules: defaults, darkMode: false) == nil)
+        var rules = defaults
+        let i = rules.firstIndex { $0.flag == .service }!
+        rules[i].isEnabled = true
+        #expect(ProcessColorRule.background(for: [.service], rules: rules, darkMode: false) == rules[i].backgroundLight)
+    }
+
     @Test("Process identity survives PID reuse")
     func processIdentityStable() {
         let a = ProcessID(pid: 500, startTime: 100)
