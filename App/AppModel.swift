@@ -153,7 +153,7 @@ final class AppModel {
     var showSaveColumnSetSheet: Bool = false
     /// Presents View ▸ Organize Column Sets….
     var showOrganizeColumnSetsSheet: Bool = false
-    /// Bumped to request focus of the filter field (Find ▸ Filter Processes, ⇧⌘F).
+    /// Bumped to request focus of the filter field (Find ▸ Filter Processes, ⌘F).
     var focusSearchToken: Int = 0
     var processFilter: String = ""
     private(set) var processRevealRequestToken: Int = 0
