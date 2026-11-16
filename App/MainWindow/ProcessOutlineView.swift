@@ -67,7 +67,8 @@ struct ProcessOutlineView: NSViewRepresentable {
 
     @MainActor
     final class Coordinator: NSObject, NSMenuDelegate, ProcessReportProviding {
-        static let rowHeight: CGFloat = 17
+        static let rowHeight: CGFloat = 20
+        static let fontSize: CGFloat = 12
         static let headerHeight: CGFloat = 22
         static let defaultProcessPaneWidth: CGFloat = 430
         static let minProcessPaneWidth: CGFloat = 220
@@ -462,20 +463,20 @@ struct ProcessOutlineView: NSViewRepresentable {
         }
 
         private var regularTextAttributes: [NSAttributedString.Key: Any] {
-            [.font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)]
+            [.font: NSFont.systemFont(ofSize: Self.fontSize)]
         }
 
         private var boldTextAttributes: [NSAttributedString.Key: Any] {
-            [.font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize, weight: .semibold)]
+            [.font: NSFont.systemFont(ofSize: Self.fontSize, weight: .semibold)]
         }
 
         private var numericTextAttributes: [NSAttributedString.Key: Any] {
-            [.font: NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)]
+            [.font: NSFont.monospacedDigitSystemFont(ofSize: Self.fontSize, weight: .regular)]
         }
 
         private func rebuildProcessWidthCache() {
             var width = Self.minProcessPaneWidth
-            let font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
+            let font = NSFont.systemFont(ofSize: Self.fontSize)
             for row in visibleRows {
                 guard let record = snapshot.processes[row.id] else { continue }
                 let textWidth = (record.name as NSString).size(withAttributes: [.font: font]).width
@@ -694,7 +695,7 @@ struct ProcessOutlineView: NSViewRepresentable {
                 let row = visibleRows[rowIndex]
                 guard let record = displayedProcesses()[row.id] else { continue }
                 let rowRect = NSRect(x: dirtyRect.minX, y: CGFloat(rowIndex) * Self.rowHeight, width: dirtyRect.width, height: Self.rowHeight)
-                drawRowFill(row.id, rowRect: rowRect, dark: dark)
+                drawRowFill(row.id, rowIndex: rowIndex, rowRect: rowRect, dark: dark)
                 drawProcessCell(row: row, record: record, rowRect: rowRect)
             }
         }
@@ -707,8 +708,8 @@ struct ProcessOutlineView: NSViewRepresentable {
                 let row = visibleRows[rowIndex]
                 guard let record = displayedProcesses()[row.id] else { continue }
                 let rowRect = NSRect(x: dirtyRect.minX, y: CGFloat(rowIndex) * Self.rowHeight, width: dirtyRect.width, height: Self.rowHeight)
-                drawRowFill(row.id, rowRect: rowRect, dark: dark)
-                drawMetricCells(for: record, rowRect: rowRect, dirtyRect: dirtyRect)
+                drawRowFill(row.id, rowIndex: rowIndex, rowRect: rowRect, dark: dark)
+                drawMetricCells(for: record, rowIndex: rowIndex, dark: dark, rowRect: rowRect, dirtyRect: dirtyRect)
             }
         }
 
@@ -725,8 +726,14 @@ struct ProcessOutlineView: NSViewRepresentable {
             return start...end
         }
 
-        private func drawRowFill(_ id: ProcessID, rowRect: NSRect, dark: Bool) {
-            if let color = rowColor(for: id, dark: dark) {
+        /// Faint stripe for odd rows that no colour rule tints.
+        private func stripeColor(for id: ProcessID, rowIndex: Int, dark: Bool) -> NSColor? {
+            guard rowIndex % 2 == 1, rowColor(for: id, dark: dark) == nil else { return nil }
+            return NSColor.alternatingContentBackgroundColors[1]
+        }
+
+        private func drawRowFill(_ id: ProcessID, rowIndex: Int, rowRect: NSRect, dark: Bool) {
+            if let color = rowColor(for: id, dark: dark) ?? stripeColor(for: id, rowIndex: rowIndex, dark: dark) {
                 color.setFill()
                 rowRect.fill()
             }
@@ -742,7 +749,7 @@ struct ProcessOutlineView: NSViewRepresentable {
                 drawDisclosure(expanded: expanded.contains(row.id), x: disclosureX, y: rowRect.midY)
             }
             let iconX = disclosureX + 13
-            icon(for: record).draw(in: NSRect(x: iconX, y: rowRect.minY + 1, width: Self.iconSize, height: Self.iconSize),
+            icon(for: record).draw(in: NSRect(x: iconX, y: rowRect.minY + (rowRect.height - Self.iconSize) / 2, width: Self.iconSize, height: Self.iconSize),
                                    from: .zero,
                                    operation: .sourceOver,
                                    fraction: 1,
@@ -805,14 +812,15 @@ struct ProcessOutlineView: NSViewRepresentable {
             }
         }
 
-        private func drawMetricCells(for record: ProcessRecord, rowRect: NSRect, dirtyRect: NSRect) {
+        private func drawMetricCells(for record: ProcessRecord, rowIndex: Int, dark: Bool, rowRect: NSRect, dirtyRect: NSRect) {
+            let plainFill = stripeColor(for: record.id, rowIndex: rowIndex, dark: dark) ?? .textBackgroundColor
             var x: CGFloat = 0
             for column in metricColumns {
                 let width = width(for: column)
                 let rect = NSRect(x: x, y: rowRect.minY, width: width, height: rowRect.height)
                 if rect.intersects(dirtyRect) {
                     if plainMetricBackground(for: column), model.selection != record.id {
-                        NSColor.textBackgroundColor.setFill()
+                        plainFill.setFill()
                         rect.fill()
                         drawUsageCellBackground(for: column, record: record, in: rect)
                     }
@@ -839,9 +847,11 @@ struct ProcessOutlineView: NSViewRepresentable {
             paragraph.alignment = rightAligned ? .right : .left
             paragraph.lineBreakMode = .byTruncatingTail
             let font: NSFont = rightAligned && !bold
-                ? .monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)
-                : .systemFont(ofSize: NSFont.smallSystemFontSize, weight: bold ? .semibold : .regular)
+                ? .monospacedDigitSystemFont(ofSize: Self.fontSize, weight: .regular)
+                : .systemFont(ofSize: Self.fontSize, weight: bold ? .semibold : .regular)
             let color: NSColor = selected ? .white : .labelColor
+            let lineHeight = ceil(font.ascender - font.descender + font.leading)
+            let rect = NSRect(x: rect.minX, y: rect.minY + max(0, (rect.height - lineHeight) / 2), width: rect.width, height: min(rect.height, lineHeight))
             (text as NSString).draw(in: rect, withAttributes: [.font: font, .foregroundColor: color, .paragraphStyle: paragraph])
         }
 
@@ -1337,8 +1347,8 @@ struct ProcessOutlineView: NSViewRepresentable {
         private func clippedTooltipText(_ text: String, in rect: NSRect, rightAligned: Bool) -> String? {
             guard !text.isEmpty else { return nil }
             let font: NSFont = rightAligned
-                ? .monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)
-                : .systemFont(ofSize: NSFont.smallSystemFontSize)
+                ? .monospacedDigitSystemFont(ofSize: Self.fontSize, weight: .regular)
+                : .systemFont(ofSize: Self.fontSize)
             let textWidth = ceil((text as NSString).size(withAttributes: [.font: font]).width) + 4
             return textWidth > rect.width + 0.5 ? text : nil
         }
