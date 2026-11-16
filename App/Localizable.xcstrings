@@ -2942,6 +2942,16 @@
         }
       }
     },
+    "Open System Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定を開く"
+          }
+        }
+      }
+    },
     "Open report" : {
       "localizations" : {
         "ja" : {
@@ -3028,6 +3038,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "その他"
+          }
+        }
+      }
+    },
+    "Other users and system processes show “-” until the privileged helper is installed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他のユーザーやシステムのプロセスは、特権ヘルパーをインストールするまで値が「-」になります。"
           }
         }
       }
@@ -5405,6 +5425,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "表示する列"
+          }
+        }
+      }
+    },
+    "Waiting for the privileged helper to be approved in System Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定で特権ヘルパーが承認されるのを待っています。"
           }
         }
       }

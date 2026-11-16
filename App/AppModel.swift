@@ -245,6 +245,18 @@ final class AppModel {
     private(set) var helperApprovalPending: Bool = false
     private(set) var helperChanging = false
     private(set) var helperFailure: String?
+    /// Session-only: set when the user closes the helper banner.
+    var helperBannerDismissed = false
+
+    enum HelperAvailability { case active, installedUnreachable, awaitingApproval, notInstalled }
+
+    /// Single predicate shared by the app-menu item and the main-window banner.
+    var helperAvailability: HelperAvailability {
+        if privileged != nil { return .active }
+        if helperInstalled { return .installedUnreachable }
+        if helperApprovalPending { return .awaitingApproval }
+        return .notInstalled
+    }
     private let helperConnection: HelperConnection
     private var helperCandidate: PrivilegedDataProvider?
     private(set) var providerGeneration = 0

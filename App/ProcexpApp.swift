@@ -188,9 +188,9 @@ private struct InstallHelperMenuCommand: View {
     @Bindable var model: AppModel
 
     var body: some View {
-        Button(model.privileged != nil ? String(localized: "Privileged Helper Enabled")
-               : model.helperInstalled ? String(localized: "Retry Privileged Helper…")
-               : model.helperApprovalPending ? String(localized: "Privileged Helper Awaiting Approval")
+        Button(model.helperAvailability == .active ? String(localized: "Privileged Helper Enabled")
+               : model.helperAvailability == .installedUnreachable ? String(localized: "Retry Privileged Helper…")
+               : model.helperAvailability == .awaitingApproval ? String(localized: "Privileged Helper Awaiting Approval")
                : String(localized: "Install Privileged Helper…")) {
             let model = model
             Task { await runHelperInstall(model) }
@@ -219,7 +219,7 @@ enum FindHandleDLLWindow {
 /// modal alert. Kept as a free `@MainActor` function so the menu command can
 /// simply capture the shared `AppModel`.
 @MainActor
-private func runHelperInstall(_ model: AppModel) async {
+func runHelperInstall(_ model: AppModel) async {
     let result = await model.installPrivilegedHelper()
     let alert = NSAlert()
     alert.messageText = result.ok
