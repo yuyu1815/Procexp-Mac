@@ -126,7 +126,7 @@ struct ProcexpModelTests {
         #expect(Column.bsdFlags.string(for: p) == "0x00000040")
     }
 
-    @Test("Extended taskinfo columns are blank when task info is limited")
+    @Test("Unreadable values show a dash, zero stays blank")
     func extendedTaskInfoColumnsLimited() {
         let p = ProcessRecord(
             id: ProcessID(pid: 99, startTime: 0),
@@ -135,10 +135,21 @@ struct ProcexpModelTests {
             flags: [.limitedTaskInfo]
         )
 
-        #expect(Column.runningThreads.string(for: p) == "")
+        #expect(Column.runningThreads.string(for: p) == "-")
         #expect(Column.runningThreads.sortValue(for: p) == .none)
-        #expect(Column.pageIns.string(for: p) == "")
+        #expect(Column.pageIns.string(for: p) == "-")
+        #expect(Column.cpu.string(for: p) == "-")
+        #expect(Column.handles.string(for: p) == "-")
         #expect(Column.machSyscalls.sortValue(for: p) == .none)
+
+        let zero = ProcessRecord(
+            id: ProcessID(pid: 98, startTime: 0),
+            name: "idle",
+            fileDescriptorCount: 0
+        )
+        #expect(Column.cpu.string(for: zero) == "")
+        #expect(Column.workingSet.string(for: zero) == "")
+        #expect(Column.handles.string(for: zero) == "0")
     }
 
     @Test("Unsupported macOS columns are excluded from selectable columns")
