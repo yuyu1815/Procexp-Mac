@@ -70,7 +70,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
             button.toolTip = model.menuBarMetric == .cpu
                 ? tooltip(cpu: currentCPU, busiest: busiest)
                 : model.menuBarMetric.readout(values.last)
-            button.setAccessibilityLabel("\(model.menuBarMetric.title) history")
+            button.setAccessibilityLabel(String(localized: "\(model.menuBarMetric.title) history"))
         }
     }
 
@@ -145,7 +145,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         menu.addItem(.separator())
 
         let show = NSMenuItem(
-            title: "Show Sysinternals Process Explorer",
+            title: String(localized: "Show Sysinternals Process Explorer"),
             action: #selector(showMainWindow),
             keyEquivalent: ""
         )
@@ -153,7 +153,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         menu.addItem(show)
 
         let toggle = NSMenuItem(
-            title: "Show Graph in Menu Bar",
+            title: String(localized: "Show Graph in Menu Bar"),
             action: #selector(toggleMenuBarGraph),
             keyEquivalent: ""
         )
@@ -161,8 +161,8 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         toggle.state = .on
         menu.addItem(toggle)
 
-        let graphItem = NSMenuItem(title: "Graph", action: nil, keyEquivalent: "")
-        let graphMenu = NSMenu(title: "Graph")
+        let graphItem = NSMenuItem(title: String(localized: "Graph"), action: nil, keyEquivalent: "")
+        let graphMenu = NSMenu(title: String(localized: "Graph"))
         for metric in MenuBarMetric.allCases {
             let item = NSMenuItem(title: metric.title, action: #selector(selectMetric(_:)), keyEquivalent: "")
             item.target = self
@@ -174,7 +174,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         menu.addItem(.separator())
 
         let quit = NSMenuItem(
-            title: "Quit Sysinternals Process Explorer",
+            title: String(localized: "Quit Sysinternals Process Explorer"),
             action: #selector(quit),
             keyEquivalent: "q"
         )
@@ -191,16 +191,16 @@ final class MenuBarController: NSObject, NSMenuDelegate {
         )
 
         if model.menuBarMetric == .cpu, let busiest = busiestProcess(in: model) {
-            topProcessItem.title = String(format: "Busiest: %@ (%.1f%%)", busiest.name, busiest.cpuPercent)
+            topProcessItem.title = String(format: String(localized: "Busiest: %@ (%.1f%%)"), busiest.name, busiest.cpuPercent)
             topProcessItem.isHidden = false
         } else {
             topProcessItem.isHidden = true
         }
 
-        if let toggle = menu.item(withTitle: "Show Graph in Menu Bar") {
+        if let toggle = menu.item(withTitle: String(localized: "Show Graph in Menu Bar")) {
             toggle.state = model.showMenuBarGraph ? .on : .off
         }
-        for item in menu.item(withTitle: "Graph")?.submenu?.items ?? [] {
+        for item in menu.item(withTitle: String(localized: "Graph"))?.submenu?.items ?? [] {
             item.state = (item.representedObject as? String) == model.menuBarMetric.rawValue ? .on : .off
         }
     }
@@ -233,9 +233,9 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     }
 
     private func tooltip(cpu: Double, busiest: ProcessRecord?) -> String {
-        var text = cpu.isFinite ? String(format: "CPU: %.1f%%", cpu) : "CPU: Unavailable"
+        var text = cpu.isFinite ? String(format: "CPU: %.1f%%", cpu) : String(localized: "CPU: Unavailable")
         if let busiest {
-            text += String(format: " — busiest: %@ (%.1f%%)", busiest.name, busiest.cpuPercent)
+            text += String(format: String(localized: " — busiest: %@ (%.1f%%)"), busiest.name, busiest.cpuPercent)
         }
         return text
     }

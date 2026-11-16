@@ -113,16 +113,16 @@ struct HardwareInfo: Sendable {
     /// "10 cores (6P + 4E)" / "8 cores" — a compact core-layout summary.
     var coreSummary: String {
         if let p = performanceCores, let e = efficiencyCores, p > 0 || e > 0 {
-            return "\(physicalCores) cores (\(p)P + \(e)E)"
+            return String(localized: "\(physicalCores) cores (\(p)P + \(e)E)")
         }
-        return "\(physicalCores) cores"
+        return String(localized: "\(physicalCores) cores")
     }
 
     /// "8 physical / 8 logical • 1 package" style detail line.
     var cpuTopologyDetail: String {
-        var parts = ["\(physicalCores) physical", "\(logicalCores) logical"]
-        if packages > 1 { parts.append("\(packages) packages") }
-        else { parts.append("1 package") }
+        var parts = [String(localized: "\(physicalCores) physical"), String(localized: "\(logicalCores) logical")]
+        if packages > 1 { parts.append(String(localized: "\(packages) packages")) }
+        else { parts.append(String(localized: "1 package")) }
         return parts.joined(separator: " • ")
     }
 }
@@ -240,7 +240,7 @@ private extension HardwareInfo {
 
     static func readWriteTextureTierName(_ tier: MTLReadWriteTextureTier) -> String {
         switch tier {
-        case .tierNone: return "None"
+        case .tierNone: return String(localized: "None")
         case .tier1: return "Tier 1"
         case .tier2: return "Tier 2"
         @unknown default: return "Tier \(tier.rawValue)"
@@ -299,7 +299,7 @@ private extension HardwareInfo {
             isRemovable: values.volumeIsRemovable,
             isEjectable: values.volumeIsEjectable,
             isReadOnly: values.volumeIsReadOnly,
-            mediaType: "Unknown"
+            mediaType: String(localized: "Unknown")
         )
     }
 

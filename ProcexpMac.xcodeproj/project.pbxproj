@@ -42,6 +42,7 @@
 		B079CB0E9E36FEF602DED1CB /* ProcessReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75D726B2F21FB42177E94E /* ProcessReport.swift */; };
 		B1C1ED5234FD41D1D71B290E /* MenuBarMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF82FD1C8A0F519C248B57 /* MenuBarMetric.swift */; };
 		B426BE9ADD7F8DEB4D8E912E /* HardwareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8C0D94D141ABAB70A71EB /* HardwareInfo.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B3A2918076F5E4D3C2B1A /* Localizable.xcstrings */; };
 		BC488934F81C1EE1235C027A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14E5FC9442AD87244D49463 /* Assets.xcassets */; };
 		C19339078A35FE74E2902A80 /* FindHandleDLLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D5AA97FD42E385C538B8D /* FindHandleDLLView.swift */; };
 		CAB8AE239F9077C4BA4F67B8 /* ProcexpSigning in Frameworks */ = {isa = PBXBuildFile; productRef = DE935370E22FEED55EAEE1D3 /* ProcexpSigning */; };
@@ -77,6 +78,7 @@
 		958DC889CA7C5F6D0864E2CC /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		96544DD01C1132F21A86E482 /* AppMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenus.swift; sourceTree = "<group>"; };
 		A5F3311EFBB1A72E195A60DE /* ColumnManagementViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnManagementViews.swift; sourceTree = "<group>"; };
+		5C4B3A2918076F5E4D3C2B1A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B14E5FC9442AD87244D49463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C50A39FD8344D5108A84C1A8 /* PropertiesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesDetail.swift; sourceTree = "<group>"; };
 		D80CA430135EB131DA31C34B /* native-parity-pr-snapshot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "native-parity-pr-snapshot"; path = .; sourceTree = SOURCE_ROOT; };
@@ -236,6 +238,7 @@
 				B14E5FC9442AD87244D49463 /* Assets.xcassets */,
 				3BD52021B86E1714A50FAFE2 /* BorderlessGridTableView.swift */,
 				2B22F8FD76F24B30E44E2125 /* ContentView.swift */,
+				5C4B3A2918076F5E4D3C2B1A /* Localizable.xcstrings */,
 				54F5D04369E1786B4002E861 /* ProcexpApp.swift */,
 				416C2D2841B290FF87708A18 /* TableColumnPersistence.swift */,
 				5016D1B40D28FEC9F2BFA5BF /* About */,
@@ -303,6 +306,7 @@
 			knownRegions = (
 				Base,
 				en,
+				ja,
 			);
 			mainGroup = 62A83063B952A2FA22C8CBB6;
 			minimizedProjectReferenceProxies = 1;
@@ -325,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC488934F81C1EE1235C027A /* Assets.xcassets in Resources */,
+				A1B2C3D4E5F60718293A4B5C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +467,7 @@
 				PRODUCT_MODULE_NAME = ProcexpMac;
 				PRODUCT_NAME = "Sysinternals Process Explorer";
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_NAME = "ProcExp (Dev).app";
 			};
 			name = Debug;
@@ -549,6 +555,7 @@
 				PRODUCT_MODULE_NAME = ProcexpMac;
 				PRODUCT_NAME = "Sysinternals Process Explorer";
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_NAME = "ProcExp (Dev).app";
 			};
 			name = Release;

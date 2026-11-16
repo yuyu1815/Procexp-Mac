@@ -55,7 +55,7 @@ extension LowerPaneReportProviding {
     func reportTable() throws -> ProcessReportTable {
         if let reportError { throw ProcessReportError.unavailable(reportError) }
         guard let tableView, tableView.window != nil else {
-            throw ProcessReportError.unavailable("The lower pane is not ready to save.")
+            throw ProcessReportError.unavailable(String(localized: "The lower pane is not ready to save."))
         }
         let columns = tableView.tableColumns
         return ProcessReportTable(
@@ -70,7 +70,7 @@ extension LowerPaneReportProviding {
 extension AppModel {
     func captureProcessReport() throws -> ProcessReport {
         guard let processReportSource else {
-            throw ProcessReportError.unavailable("Open the main process window before saving.")
+            throw ProcessReportError.unavailable(String(localized: "Open the main process window before saving."))
         }
         var report = ProcessReport(processes: try processReportSource.reportTable())
         if showLowerPane, let selection {
@@ -78,7 +78,7 @@ extension AppModel {
                   let source = lowerPaneReportSource,
                   source.reportProcessID == selection, source.reportMode == lowerPaneMode else {
                 throw ProcessReportError.unavailable(
-                    "The selected process's lower pane is still refreshing. Wait for it to load, or hide the lower pane to save only the process list."
+                    String(localized: "The selected process's lower pane is still refreshing. Wait for it to load, or hide the lower pane to save only the process list.")
                 )
             }
             report.lowerPane = (record.name, selection.pid, try source.reportTable())
@@ -103,7 +103,7 @@ extension AppModel {
             reportDestination = destination
         } catch {
             processActionAlert = ProcessActionAlert(
-                title: "Could Not Save Process Explorer Data",
+                title: String(localized: "Could Not Save Process Explorer Data"),
                 message: error.localizedDescription
             )
         }
@@ -111,7 +111,7 @@ extension AppModel {
 
     static func chooseReportDestination(previous: URL?, suggestedName: String) -> URL? {
         let panel = NSSavePanel()
-        panel.title = "Save Process Explorer Data"
+        panel.title = String(localized: "Save Process Explorer Data")
         panel.allowedContentTypes = [.plainText]
         panel.allowsOtherFileTypes = true
         panel.nameFieldStringValue = previous?.lastPathComponent ?? suggestedName

@@ -68,7 +68,7 @@ struct SystemInfoView: View {
         }
     }
 
-    private func tabTitle(_ tab: SystemInfoTab) -> String {
+    private func tabTitle(_ tab: SystemInfoTab) -> LocalizedStringKey {
         switch tab {
         case .summary: return "Summary"
         case .cpu: return "CPU"
@@ -194,7 +194,7 @@ struct SystemInfoView: View {
             InfoRow("Host", hardware.hostName)
             InfoRow("Architecture", hardware.architecture)
             InfoRow("CPU", hardware.cpuBrand)
-            InfoRow("Cores", "\(hardware.coreSummary) • \(hardware.logicalCores) logical")
+            InfoRow("Cores", String(localized: "\(hardware.coreSummary) • \(hardware.logicalCores) logical"))
             InfoRow("Memory", ByteFormat.bytes(hardware.physicalMemory))
             InfoRow("Page Size", ByteFormat.bytes(hardware.pageSize))
             if let gpu = hardware.gpus.first {
@@ -214,8 +214,8 @@ struct SystemInfoView: View {
             InfoRow("Cores", hardware.coreSummary)
             InfoRow("Topology", hardware.cpuTopologyDetail)
             if let p = hardware.performanceCores, let e = hardware.efficiencyCores {
-                InfoRow("Performance", "\(p) cores")
-                InfoRow("Efficiency", "\(e) cores")
+                InfoRow("Performance", String(localized: "\(p) cores"))
+                InfoRow("Efficiency", String(localized: "\(e) cores"))
             }
             InfoRow("Packages", "\(hardware.packages)")
             if let freq = hardware.cpuFrequencyHz {
@@ -241,7 +241,7 @@ struct SystemInfoView: View {
                     .help("Metal's recommended working-set budget, not installed VRAM or current GPU memory use.")
             }
             if let gpu = hardware.gpus.first, gpu.unifiedMemory {
-                InfoRow("Type", "Unified Memory")
+                InfoRow("Type", String(localized: "Unified Memory"))
             }
         }
     }
@@ -250,10 +250,10 @@ struct SystemInfoView: View {
     private var gpuHardwarePanel: some View {
         InfoGroup(title: hardware.gpus.count == 1 ? "Graphics Device" : "Graphics Devices") {
             if hardware.gpus.isEmpty {
-                InfoRow("GPU", "None detected")
+                InfoRow("GPU", String(localized: "None detected"))
             } else {
                 ForEach(hardware.gpus) { gpu in
-                    InfoRow(gpu.name, gpuDetail(gpu))
+                    InfoRow("\(gpu.name)", gpuDetail(gpu))
                     InfoRow("Registry ID", String(format: "0x%llX", gpu.registryID))
                     if let budget = gpu.recommendedWorkingSetBudget {
                         InfoRow("Recommended GPU Working-Set Budget", ByteFormat.bytes(budget), labelWidth: 180)
@@ -283,7 +283,7 @@ struct SystemInfoView: View {
                 if let ejectable = volume.isEjectable { InfoRow("Ejectable", yesNo(ejectable)) }
                 if let readOnly = volume.isReadOnly { InfoRow("Read-Only", yesNo(readOnly)) }
             } else {
-                InfoRow("Boot Volume", "Unavailable")
+                InfoRow("Boot Volume", String(localized: "Unavailable"))
             }
         }
     }
@@ -297,7 +297,7 @@ struct SystemInfoView: View {
     }
 
     private func volumePanel(_ volume: HardwareInfo.VolumeInfo) -> some View {
-        InfoGroup(title: volume.name) {
+        InfoGroup(title: "\(volume.name)") {
             InfoRow("Type", volume.mediaType)
             InfoRow("Capacity", ByteFormat.bytes(volume.totalCapacity))
             InfoRow("Available", ByteFormat.bytes(volume.availableCapacity))
@@ -313,10 +313,10 @@ struct SystemInfoView: View {
     private var networkHardwarePanel: some View {
         InfoGroup(title: "Interfaces") {
             if hardware.networkInterfaces.isEmpty {
-                InfoRow("Interfaces", "Unavailable")
+                InfoRow("Interfaces", String(localized: "Unavailable"))
             } else {
                 ForEach(hardware.networkInterfaces) { interface in
-                    InfoRow(interface.name, "\(interface.families.joined(separator: "/")) \(interface.addresses.joined(separator: ", ")) • \(interfaceFlags(interface))", labelWidth: 56)
+                    InfoRow("\(interface.name)", "\(interface.families.joined(separator: "/")) \(interface.addresses.joined(separator: ", ")) • \(interfaceFlags(interface))", labelWidth: 56)
                 }
             }
         }
@@ -330,29 +330,29 @@ struct SystemInfoView: View {
 
     private func gpuDetail(_ gpu: HardwareInfo.GPUInfo) -> String {
         var parts: [String] = []
-        parts.append(gpu.unifiedMemory ? "Unified" : "Discrete")
-        if gpu.lowPower { parts.append("Low-Power") }
-        if gpu.removable { parts.append("Removable") }
-        if gpu.headless { parts.append("Headless") }
+        parts.append(gpu.unifiedMemory ? String(localized: "Unified") : String(localized: "Discrete"))
+        if gpu.lowPower { parts.append(String(localized: "Low-Power")) }
+        if gpu.removable { parts.append(String(localized: "Removable")) }
+        if gpu.headless { parts.append(String(localized: "Headless")) }
         return parts.joined(separator: " • ")
     }
 
     private func interfaceFlags(_ interface: HardwareInfo.NetworkInterfaceInfo) -> String {
         var parts: [String] = []
-        parts.append(interface.isUp ? "Up" : "Down")
-        if interface.isRunning { parts.append("Running") }
-        if interface.isLoopback { parts.append("Loopback") }
+        parts.append(interface.isUp ? String(localized: "Up") : String(localized: "Down"))
+        if interface.isRunning { parts.append(String(localized: "Running")) }
+        if interface.isLoopback { parts.append(String(localized: "Loopback")) }
         return parts.joined(separator: " • ")
     }
 
     private func yesNo(_ value: Bool) -> String {
-        value ? "Yes" : "No"
+        value ? String(localized: "Yes") : String(localized: "No")
     }
 
     private func volumeLabel(_ volume: HardwareInfo.VolumeInfo) -> String {
         let free = ByteFormat.bytes(volume.availableCapacity)
         let total = ByteFormat.bytes(volume.totalCapacity)
-        return "\(volume.name) — \(free) free of \(total) (\(volume.mediaType))"
+        return String(localized: "\(volume.name) — \(free) free of \(total) (\(volume.mediaType))")
     }
 
 
@@ -379,7 +379,7 @@ struct SystemInfoView: View {
             unit: .percent,
             topConsumers: model.memoryTopHistory.values,
             consumerUnit: .bytes,
-            consumerLabel: "Largest Physical Footprint",
+            consumerLabel: String(localized: "Largest Physical Footprint"),
             timestamps: model.systemHistoryTimestamps.values,
             graphHeight: graphHeight
         )
@@ -404,7 +404,7 @@ struct SystemInfoView: View {
             unit: .bytesPerSecond,
             topConsumers: model.ioTopHistory.values,
             consumerUnit: .bytes,
-            consumerLabel: "Largest Cumulative Process I/O",
+            consumerLabel: String(localized: "Largest Cumulative Process I/O"),
             timestamps: model.systemHistoryTimestamps.values,
             graphHeight: graphHeight
         )
@@ -454,7 +454,7 @@ struct SystemInfoView: View {
         }
     }
 
-    private func coreTitle(_ index: Int) -> String {
+    private func coreTitle(_ index: Int) -> LocalizedStringKey {
         switch coreKind(index) {
         case .performance: return "P-Core \(index)"
         case .efficiency: return "E-Core \(index)"
@@ -525,7 +525,7 @@ private struct FillGraphArea<Content: View>: View {
 /// A titled panel of label:value hardware rows, styled to match the graph
 /// panels (compact GroupBox with a headline title).
 private struct InfoGroup<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder let content: Content
 
     var body: some View {
@@ -551,11 +551,11 @@ private struct InfoGroup<Content: View>: View {
 
 /// A single left-aligned label with a monospaced value on the right.
 private struct InfoRow: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
     let labelWidth: CGFloat
 
-    init(_ label: String, _ value: String, labelWidth: CGFloat = 120) {
+    init(_ label: LocalizedStringKey, _ value: String, labelWidth: CGFloat = 120) {
         self.label = label
         self.value = value
         self.labelWidth = labelWidth
@@ -584,7 +584,7 @@ enum GraphUnit {
     case bytesPerSecond
 
     func format(_ value: Double) -> String {
-        guard value.isFinite else { return "Unavailable" }
+        guard value.isFinite else { return String(localized: "Unavailable") }
         switch self {
         case .percent:
             return String(format: "%.1f%%", value)
@@ -599,7 +599,7 @@ enum GraphUnit {
 /// A single labelled history graph with current + peak read-outs and, on hover,
 /// a Procexp-style tooltip revealing the value and top consumer at that instant.
 private struct GraphPanel: View {
-    let title: String
+    let title: LocalizedStringKey
     let values: [Double]
     let color: RGBA
     let unit: GraphUnit
@@ -609,7 +609,7 @@ private struct GraphPanel: View {
     /// Unit used to format a top consumer's contribution (may differ from the
     /// graph's own unit — e.g. memory graph is a %, its consumer is bytes).
     var consumerUnit: GraphUnit? = nil
-    var consumerLabel: String = "Top"
+    var consumerLabel: String = String(localized: "Top")
     var timestamps: [Date] = []
     var graphHeight: CGFloat? = nil
     var compact: Bool = false
@@ -683,7 +683,7 @@ struct HoverableGraph: View {
     var topConsumers: [TopConsumer] = []
     var unit: GraphUnit
     var consumerUnit: GraphUnit
-    var consumerLabel: String = "Top"
+    var consumerLabel: String = String(localized: "Top")
     var timestamps: [Date] = []
     var height: CGFloat = 110
 
@@ -750,7 +750,7 @@ struct HoverableGraph: View {
         return width * CGFloat(index) / CGFloat(values.count - 1)
     }
 
-    private var tooltipWidth: CGFloat { consumerLabel == "Top" ? 148 : 248 }
+    private var tooltipWidth: CGFloat { consumerLabel == String(localized: "Top") ? 148 : 248 }
 
     /// Keep the tooltip on-screen: flip it to the opposite side of the guide
     /// line depending on which half of the graph the cursor is in.

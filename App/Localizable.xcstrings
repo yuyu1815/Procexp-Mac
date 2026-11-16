@@ -1,0 +1,5584 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " Lowering a nice value can require elevated privileges, even for your own process." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " nice 値を下げるには、自分のプロセスであっても昇格した権限が必要になる場合があります。"
+          }
+        }
+      }
+    },
+    " — busiest: %@ (%.1f%%)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — 最も負荷が高いプロセス: %@ (%.1f%%)"
+          }
+        }
+      }
+    },
+    "%.1f sec" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1f 秒"
+          }
+        }
+      }
+    },
+    "%.1f seconds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1f 秒"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@\n\nThe app has switched to unprivileged access for process sampling, details, and actions. You can retry the helper or uninstall it from the app menu. If approval is pending, approve it in System Settings > General > Login Items & Extensions." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@\n\nプロセスのサンプリング、詳細、操作は権限なしのアクセスに切り替わりました。アプリメニューからヘルパーの再試行またはアンインストールができます。承認待ちの場合は、システム設定 > 一般 > ログイン項目と機能拡張 で承認してください。"
+          }
+        }
+      }
+    },
+    "%@\n\nsample output:\n%@%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@\n\nsample の出力:\n%@%@"
+          }
+        }
+      }
+    },
+    "%@ (PID %d) Properties" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (PID %2$d) のプロパティ"
+          }
+        }
+      }
+    },
+    "%@ Properties" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ のプロパティ"
+          }
+        }
+      }
+    },
+    "%@ The process may have exited, or macOS returned no socket details." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ プロセスが終了したか、macOS がソケットの詳細を返しませんでした。"
+          }
+        }
+      }
+    },
+    "%@ This can mean the process has no TCP/IP sockets, the process exited, or macOS returned no socket details." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ プロセスに TCP/IP ソケットがないか、プロセスが終了したか、macOS がソケットの詳細を返さなかった可能性があります。"
+          }
+        }
+      }
+    },
+    "%@ for %@ (PID %d): %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ (PID %3$d) の%1$@: %4$@"
+          }
+        }
+      }
+    },
+    "%@ history" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@の履歴"
+          }
+        }
+      }
+    },
+    "%@ macOS may refuse socket enumeration for protected or other-user processes, so this is not proof the process has no network sockets." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 保護されたプロセスや他のユーザーのプロセスについては macOS がソケットの列挙を拒否することがあるため、ネットワークソケットが存在しないことの証明にはなりません。"
+          }
+        }
+      }
+    },
+    "%@ — %@ free of %@ (%@)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — %3$@ 中 %2$@ 空き (%4$@)"
+          }
+        }
+      }
+    },
+    "%@ • %lld logical" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ • 論理 %2$lld"
+          }
+        }
+      }
+    },
+    "%@. This inference is not a verified publisher." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@。これは推定であり、検証済みの発行元ではありません。"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: %@"
+          }
+        }
+      }
+    },
+    "%@: %lld/%lld engines flagged this file." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %3$lld 個中 %2$lld 個のエンジンがこのファイルを検出しました。"
+          }
+        }
+      }
+    },
+    "%@: Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: 利用不可"
+          }
+        }
+      }
+    },
+    "%lld / %lld detections" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld / %lld 件検出"
+          }
+        }
+      }
+    },
+    "%lld cores" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld コア"
+          }
+        }
+      }
+    },
+    "%lld cores (%lldP + %lldE)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld コア (%2$lldP + %3$lldE)"
+          }
+        }
+      }
+    },
+    "%lld file descriptors" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld file descriptor"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld file descriptors"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld 個のファイルディスクリプタ"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld logical" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "論理 %lld"
+          }
+        }
+      }
+    },
+    "%lld mapped files" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mapped file"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld mapped files"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld 個のマップされたファイル"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld matches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 件の一致"
+          }
+        }
+      }
+    },
+    "%lld of %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld 件中 %1$lld 件"
+          }
+        }
+      }
+    },
+    "%lld packages" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld パッケージ"
+          }
+        }
+      }
+    },
+    "%lld physical" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理 %lld"
+          }
+        }
+      }
+    },
+    "%lld resource reads failed." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld resource read failed."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld resource reads failed."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld 件のリソースの読み取りに失敗しました。"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld sec" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 秒"
+          }
+        }
+      }
+    },
+    "%lld seconds" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld second"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld seconds"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld 秒"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld threads" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld thread"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld threads"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld 個のスレッド"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. %@"
+          }
+        }
+      }
+    },
+    "(Active + wired + compressed memory) / installed RAM × 100." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(アクティブ + ワイヤード + 圧縮メモリ) ÷ 搭載 RAM × 100。"
+          }
+        }
+      }
+    },
+    "(no name)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(名前なし)"
+          }
+        }
+      }
+    },
+    "/path/to/program or /Applications/App.app" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/path/to/program または /Applications/App.app"
+          }
+        }
+      }
+    },
+    "0 (default)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0 (デフォルト)"
+          }
+        }
+      }
+    },
+    "1 package" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 パッケージ"
+          }
+        }
+      }
+    },
+    "1 second" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 秒"
+          }
+        }
+      }
+    },
+    "100% is one fully busy logical core. A multithreaded process can exceed 100%." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100% は論理コア 1 つがフル稼働している状態です。マルチスレッドのプロセスは 100% を超えることがあります。"
+          }
+        }
+      }
+    },
+    "2 seconds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 秒"
+          }
+        }
+      }
+    },
+    "3 seconds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 秒"
+          }
+        }
+      }
+    },
+    "5 seconds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 秒"
+          }
+        }
+      }
+    },
+    "A helper operation is already in progress." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーの操作がすでに進行中です。"
+          }
+        }
+      }
+    },
+    "About Sysinternals Process Explorer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals Process Explorer について"
+          }
+        }
+      }
+    },
+    "Account Group" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントのグループ"
+          }
+        }
+      }
+    },
+    "Action Failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作に失敗しました"
+          }
+        }
+      }
+    },
+    "Action Not Permitted" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作は許可されていません"
+          }
+        }
+      }
+    },
+    "Action Not Supported" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作はサポートされていません"
+          }
+        }
+      }
+    },
+    "Active + wired + compressed memory, relative to installed RAM. Not memory pressure or committed memory." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクティブ + ワイヤード + 圧縮メモリの合計で、搭載 RAM に対する割合です。メモリプレッシャーやコミット済みメモリではありません。"
+          }
+        }
+      }
+    },
+    "Ad-hoc" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アドホック"
+          }
+        }
+      }
+    },
+    "Address" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アドレス"
+          }
+        }
+      }
+    },
+    "Always On Top" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常に手前に表示"
+          }
+        }
+      }
+    },
+    "App Sandbox" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Sandbox"
+          }
+        }
+      }
+    },
+    "App Sandbox entitlement is false" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Sandbox エンタイトルメントは false です"
+          }
+        }
+      }
+    },
+    "Approve Launch at Login in System Settings…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定でログイン時の起動を承認…"
+          }
+        }
+      }
+    },
+    "Approve Sysinternals Process Explorer in System Settings > General > Login Items & Extensions. If it is not listed, install a signed copy of the app in Applications and try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定 > 一般 > ログイン項目と機能拡張 で Sysinternals Process Explorer を承認してください。一覧に表示されない場合は、署名済みのアプリを「アプリケーション」フォルダにインストールしてからもう一度お試しください。"
+          }
+        }
+      }
+    },
+    "Architecture" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アーキテクチャ"
+          }
+        }
+      }
+    },
+    "Argument Buffers" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引数バッファ"
+          }
+        }
+      }
+    },
+    "Authority" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "認証局"
+          }
+        }
+      }
+    },
+    "Autostart" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動起動"
+          }
+        }
+      }
+    },
+    "Available" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空き"
+          }
+        }
+      }
+    },
+    "Base Frequency" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "基本周波数"
+          }
+        }
+      }
+    },
+    "Best-effort: code-directory flags were not returned." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推定値: コードディレクトリのフラグが返されませんでした。"
+          }
+        }
+      }
+    },
+    "Best-effort: detected from the code-signing runtime flag." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推定値: コード署名の runtime フラグから検出しました。"
+          }
+        }
+      }
+    },
+    "Best-effort: no hardened-runtime flag was found in the code signature." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推定値: コード署名に Hardened Runtime フラグが見つかりませんでした。"
+          }
+        }
+      }
+    },
+    "Boot Volume" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起動ボリューム"
+          }
+        }
+      }
+    },
+    "Bring to Front" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最前面に表示"
+          }
+        }
+      }
+    },
+    "Browse…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参照…"
+          }
+        }
+      }
+    },
+    "Bundle identifier: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バンドル ID: %@"
+          }
+        }
+      }
+    },
+    "Bundle identifier: %@. The organization is inferred, not a verified publisher." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バンドル ID: %@。組織は推定であり、検証済みの発行元ではありません。"
+          }
+        }
+      }
+    },
+    "Busiest: %@ (%.1f%%)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最も負荷が高いプロセス: %@ (%.1f%%)"
+          }
+        }
+      }
+    },
+    "Bytes Read (cumulative)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み取りバイト数 (累計)"
+          }
+        }
+      }
+    },
+    "Bytes Written (cumulative)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き込みバイト数 (累計)"
+          }
+        }
+      }
+    },
+    "COW Faults" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "COW フォールト"
+          }
+        }
+      }
+    },
+    "CPU" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU"
+          }
+        }
+      }
+    },
+    "CPU %" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU %"
+          }
+        }
+      }
+    },
+    "CPU Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU 時間"
+          }
+        }
+      }
+    },
+    "CPU Usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU 使用率"
+          }
+        }
+      }
+    },
+    "CPU Usage (Total)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU 使用率 (合計)"
+          }
+        }
+      }
+    },
+    "CPU: Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU: 利用不可"
+          }
+        }
+      }
+    },
+    "Cache Line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャッシュライン"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Capacity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "容量"
+          }
+        }
+      }
+    },
+    "Certificate Chain" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "証明書チェーン"
+          }
+        }
+      }
+    },
+    "Check VirusTotal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal で確認"
+          }
+        }
+      }
+    },
+    "Choose where to save a %lld-second sample of %@ (PID %d). Sampling protected processes may require elevated privileges." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ (PID %3$d) の %1$lld 秒間のサンプルを保存する場所を選択してください。保護されたプロセスのサンプリングには昇格した権限が必要になる場合があります。"
+          }
+        }
+      }
+    },
+    "Choose which columns appear in the process tree. Drag to reorder the selected columns." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスツリーに表示する列を選択します。選択した列はドラッグして並べ替えられます。"
+          }
+        }
+      }
+    },
+    "Click another app's window to select its owning process. Press Esc or click in Process Explorer to cancel." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の App のウインドウをクリックすると、そのウインドウを所有するプロセスを選択します。キャンセルするには Esc キーを押すか Process Explorer 内をクリックしてください。"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        }
+      }
+    },
+    "Close the lower pane (⌘L)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインを閉じる (⌘L)"
+          }
+        }
+      }
+    },
+    "Code Signature" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コード署名"
+          }
+        }
+      }
+    },
+    "Code-signing metadata unavailable: %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コード署名のメタデータを取得できません: %@。"
+          }
+        }
+      }
+    },
+    "Colors" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "色"
+          }
+        }
+      }
+    },
+    "Colors apply to the process tree in order — the first enabled rule that matches a process wins." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "色はプロセスツリーに順番に適用されます。プロセスに一致する最初の有効なルールが優先されます。"
+          }
+        }
+      }
+    },
+    "Column Set %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セット %lld"
+          }
+        }
+      }
+    },
+    "Columns" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列"
+          }
+        }
+      }
+    },
+    "Command Line" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマンドライン"
+          }
+        }
+      }
+    },
+    "Command Line:" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマンドライン:"
+          }
+        }
+      }
+    },
+    "Confirm Force Quit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制終了の前に確認"
+          }
+        }
+      }
+    },
+    "Confirm before force quitting a process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを強制終了する前に確認する"
+          }
+        }
+      }
+    },
+    "Context Switches" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コンテキストスイッチ"
+          }
+        }
+      }
+    },
+    "Control refresh and highlighting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新とハイライトの制御"
+          }
+        }
+      }
+    },
+    "Copy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コピー"
+          }
+        }
+      }
+    },
+    "Copyright © 1996–2026 Mark Russinovich" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright © 1996–2026 Mark Russinovich"
+          }
+        }
+      }
+    },
+    "Core %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コア %lld"
+          }
+        }
+      }
+    },
+    "Cores" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コア"
+          }
+        }
+      }
+    },
+    "Could Not Change Launch at Login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン時の起動設定を変更できませんでした"
+          }
+        }
+      }
+    },
+    "Could Not Enable Helper" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーを有効にできませんでした"
+          }
+        }
+      }
+    },
+    "Could Not Export Process List" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス一覧を書き出せませんでした"
+          }
+        }
+      }
+    },
+    "Could Not Remove Helper" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーを削除できませんでした"
+          }
+        }
+      }
+    },
+    "Could Not Save Process Explorer Data" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Explorer のデータを保存できませんでした"
+          }
+        }
+      }
+    },
+    "Could not build a search URL for \"%@\"." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" の検索 URL を作成できませんでした。"
+          }
+        }
+      }
+    },
+    "Could not launch: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起動できませんでした: %@"
+          }
+        }
+      }
+    },
+    "Could not open: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開けませんでした: %@"
+          }
+        }
+      }
+    },
+    "Could not run %@ for %@ (PID %d).\n\n%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ (PID %3$d) に対して %1$@ を実行できませんでした。\n\n%4$@"
+          }
+        }
+      }
+    },
+    "Current Directory" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カレントディレクトリ"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダーク"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
+    },
+    "Delete \"%@\"?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" を削除しますか?"
+          }
+        }
+      }
+    },
+    "Delete Column Set?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを削除しますか?"
+          }
+        }
+      }
+    },
+    "Description" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "説明"
+          }
+        }
+      }
+    },
+    "Difference highlight duration:" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変化のハイライト時間:"
+          }
+        }
+      }
+    },
+    "Discrete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ディスクリート"
+          }
+        }
+      }
+    },
+    "Disk" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ディスク"
+          }
+        }
+      }
+    },
+    "Disk I/O Rate" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ディスク I/O レート"
+          }
+        }
+      }
+    },
+    "Down" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウン"
+          }
+        }
+      }
+    },
+    "Drag to resize this graph" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドラッグしてこのグラフのサイズを変更"
+          }
+        }
+      }
+    },
+    "Dynamic library / framework" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダイナミックライブラリ / フレームワーク"
+          }
+        }
+      }
+    },
+    "E-Core %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E コア %lld"
+          }
+        }
+      }
+    },
+    "Effective GID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実効 GID"
+          }
+        }
+      }
+    },
+    "Effective UID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実効 UID"
+          }
+        }
+      }
+    },
+    "Efficiency" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高効率"
+          }
+        }
+      }
+    },
+    "Ejectable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取り出し可能"
+          }
+        }
+      }
+    },
+    "Enter text to find matching mapped images or handles." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致するマップされたイメージまたはハンドルを検索するテキストを入力してください。"
+          }
+        }
+      }
+    },
+    "Entitlements" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンタイトルメント"
+          }
+        }
+      }
+    },
+    "Environment" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "環境変数"
+          }
+        }
+      },
+      "extractionState" : "manual"
+    },
+    "Environment unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "環境変数を取得できません: %@"
+          }
+        }
+      }
+    },
+    "Executable Architectures" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行ファイルのアーキテクチャ"
+          }
+        }
+      }
+    },
+    "Executable Modified" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行ファイルの更新日"
+          }
+        }
+      }
+    },
+    "Exited Processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了したプロセス"
+          }
+        }
+      }
+    },
+    "Export Process List" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス一覧を書き出す"
+          }
+        }
+      }
+    },
+    "Export Process List as CSV…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス一覧を CSV として書き出す…"
+          }
+        }
+      }
+    },
+    "File / vnode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイル / vnode"
+          }
+        }
+      }
+    },
+    "File > Save (Command-S) writes the displayed columns and rows, including offscreen rows but excluding filtered-out rows and collapsed descendants. It uses a tab-separated UTF-8 text report with a BOM and CRLF line endings. When the lower pane is visible, the report also contains its current rows and columns. Threads mode exports threads, not mapped images.\n\nThe first Save asks for a filename. Later saves replace that file; Save As (Shift-Command-S) always asks for a destination. The remembered destination lasts only for this app session. A report captures the displayed data when Save is invoked, before the filename dialog.\n\nExport Process List as CSV is separate: it exports all sampled processes in PID order with fixed raw-metric columns. Neither format is a reloadable snapshot. Reports may contain sensitive process names and paths." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイル > 保存 (Command-S) は、表示中の列と行を書き出します。画面外の行は含まれますが、フィルタで除外された行と折りたたまれた子孫は含まれません。形式は、BOM 付き・CRLF 改行のタブ区切り UTF-8 テキストレポートです。下部ペインが表示されている場合は、その現在の行と列もレポートに含まれます。スレッドモードではマップされたイメージではなくスレッドを書き出します。\n\n最初の保存ではファイル名を確認します。以降の保存ではそのファイルを置き換えます。別名で保存 (Shift-Command-S) では常に保存先を確認します。記憶された保存先は、この App のセッション中のみ有効です。レポートには、保存を実行した時点 (ファイル名のダイアログを表示する前) の表示データが記録されます。\n\nプロセス一覧を CSV として書き出す は別の機能です。サンプリングしたすべてのプロセスを PID 順に、固定の生の指標列で書き出します。どちらの形式も、再読み込みできるスナップショットではありません。レポートには、機密性のあるプロセス名やパスが含まれる場合があります。"
+          }
+        }
+      }
+    },
+    "File Descriptor" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ"
+          }
+        }
+      }
+    },
+    "File Descriptor %d" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ %d"
+          }
+        }
+      }
+    },
+    "File Descriptor %d — %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ %1$d — %2$@"
+          }
+        }
+      }
+    },
+    "File Descriptors" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ"
+          }
+        }
+      }
+    },
+    "File Descriptors / Threads" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ / スレッド"
+          }
+        }
+      }
+    },
+    "File descriptor" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ"
+          }
+        }
+      }
+    },
+    "File descriptors" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタ"
+          }
+        }
+      }
+    },
+    "File descriptors unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルディスクリプタを取得できません: %@"
+          }
+        }
+      }
+    },
+    "File-system events" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルシステムイベント"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィルタ"
+          }
+        }
+      }
+    },
+    "Filter Processes…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスをフィルタ…"
+          }
+        }
+      }
+    },
+    "Filter by name or PID using the toolbar, or choose Find > Filter Processes. Show Process Tree switches between a hierarchy and a flat list; sorting a column switches to a flat list. View > Show Processes From All Users controls visibility, not access permissions.\n\nFind Window's Process on the toolbar lets you click another app's window. It selects and reveals its process, clearing filters when needed. macOS may require Accessibility approval." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ツールバーで名前または PID によるフィルタをかけるか、検索 > プロセスをフィルタ を選択します。プロセスツリーを表示 は階層表示とフラット表示を切り替えます。列で並べ替えるとフラット表示になります。表示 > すべてのユーザーのプロセスを表示 が制御するのは表示の有無であり、アクセス権限ではありません。\n\nツールバーの「ウインドウのプロセスを検索」を使うと、他の App のウインドウをクリックして、そのプロセスを選択・表示できます。必要に応じてフィルタも解除されます。macOS のアクセシビリティの承認が必要になる場合があります。"
+          }
+        }
+      }
+    },
+    "Find" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
+          }
+        }
+      }
+    },
+    "Find Mapped Files or File Descriptors" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたファイルまたはファイルディスクリプタを検索"
+          }
+        }
+      }
+    },
+    "Find Mapped Files or File Descriptors…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたファイルまたはファイルディスクリプタを検索…"
+          }
+        }
+      }
+    },
+    "Find Mapped Files or File Descriptors… (⌘F)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたファイルまたはファイルディスクリプタを検索… (⌘F)"
+          }
+        }
+      }
+    },
+    "Find Window's Process — click a window in another app to select its process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウのプロセスを検索 — 他の App のウインドウをクリックして、そのプロセスを選択します"
+          }
+        }
+      }
+    },
+    "Find and inspect a process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスの検索と調査"
+          }
+        }
+      }
+    },
+    "Force Quit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制終了"
+          }
+        }
+      }
+    },
+    "Force Quit Process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを強制終了"
+          }
+        }
+      }
+    },
+    "Force Quit Process Tree" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスツリーを強制終了"
+          }
+        }
+      }
+    },
+    "Force Quit Process using SIGKILL (Forward Delete in the process list)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIGKILL でプロセスを強制終了 (プロセス一覧で Forward Delete)"
+          }
+        }
+      }
+    },
+    "Force Quit Tree" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ツリーを強制終了"
+          }
+        }
+      }
+    },
+    "Force Quit sends SIGKILL and can lose unsaved work. Suspend pauses a process until Resume. Set Nice Value changes POSIX scheduling preference, not QoS or Windows priority classes. Sample Process saves a ten-second text stack sample, not a memory dump.\n\nInstall Privileged Helper is in the application menu. It requires a packaged, appropriately signed app and macOS approval. The helper does not bypass all macOS process protections. VirusTotal commands perform hash lookups; they do not upload executables." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制終了 は SIGKILL を送信するため、保存していない作業内容が失われる場合があります。一時停止 は、再開 するまでプロセスを停止します。nice 値を設定 は POSIX のスケジューリング優先度を変更するもので、QoS や Windows の優先度クラスではありません。プロセスをサンプル は、10 秒間のスタックのテキストサンプルを保存します。メモリダンプではありません。\n\n特権ヘルパーをインストール はアプリケーションメニューにあります。パッケージ化され、適切に署名された App と、macOS の承認が必要です。ヘルパーを使用しても、macOS のすべてのプロセス保護を回避できるわけではありません。VirusTotal のコマンドはハッシュ値を照会するもので、実行ファイルをアップロードすることはありません。"
+          }
+        }
+      }
+    },
+    "Format" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォーマット"
+          }
+        }
+      }
+    },
+    "GPU" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPU"
+          }
+        }
+      }
+    },
+    "GPU Usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPU 使用率"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          }
+        }
+      }
+    },
+    "Graph" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グラフ"
+          }
+        }
+      }
+    },
+    "Graphics Device" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グラフィックスデバイス"
+          }
+        }
+      }
+    },
+    "Graphics Devices" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "グラフィックスデバイス"
+          }
+        }
+      }
+    },
+    "Hardened Runtime" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardened Runtime"
+          }
+        }
+      }
+    },
+    "Headless" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘッドレス"
+          }
+        }
+      }
+    },
+    "Helper Awaiting Approval" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーの承認待ち"
+          }
+        }
+      }
+    },
+    "Helper registration returned, but no enabled helper is available. The app is still using unprivileged access." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーの登録は完了しましたが、有効なヘルパーがありません。アプリは引き続き権限なしでアクセスしています。"
+          }
+        }
+      }
+    },
+    "Heuristic: parent PID is 1 and UID is below 500. This is not verification of a registered launchd job." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "経験則による判定: 親 PID が 1 で UID が 500 未満です。登録済みの launchd ジョブであることを確認するものではありません。"
+          }
+        }
+      }
+    },
+    "Host" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホスト"
+          }
+        }
+      }
+    },
+    "How long newly started or exited processes stay highlighted." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しく起動または終了したプロセスをハイライト表示する時間。"
+          }
+        }
+      }
+    },
+    "I/O" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I/O"
+          }
+        }
+      }
+    },
+    "I/O (disk + network): %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I/O (ディスク + ネットワーク): %@"
+          }
+        }
+      }
+    },
+    "I/O (disk + network): Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I/O (ディスク + ネットワーク): 利用不可"
+          }
+        }
+      }
+    },
+    "Identity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID"
+          }
+        }
+      }
+    },
+    "Image" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イメージ"
+          }
+        }
+      }
+    },
+    "Inferred from bundle identifier: %@. Not a verified publisher." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バンドル ID (%@) から推定しています。検証済みの発行元ではありません。"
+          }
+        }
+      }
+    },
+    "Inspect the lower pane" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインの調査"
+          }
+        }
+      }
+    },
+    "Install Privileged Helper…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーをインストール…"
+          }
+        }
+      }
+    },
+    "Installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搭載"
+          }
+        }
+      }
+    },
+    "Interfaces" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インターフェース"
+          }
+        }
+      }
+    },
+    "Internal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内蔵"
+          }
+        }
+      }
+    },
+    "Kernel queue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カーネルキュー"
+          }
+        }
+      }
+    },
+    "Kind" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        }
+      }
+    },
+    "L1 D-Cache" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L1 データキャッシュ"
+          }
+        }
+      }
+    },
+    "L1 I-Cache" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L1 命令キャッシュ"
+          }
+        }
+      }
+    },
+    "L2 Cache" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L2 キャッシュ"
+          }
+        }
+      }
+    },
+    "L3 Cache" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L3 キャッシュ"
+          }
+        }
+      }
+    },
+    "Largest Cumulative Process I/O" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "累計 I/O が最大のプロセス"
+          }
+        }
+      }
+    },
+    "Largest Physical Footprint" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理フットプリントが最大のプロセス"
+          }
+        }
+      }
+    },
+    "Launch at Login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン時に起動"
+          }
+        }
+      }
+    },
+    "Launch at Login Not Enabled" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン時の起動は有効になっていません"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライト"
+          }
+        }
+      }
+    },
+    "Load" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込む"
+          }
+        }
+      }
+    },
+    "Load Column Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを読み込む"
+          }
+        }
+      }
+    },
+    "Loading entitlements…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンタイトルメントを読み込み中…"
+          }
+        }
+      }
+    },
+    "Loading…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込み中…"
+          }
+        }
+      }
+    },
+    "Local Address" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ローカルアドレス"
+          }
+        }
+      }
+    },
+    "Loopback" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ループバック"
+          }
+        }
+      }
+    },
+    "Low-Power" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "低電力"
+          }
+        }
+      }
+    },
+    "Lower POSIX nice values request more CPU scheduling preference and may require elevated privileges. Not a QoS class." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSIX の nice 値が小さいほど CPU スケジューリングで優先されます。昇格した権限が必要になる場合があります。QoS クラスではありません。"
+          }
+        }
+      }
+    },
+    "Lower Pane" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペイン"
+          }
+        }
+      }
+    },
+    "Lower Pane View" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインの表示"
+          }
+        }
+      }
+    },
+    "Mach Msg Received" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mach メッセージ受信数"
+          }
+        }
+      }
+    },
+    "Mach Msg Sent" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mach メッセージ送信数"
+          }
+        }
+      }
+    },
+    "Mach Syscalls" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mach システムコール"
+          }
+        }
+      }
+    },
+    "Mach port" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mach ポート"
+          }
+        }
+      }
+    },
+    "Machine" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マシン"
+          }
+        }
+      }
+    },
+    "Mapped Base" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップ先ベースアドレス"
+          }
+        }
+      }
+    },
+    "Mapped File" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたファイル"
+          }
+        }
+      }
+    },
+    "Mapped Image" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージ"
+          }
+        }
+      }
+    },
+    "Mapped Images / Files" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージ / ファイル"
+          }
+        }
+      }
+    },
+    "Mapped by %@ (PID %d)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (PID %2$d) がマップ"
+          }
+        }
+      }
+    },
+    "Mapped file" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたファイル"
+          }
+        }
+      }
+    },
+    "Mapped image, mapped file, file descriptor path, or name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージ、マップされたファイル、ファイルディスクリプタのパス、または名前"
+          }
+        }
+      }
+    },
+    "Mapped images" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージ"
+          }
+        }
+      }
+    },
+    "Mapped images unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージを取得できません: %@"
+          }
+        }
+      }
+    },
+    "Mapped-image enumeration is not available from the current provider." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のプロバイダではマップされたイメージを列挙できません。"
+          }
+        }
+      }
+    },
+    "Matches appear as they are found." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致した項目は見つかり次第表示されます。"
+          }
+        }
+      }
+    },
+    "Max Buffer Length" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最大バッファ長"
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリ"
+          }
+        }
+      }
+    },
+    "Memory: %@ / %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリ: %@ / %@"
+          }
+        }
+      }
+    },
+    "Memory: Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリ: 利用不可"
+          }
+        }
+      }
+    },
+    "Menu Bar Graph" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューバーのグラフ"
+          }
+        }
+      }
+    },
+    "Menu-bar graphs and login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューバーのグラフとログイン"
+          }
+        }
+      }
+    },
+    "Metal's recommended working-set budget, not installed VRAM or current GPU memory use." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metal が推奨するワーキングセットの予算です。搭載 VRAM や現在の GPU メモリ使用量ではありません。"
+          }
+        }
+      }
+    },
+    "Mitigations" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "緩和策"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "モデル"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前"
+          }
+        }
+      }
+    },
+    "Network" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワーク"
+          }
+        }
+      }
+    },
+    "Network Interfaces" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワークインターフェース"
+          }
+        }
+      }
+    },
+    "New Processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいプロセス"
+          }
+        }
+      }
+    },
+    "Nice Value" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nice 値"
+          }
+        }
+      }
+    },
+    "No" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いいえ"
+          }
+        }
+      }
+    },
+    "No App Sandbox entitlement or sampler flag" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Sandbox エンタイトルメントもサンプラーのフラグもありません"
+          }
+        }
+      }
+    },
+    "No Results" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "結果なし"
+          }
+        }
+      }
+    },
+    "No SHA-256 hash is available for %@. The file may no longer exist or may not be readable." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ の SHA-256 ハッシュを取得できません。ファイルが存在しないか、読み取れない可能性があります。"
+          }
+        }
+      }
+    },
+    "No SHA-256 is available to look up. Verify the signature first." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "照会できる SHA-256 がありません。先に署名を検証してください。"
+          }
+        }
+      }
+    },
+    "No Saved Column Sets" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存済みの列セットはありません"
+          }
+        }
+      }
+    },
+    "No TCP/IP sockets were returned." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TCP/IP ソケットは返されませんでした。"
+          }
+        }
+      }
+    },
+    "No VirusTotal report is available for %@. Configure a VirusTotal API key in the login Keychain, or the file may be unknown to VirusTotal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ の VirusTotal レポートはありません。ログインキーチェーンに VirusTotal の API キーを設定するか、VirusTotal に未登録のファイルの可能性があります。"
+          }
+        }
+      }
+    },
+    "No VirusTotal result (no API key configured, or the file is unknown to VirusTotal)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal の結果がありません (API キーが未設定か、VirusTotal に未登録のファイルです)。"
+          }
+        }
+      }
+    },
+    "No Window Process Found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウのプロセスが見つかりません"
+          }
+        }
+      }
+    },
+    "No entitlements dictionary was returned for this image." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このイメージのエンタイトルメント辞書は返されませんでした。"
+          }
+        }
+      }
+    },
+    "No entitlements." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エンタイトルメントはありません。"
+          }
+        }
+      }
+    },
+    "No environment variables were returned. The environment may be empty, the process may have exited, or macOS may have restricted access. Helper access does not bypass process protection." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "環境変数は返されませんでした。環境変数が空か、プロセスが終了したか、macOS がアクセスを制限した可能性があります。ヘルパーを使用しても、プロセスの保護は回避されません。"
+          }
+        }
+      }
+    },
+    "No environment variables." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "環境変数はありません。"
+          }
+        }
+      }
+    },
+    "No executable path is available for %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ の実行ファイルのパスを取得できません。"
+          }
+        }
+      }
+    },
+    "No executable path was reported for this process." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このプロセスの実行ファイルのパスが報告されませんでした。"
+          }
+        }
+      }
+    },
+    "No image path is available for %@." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ のイメージのパスを取得できません。"
+          }
+        }
+      }
+    },
+    "No mapped image or handle path matched." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一致するマップされたイメージまたはハンドルのパスはありません。"
+          }
+        }
+      }
+    },
+    "No mapped images were returned." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージは返されませんでした。"
+          }
+        }
+      }
+    },
+    "No open file descriptors were returned." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開いているファイルディスクリプタは返されませんでした。"
+          }
+        }
+      }
+    },
+    "No printable strings were extracted from the image." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イメージから表示可能な文字列は抽出されませんでした。"
+          }
+        }
+      }
+    },
+    "No sandbox signal detected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンドボックスの兆候は検出されませんでした"
+          }
+        }
+      }
+    },
+    "No saved column sets" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存済みの列セットはありません"
+          }
+        }
+      }
+    },
+    "No signature information is available." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "署名情報はありません。"
+          }
+        }
+      }
+    },
+    "No threads were returned for this process." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このプロセスのスレッドは返されませんでした。"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
+          }
+        }
+      }
+    },
+    "None detected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検出なし"
+          }
+        }
+      }
+    },
+    "Notarized" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公証"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Observed task priority, not a Windows priority class, POSIX nice value, or QoS class." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "観測されたタスク優先度です。Windows の優先度クラス、POSIX の nice 値、QoS クラスではありません。"
+          }
+        }
+      }
+    },
+    "Off" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフ"
+          }
+        }
+      }
+    },
+    "Only completed resource reads are included. Search again to scan all processes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み取りが完了したリソースのみが含まれます。すべてのプロセスをスキャンするには、もう一度検索してください。"
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
+          }
+        }
+      }
+    },
+    "Open Accessibility Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクセシビリティ設定を開く"
+          }
+        }
+      }
+    },
+    "Open report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レポートを開く"
+          }
+        }
+      }
+    },
+    "Open the main process window before saving." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する前にメインのプロセスウインドウを開いてください。"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション"
+          }
+        }
+      }
+    },
+    "Options > Menu Bar Graph selects CPU, physical memory, I/O, disk, network, or GPU history. Only one graph is shown at a time. Throughput graphs scale to recent samples; CPU, memory, and GPU use 0-100%. Unavailable data is shown as unavailable, not zero. GPU metrics depend on hardware and macOS support.\n\nLaunch at Login registers only this app and only when you enable it. macOS may require approval in System Settings > General > Login Items & Extensions. Signing and installation restrictions may prevent registration in development builds." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション > メニューバーのグラフ で、CPU、物理メモリ、I/O、ディスク、ネットワーク、GPU のいずれかの履歴を選択します。一度に表示できるグラフは 1 つだけです。スループットのグラフは直近のサンプルに合わせて縮尺が変わり、CPU、メモリ、GPU は 0〜100% で表示されます。取得できないデータはゼロではなく「利用不可」と表示されます。GPU の指標はハードウェアと macOS の対応状況に依存します。\n\nログイン時に起動 は、有効にした場合にのみこの App だけを登録します。macOS のシステム設定 > 一般 > ログイン項目と機能拡張 で承認が必要になる場合があります。署名やインストールの制限により、開発ビルドでは登録できないことがあります。"
+          }
+        }
+      }
+    },
+    "Organization (inferred)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "組織 (推定)"
+          }
+        }
+      }
+    },
+    "Organization (inferred): %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "組織 (推定): %@"
+          }
+        }
+      }
+    },
+    "Organize Column Sets" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを整理"
+          }
+        }
+      }
+    },
+    "Organize Column Sets…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを整理…"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他"
+          }
+        }
+      }
+    },
+    "Own Processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のプロセス"
+          }
+        }
+      }
+    },
+    "Owned by" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有者"
+          }
+        }
+      }
+    },
+    "P-Core %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "P コア %lld"
+          }
+        }
+      }
+    },
+    "PID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID"
+          }
+        }
+      }
+    },
+    "PID %d Properties" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID %d のプロパティ"
+          }
+        }
+      }
+    },
+    "PID %d is no longer running." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID %d は実行されていません。"
+          }
+        }
+      }
+    },
+    "POSIX nice value. Lower values request more CPU scheduling preference and may require elevated privileges." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSIX の nice 値です。値が小さいほど CPU スケジューリングで優先されます。昇格した権限が必要になる場合があります。"
+          }
+        }
+      }
+    },
+    "POSIX nice value. Lower values request more CPU scheduling preference; this is not a QoS class." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSIX の nice 値です。値が小さいほど CPU スケジューリングで優先されます。QoS クラスではありません。"
+          }
+        }
+      }
+    },
+    "POSIX nice values: lower values request more CPU scheduling preference and may require elevated privileges. This does not set a QoS class." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "POSIX の nice 値: 値が小さいほど CPU スケジューリングで優先されます。昇格した権限が必要になる場合があります。QoS クラスは設定されません。"
+          }
+        }
+      }
+    },
+    "Packages" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パッケージ"
+          }
+        }
+      }
+    },
+    "Packed Images" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パックされたイメージ"
+          }
+        }
+      }
+    },
+    "Page Count" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページ数"
+          }
+        }
+      }
+    },
+    "Page Fault Delta" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページフォールトの増分"
+          }
+        }
+      }
+    },
+    "Page Faults" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページフォールト"
+          }
+        }
+      }
+    },
+    "Page Ins" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページイン"
+          }
+        }
+      }
+    },
+    "Page Size" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページサイズ"
+          }
+        }
+      }
+    },
+    "Parent" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "親"
+          }
+        }
+      }
+    },
+    "Path" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パス"
+          }
+        }
+      }
+    },
+    "Path:" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パス:"
+          }
+        }
+      }
+    },
+    "Paused" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一時停止中"
+          }
+        }
+      }
+    },
+    "Peak %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピーク %@"
+          }
+        }
+      }
+    },
+    "Per-Core Usage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コアごとの使用率"
+          }
+        }
+      }
+    },
+    "Per-thread detail is unavailable. The process sampler reports %lld thread(s); this count does not provide thread identifiers or individual measurements. Access depends on macOS permissions and process protection." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッドごとの詳細は取得できません。プロセスサンプラーは %lld 個のスレッドを報告していますが、この数からスレッド ID や個別の測定値は得られません。アクセスの可否は macOS の権限とプロセスの保護に依存します。"
+          }
+        }
+      }
+    },
+    "Performance" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パフォーマンス"
+          }
+        }
+      }
+    },
+    "Performance Graph" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パフォーマンスグラフ"
+          }
+        }
+      },
+      "extractionState" : "manual"
+    },
+    "Physical Footprint" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理フットプリント"
+          }
+        }
+      }
+    },
+    "Physical Memory" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理メモリ"
+          }
+        }
+      }
+    },
+    "Physical Memory Used (%)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理メモリ使用率 (%)"
+          }
+        }
+      }
+    },
+    "Physical footprint: memory charged to this process. Not resident memory or Windows private bytes. Unavailable values remain blank." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理フットプリント: このプロセスに計上されるメモリです。常駐メモリや Windows のプライベートバイトではありません。取得できない値は空欄のままです。"
+          }
+        }
+      }
+    },
+    "Pipe" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パイプ"
+          }
+        }
+      }
+    },
+    "Platform Binary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プラットフォームバイナリ"
+          }
+        }
+      }
+    },
+    "Platform binary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プラットフォームバイナリ"
+          }
+        }
+      }
+    },
+    "Privileged Helper Awaiting Approval" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーの承認待ち"
+          }
+        }
+      }
+    },
+    "Privileged Helper Enabled" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーは有効です"
+          }
+        }
+      }
+    },
+    "Privileged Helper Removed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーを削除しました"
+          }
+        }
+      }
+    },
+    "Privileged Helper Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーを利用できません"
+          }
+        }
+      }
+    },
+    "Process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス"
+          }
+        }
+      }
+    },
+    "Process Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス操作"
+          }
+        }
+      }
+    },
+    "Process Exited" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスは終了しました"
+          }
+        }
+      }
+    },
+    "Process Explorer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Explorer"
+          }
+        }
+      }
+    },
+    "Process Not Found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスが見つかりません"
+          }
+        }
+      }
+    },
+    "Process Not Listed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスが一覧にありません"
+          }
+        }
+      }
+    },
+    "Process actions and permissions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス操作と権限"
+          }
+        }
+      }
+    },
+    "Process column plus %lld metric columns." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Process column plus %lld metric column."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Process column plus %lld metric columns."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "プロセス列と %lld 個の指標列。"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Process flag from sampler" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンプラーのプロセスフラグ"
+          }
+        }
+      }
+    },
+    "Processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセス"
+          }
+        }
+      }
+    },
+    "Processor" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセッサ"
+          }
+        }
+      }
+    },
+    "Properties..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロパティ..."
+          }
+        }
+      }
+    },
+    "Properties…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロパティ…"
+          }
+        }
+      }
+    },
+    "Properties… (⌥↩)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロパティ… (⌥↩)"
+          }
+        }
+      }
+    },
+    "Proto" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロトコル"
+          }
+        }
+      }
+    },
+    "Publisher" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発行元"
+          }
+        }
+      }
+    },
+    "Querying VirusTotal…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal に照会中…"
+          }
+        }
+      }
+    },
+    "Quit Sysinternals Process Explorer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals Process Explorer を終了"
+          }
+        }
+      }
+    },
+    "RAM In Use" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用中の RAM"
+          }
+        }
+      }
+    },
+    "RAM Used (%)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM 使用率 (%)"
+          }
+        }
+      }
+    },
+    "Read-Only" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み取り専用"
+          }
+        }
+      }
+    },
+    "Read/Write Textures" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み書き可能なテクスチャ"
+          }
+        }
+      }
+    },
+    "Real GID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実 GID"
+          }
+        }
+      }
+    },
+    "Real UID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実 UID"
+          }
+        }
+      }
+    },
+    "Reason" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "理由"
+          }
+        }
+      }
+    },
+    "Recommended GPU Working-Set Budget" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推奨 GPU ワーキングセット予算"
+          }
+        }
+      }
+    },
+    "Refresh" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        }
+      }
+    },
+    "Refresh Now" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐ更新"
+          }
+        }
+      }
+    },
+    "Refresh Now (F5)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐ更新 (F5)"
+          }
+        }
+      }
+    },
+    "Refresh unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新できません: %@"
+          }
+        }
+      }
+    },
+    "Registry ID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レジストリ ID"
+          }
+        }
+      }
+    },
+    "Remote Address" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リモートアドレス"
+          }
+        }
+      }
+    },
+    "Remote Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リモート名"
+          }
+        }
+      }
+    },
+    "Removable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取り外し可能"
+          }
+        }
+      }
+    },
+    "Replace" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "置き換える"
+          }
+        }
+      }
+    },
+    "Resident Memory (RSS)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常駐メモリ (RSS)"
+          }
+        }
+      }
+    },
+    "Resident memory (RSS): physical pages resident for the process, distinct from physical footprint." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常駐メモリ (RSS): プロセスに常駐している物理ページです。物理フットプリントとは異なります。"
+          }
+        }
+      }
+    },
+    "Restart" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再起動"
+          }
+        }
+      }
+    },
+    "Restore Defaults" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトに戻す"
+          }
+        }
+      }
+    },
+    "Resume" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再開"
+          }
+        }
+      }
+    },
+    "Retrieving data…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データを取得中…"
+          }
+        }
+      }
+    },
+    "Retry Privileged Helper…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーを再試行…"
+          }
+        }
+      }
+    },
+    "Reveal in Finder" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder で表示"
+          }
+        }
+      }
+    },
+    "Row colors" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行の色"
+          }
+        }
+      }
+    },
+    "Run" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行"
+          }
+        }
+      }
+    },
+    "Running" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行中"
+          }
+        }
+      }
+    },
+    "Running Threads" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行中のスレッド"
+          }
+        }
+      }
+    },
+    "Runtime Source" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Runtime の判定根拠"
+          }
+        }
+      }
+    },
+    "Run…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行…"
+          }
+        }
+      }
+    },
+    "SHA-256" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SHA-256"
+          }
+        }
+      }
+    },
+    "Sample" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンプル"
+          }
+        }
+      }
+    },
+    "Sample Complete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンプルが完了しました"
+          }
+        }
+      }
+    },
+    "Sample Could Not Start" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンプルを開始できませんでした"
+          }
+        }
+      }
+    },
+    "Sample Failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンプルに失敗しました"
+          }
+        }
+      }
+    },
+    "Sample Process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスをサンプル"
+          }
+        }
+      }
+    },
+    "Sample Process…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスをサンプル…"
+          }
+        }
+      }
+    },
+    "Sandbox / Runtime" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンドボックス / Runtime"
+          }
+        }
+      }
+    },
+    "Sandbox Source" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンドボックスの判定根拠"
+          }
+        }
+      }
+    },
+    "Sandboxed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サンドボックス化"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
+    "Save As…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "別名で保存…"
+          }
+        }
+      }
+    },
+    "Save Column Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを保存"
+          }
+        }
+      }
+    },
+    "Save Column Set…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列セットを保存…"
+          }
+        }
+      }
+    },
+    "Save Process Explorer Data" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Explorer のデータを保存"
+          }
+        }
+      }
+    },
+    "Save Process Explorer Data (⌘S)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process Explorer のデータを保存 (⌘S)"
+          }
+        }
+      }
+    },
+    "Save a report or export CSV" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "レポートの保存と CSV の書き出し"
+          }
+        }
+      }
+    },
+    "Save the current layout from the View menu." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のレイアウトは表示メニューから保存できます。"
+          }
+        }
+      }
+    },
+    "Saved GID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存された GID"
+          }
+        }
+      }
+    },
+    "Saved UID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存された UID"
+          }
+        }
+      }
+    },
+    "Saved a %lld-second sample of %@ (PID %d) to:\n\n%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ (PID %3$d) の %1$lld 秒間のサンプルを次の場所に保存しました:\n\n%4$@"
+          }
+        }
+      }
+    },
+    "Save…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存…"
+          }
+        }
+      }
+    },
+    "Scanning strings…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字列をスキャン中…"
+          }
+        }
+      }
+    },
+    "Scroll to New Processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいプロセスまでスクロール"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
+          }
+        }
+      }
+    },
+    "Search Incomplete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索は未完了です"
+          }
+        }
+      }
+    },
+    "Search Online" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オンラインで検索"
+          }
+        }
+      }
+    },
+    "Search Online Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オンライン検索を利用できません"
+          }
+        }
+      }
+    },
+    "Search Stopped" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索を停止しました"
+          }
+        }
+      }
+    },
+    "Searched %lld of %lld processes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld 個中 %1$lld 個のプロセスを検索済み"
+          }
+        }
+      }
+    },
+    "Searching…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索中…"
+          }
+        }
+      }
+    },
+    "Security" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セキュリティ"
+          }
+        }
+      },
+      "extractionState" : "manual"
+    },
+    "Select Columns" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列を選択"
+          }
+        }
+      }
+    },
+    "Select Columns…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列を選択…"
+          }
+        }
+      }
+    },
+    "Select a process to view its mapped images or files." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを選択すると、マップされたイメージまたはファイルが表示されます。"
+          }
+        }
+      }
+    },
+    "Select a process to view its open file descriptors." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを選択すると、開いているファイルディスクリプタが表示されます。"
+          }
+        }
+      }
+    },
+    "Select a process to view its threads." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを選択すると、スレッドが表示されます。"
+          }
+        }
+      }
+    },
+    "Select the tab to scan image strings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このタブを選択すると、イメージの文字列をスキャンします。"
+          }
+        }
+      }
+    },
+    "Set Nice Value" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nice 値を設定"
+          }
+        }
+      }
+    },
+    "Show Column Heatmaps" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列のヒートマップを表示"
+          }
+        }
+      }
+    },
+    "Show Graph in Menu Bar" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューバーにグラフを表示"
+          }
+        }
+      }
+    },
+    "Show Lower Pane" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインを表示"
+          }
+        }
+      }
+    },
+    "Show Lower Pane (⌘L)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインを表示 (⌘L)"
+          }
+        }
+      }
+    },
+    "Show Process Tree" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスツリーを表示"
+          }
+        }
+      }
+    },
+    "Show Process Tree (⌥T)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスツリーを表示 (⌥T)"
+          }
+        }
+      }
+    },
+    "Show Processes From All Users" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのユーザーのプロセスを表示"
+          }
+        }
+      }
+    },
+    "Show Sysinternals Process Explorer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals Process Explorer を表示"
+          }
+        }
+      }
+    },
+    "Show mapped images / files (⌘D), file descriptors (⇧⌘H), or threads (⌘Y)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージ / ファイル (⌘D)、ファイルディスクリプタ (⇧⌘H)、スレッド (⌘Y) を表示"
+          }
+        }
+      }
+    },
+    "Signature" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "署名"
+          }
+        }
+      }
+    },
+    "Signature information is unavailable." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "署名情報を取得できません。"
+          }
+        }
+      }
+    },
+    "Signer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "署名者"
+          }
+        }
+      }
+    },
+    "Size" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズ"
+          }
+        }
+      }
+    },
+    "Socket" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソケット"
+          }
+        }
+      }
+    },
+    "Some mapped images or handles could not be read. See the acquisition error below." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のマップされたイメージまたはハンドルを読み取れませんでした。下の取得エラーを参照してください。"
+          }
+        }
+      }
+    },
+    "Some thread scheduling details are unavailable. Unavailable values are not measured zeroes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のスレッドスケジューリングの詳細は取得できません。取得できない値は、測定されたゼロではありません。"
+          }
+        }
+      }
+    },
+    "Started" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始日時"
+          }
+        }
+      }
+    },
+    "State" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ステータス"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止"
+          }
+        }
+      }
+    },
+    "Stopped" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止しました"
+          }
+        }
+      }
+    },
+    "Storage" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ストレージ"
+          }
+        }
+      }
+    },
+    "Strings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字列"
+          }
+        }
+      }
+    },
+    "Strings from the executable file. Process-memory string scanning is not implemented." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行ファイルから抽出した文字列です。プロセスメモリ内の文字列のスキャンは実装されていません。"
+          }
+        }
+      }
+    },
+    "Strings unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字列を取得できません: %@"
+          }
+        }
+      }
+    },
+    "Substring" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分文字列"
+          }
+        }
+      }
+    },
+    "Summary" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "概要"
+          }
+        }
+      }
+    },
+    "Suspend" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一時停止"
+          }
+        }
+      }
+    },
+    "Suspend / Resume" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一時停止 / 再開"
+          }
+        }
+      }
+    },
+    "Suspended" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一時停止中"
+          }
+        }
+      }
+    },
+    "Swap Used" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スワップ使用量"
+          }
+        }
+      }
+    },
+    "Sysinternals - www.sysinternals.com" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals - www.sysinternals.com"
+          }
+        }
+      }
+    },
+    "Sysinternals Process Explorer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals Process Explorer"
+          }
+        }
+      }
+    },
+    "Sysinternals Process Explorer Help" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sysinternals Process Explorer ヘルプ"
+          }
+        }
+      }
+    },
+    "System" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム"
+          }
+        }
+      }
+    },
+    "System Daemon (inferred)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムデーモン (推定)"
+          }
+        }
+      }
+    },
+    "System Daemons (inferred)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムデーモン (推定)"
+          }
+        }
+      }
+    },
+    "System Information" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム情報"
+          }
+        }
+      }
+    },
+    "System Information (⌘I)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム情報 (⌘I)"
+          }
+        }
+      }
+    },
+    "System file location: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムファイルの場所: %@"
+          }
+        }
+      }
+    },
+    "TCP/IP" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TCP/IP"
+          }
+        }
+      },
+      "extractionState" : "manual"
+    },
+    "TCP/IP sockets unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TCP/IP ソケットを取得できません: %@"
+          }
+        }
+      }
+    },
+    "Task Policy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タスクポリシー"
+          }
+        }
+      }
+    },
+    "Task Priority" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タスク優先度"
+          }
+        }
+      }
+    },
+    "Team ID" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チーム ID"
+          }
+        }
+      }
+    },
+    "Terminal (TTY)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ターミナル (TTY)"
+          }
+        }
+      }
+    },
+    "The CoreGraphics window list did not expose a process identifier for that point. Some system or protected windows can require Accessibility access. Grant ProcexpMac access in System Settings > Privacy & Security > Accessibility, then try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CoreGraphics のウインドウリストから、その位置のプロセス ID を取得できませんでした。一部のシステムウインドウや保護されたウインドウでは、アクセシビリティのアクセス許可が必要になる場合があります。システム設定 > プライバシーとセキュリティ > アクセシビリティ で ProcexpMac を許可してから、もう一度お試しください。"
+          }
+        }
+      }
+    },
+    "The click did not hit an on-screen application window with an exposed process identifier. Try a visible app window rather than the desktop, menu bar, Dock, or a transient system surface." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリックした位置に、プロセス ID を取得できる画面上の App ウインドウがありませんでした。デスクトップ、メニューバー、Dock、一時的なシステム画面ではなく、表示されている App のウインドウをクリックしてください。"
+          }
+        }
+      }
+    },
+    "The helper could not be reached. The app is still using unprivileged access." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーに接続できませんでした。アプリは引き続き権限なしでアクセスしています。"
+          }
+        }
+      }
+    },
+    "The helper is registered and awaiting user approval, not yet enabled. Approve it in System Settings ▸ General ▸ Login Items & Extensions, then relaunch. The app is still using unprivileged access." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーは登録済みですが、ユーザーの承認待ちで、まだ有効ではありません。システム設定 ▸ 一般 ▸ ログイン項目と機能拡張 で承認してから、再度起動してください。アプリは引き続き権限なしでアクセスしています。"
+          }
+        }
+      }
+    },
+    "The image has an empty entitlements dictionary." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このイメージのエンタイトルメント辞書は空です。"
+          }
+        }
+      }
+    },
+    "The lower pane is not ready to save." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下部ペインはまだ保存できる状態ではありません。"
+          }
+        }
+      }
+    },
+    "The privileged helper could not be registered.\n\n%@\n\nMake sure the app is signed with a stable (non-ad-hoc) identity and installed in /Applications, then approve the helper in System Settings ▸ General ▸ Login Items & Extensions. The app continues to work in unprivileged mode." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーを登録できませんでした。\n\n%@\n\nアプリが安定した (アドホックではない) ID で署名され、/Applications にインストールされていることを確認してから、システム設定 ▸ 一般 ▸ ログイン項目と機能拡張 でヘルパーを承認してください。アプリは権限なしのモードで引き続き動作します。"
+          }
+        }
+      }
+    },
+    "The privileged helper could not be unregistered: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーの登録を解除できませんでした: %@"
+          }
+        }
+      }
+    },
+    "The privileged helper has been removed. The app is now running unprivileged." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーを削除しました。アプリは現在、権限なしで動作しています。"
+          }
+        }
+      }
+    },
+    "The privileged helper is enabled, but macOS protections can still deny access." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーは有効ですが、macOS の保護機能によってアクセスが拒否される場合があります。"
+          }
+        }
+      }
+    },
+    "The privileged helper is not enabled. Enabling it can permit additional actions, but does not bypass macOS process protection." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーは有効ではありません。有効にすると追加の操作が可能になる場合がありますが、macOS のプロセス保護は回避されません。"
+          }
+        }
+      }
+    },
+    "The privileged helper is registered and enabled. Access to individual processes and thread details still depends on macOS permissions and process protection. Stack capture, process-memory strings, and privileged sampling are not implemented." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーは登録され、有効になっています。個々のプロセスやスレッドの詳細へのアクセスは、引き続き macOS の権限とプロセスの保護に依存します。スタックのキャプチャ、プロセスメモリ内の文字列、特権でのサンプリングは実装されていません。"
+          }
+        }
+      }
+    },
+    "The process may have exited before details could be enumerated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細を列挙する前にプロセスが終了した可能性があります。"
+          }
+        }
+      }
+    },
+    "The process may have exited, or it currently has no enumerable descriptors." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスが終了したか、現在列挙できるディスクリプタがない可能性があります。"
+          }
+        }
+      }
+    },
+    "The process may have exited, or macOS returned no image mappings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスが終了したか、macOS がイメージのマッピングを返さなかった可能性があります。"
+          }
+        }
+      }
+    },
+    "The selected process is no longer present in the current snapshot." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したプロセスは現在のスナップショットに存在しません。"
+          }
+        }
+      }
+    },
+    "The selected process's lower pane is still refreshing. Wait for it to load, or hide the lower pane to save only the process list." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したプロセスの下部ペインはまだ更新中です。読み込みが終わるまで待つか、下部ペインを非表示にしてプロセス一覧のみを保存してください。"
+          }
+        }
+      }
+    },
+    "The selected window belongs to PID %d, but that process is not present in the current snapshot. It may have exited, or macOS may be hiding it from the unprivileged sampler." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したウインドウは PID %d に属していますが、そのプロセスは現在のスナップショットに存在しません。終了したか、macOS が権限のないサンプラーから隠している可能性があります。"
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テーマ"
+          }
+        }
+      }
+    },
+    "This action isn’t available for “%@” (PID %d)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この操作は「%1$@」(PID %2$d) では利用できません。"
+          }
+        }
+      }
+    },
+    "Thread Identifier" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッド ID"
+          }
+        }
+      }
+    },
+    "Thread Kernel Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッドのカーネル時間"
+          }
+        }
+      }
+    },
+    "Thread User Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッドのユーザ時間"
+          }
+        }
+      }
+    },
+    "Threadgroup Limits (X/Y/Z)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッドグループの上限 (X/Y/Z)"
+          }
+        }
+      }
+    },
+    "Threads" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッド"
+          }
+        }
+      }
+    },
+    "Threads unavailable: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スレッドを取得できません: %@"
+          }
+        }
+      }
+    },
+    "Top" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上位"
+          }
+        }
+      }
+    },
+    "Topology" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トポロジ"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        }
+      }
+    },
+    "Type the path of a program, app, document or folder and it will be opened." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プログラム、App、書類、フォルダのパスを入力すると、開きます。"
+          }
+        }
+      }
+    },
+    "Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用不可"
+          }
+        }
+      }
+    },
+    "Unified" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユニファイド"
+          }
+        }
+      }
+    },
+    "Unified Memory" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユニファイドメモリ"
+          }
+        }
+      }
+    },
+    "Uninstall Privileged Helper…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーをアンインストール…"
+          }
+        }
+      }
+    },
+    "Unix Syscalls" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unix システムコール"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不明"
+          }
+        }
+      }
+    },
+    "Up" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アップ"
+          }
+        }
+      }
+    },
+    "Update Speed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新速度"
+          }
+        }
+      }
+    },
+    "Update interval:" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新間隔:"
+          }
+        }
+      }
+    },
+    "Used" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用済み"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザ"
+          }
+        }
+      }
+    },
+    "Validation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検証"
+          }
+        }
+      }
+    },
+    "Value" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "値"
+          }
+        }
+      }
+    },
+    "Variable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変数"
+          }
+        }
+      }
+    },
+    "Verify" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検証"
+          }
+        }
+      }
+    },
+    "Verify Image Signatures" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "イメージの署名を検証"
+          }
+        }
+      }
+    },
+    "Verify code signatures" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コード署名を検証する"
+          }
+        }
+      }
+    },
+    "Verifying signature…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "署名を検証中…"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン %@"
+          }
+        }
+      }
+    },
+    "View > Lower Pane View selects mapped images/files, file descriptors, or threads. Use its filter and column headers to configure the display. Double-click an image or descriptor for details. The Lower Pane menu exposes existing actions for the selected row while the main window is active.\n\nUnavailable information is not a measured zero. Protected or exited processes can prevent enumeration. A report cannot include a lower pane that has not loaded or has failed; hide it to save only the process list." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示 > 下部ペインの表示 で、マップされたイメージ / ファイル、ファイルディスクリプタ、スレッドのいずれかを選択します。フィルタと列ヘッダを使って表示を調整できます。イメージまたはディスクリプタをダブルクリックすると詳細が表示されます。メインウインドウがアクティブな間は、下部ペインメニューから選択行に対する既存の操作を実行できます。\n\n取得できない情報は、測定されたゼロではありません。保護されたプロセスや終了したプロセスは列挙できない場合があります。読み込まれていない、または失敗した下部ペインはレポートに含められません。プロセス一覧のみを保存するには、下部ペインを非表示にしてください。"
+          }
+        }
+      }
+    },
+    "View > Update Speed controls sampling or pauses it. Refresh Now performs a single refresh. Show Column Heatmaps controls resource shading independently of process row colors, which are in Settings > Colors.\n\nScroll to New Processes is off by default. When enabled it reveals the first newly visible process on a refresh without changing the selection. It does not repeatedly jump to the same process." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示 > 更新速度 で、サンプリングの間隔を変更したり一時停止したりできます。今すぐ更新 は 1 回だけ更新します。列のヒートマップを表示 は、プロセス行の色 (設定 > 色) とは別にリソースの濃淡を制御します。\n\n新しいプロセスまでスクロール は、デフォルトではオフです。オンにすると、更新時に新しく表示された最初のプロセスまでスクロールします。選択状態は変わりません。同じプロセスに繰り返しスクロールすることはありません。"
+          }
+        }
+      }
+    },
+    "Virtual Memory" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仮想メモリ"
+          }
+        }
+      }
+    },
+    "Virtual Size" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仮想サイズ"
+          }
+        }
+      }
+    },
+    "VirusTotal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal"
+          }
+        }
+      }
+    },
+    "VirusTotal Lookup Failed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal の照会に失敗しました"
+          }
+        }
+      }
+    },
+    "VirusTotal Result" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal の結果"
+          }
+        }
+      }
+    },
+    "VirusTotal Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal を利用できません"
+          }
+        }
+      }
+    },
+    "VirusTotal lookup failed for %@: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ の VirusTotal 照会に失敗しました: %2$@"
+          }
+        }
+      }
+    },
+    "VirusTotal lookup failed: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal の照会に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "VirusTotal: %lld/%lld engines flagged this file." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal: %2$lld 個中 %1$lld 個のエンジンがこのファイルを検出しました。"
+          }
+        }
+      }
+    },
+    "VirusTotal: no report available (add an API key in Keychain, or the file is unknown)." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal: 利用できるレポートがありません (キーチェーンに API キーを追加するか、未登録のファイルです)。"
+          }
+        }
+      }
+    },
+    "Visible columns" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示する列"
+          }
+        }
+      }
+    },
+    "Whole-machine CPU usage, normalized to 100% across all logical cores." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マシン全体の CPU 使用率です。すべての論理コアの合計を 100% として正規化しています。"
+          }
+        }
+      }
+    },
+    "Window Picker" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウピッカー"
+          }
+        }
+      }
+    },
+    "Window Picker Unavailable" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウピッカーを利用できません"
+          }
+        }
+      }
+    },
+    "Yes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はい"
+          }
+        }
+      }
+    },
+    "com.apple.security.app-sandbox entitlement" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "com.apple.security.app-sandbox エンタイトルメント"
+          }
+        }
+      }
+    },
+    "handle details" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ハンドルの詳細"
+          }
+        }
+      }
+    },
+    "macOS" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS"
+          }
+        }
+      }
+    },
+    "macOS denied sampling %@ (PID %d). Sampling uses /usr/bin/sample with the current user's credentials; the privileged helper is not used for sampling. Try a process owned by your user. System Integrity Protection may still prevent sampling protected processes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS が %1$@ (PID %2$d) のサンプリングを拒否しました。サンプリングは現在のユーザの資格情報で /usr/bin/sample を使用して行われ、特権ヘルパーは使用されません。自分が所有するプロセスをお試しください。システム整合性保護により、保護されたプロセスはサンプリングできない場合があります。"
+          }
+        }
+      }
+    },
+    "macOS denied this action for “%@” (PID %d). This may be due to credentials or process protection; the denial alone does not establish the cause. %@%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS が「%1$@」(PID %2$d) に対するこの操作を拒否しました。資格情報またはプロセスの保護が原因の可能性がありますが、拒否されたという事実だけでは原因を特定できません。%3$@%4$@"
+          }
+        }
+      }
+    },
+    "macOS did not allow ProcexpMac to monitor the next mouse click. Grant Accessibility access in System Settings > Privacy & Security > Accessibility, then try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS が ProcexpMac による次のマウスクリックの監視を許可しませんでした。システム設定 > プライバシーとセキュリティ > アクセシビリティ でアクセスを許可してから、もう一度お試しください。"
+          }
+        }
+      }
+    },
+    "macOS may restrict %@ for other-user or protected processes. Enabling the helper does not guarantee access." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他のユーザのプロセスや保護されたプロセスでは、macOS が%@を制限することがあります。ヘルパーを有効にしても、アクセスできるとは限りません。"
+          }
+        }
+      }
+    },
+    "macOS may restrict %@. A helper can request broader access, but protected processes may remain inaccessible." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS が%@を制限している可能性があります。ヘルパーを使えば、より広いアクセスを要求できますが、保護されたプロセスにはアクセスできないままの場合があります。"
+          }
+        }
+      }
+    },
+    "macOS may still hide %@ for platform-protected system processes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プラットフォームで保護されたシステムプロセスでは、macOS が引き続き%@を隠すことがあります。"
+          }
+        }
+      }
+    },
+    "mapped image details" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マップされたイメージの詳細"
+          }
+        }
+      }
+    },
+    "not supported on this system" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このシステムではサポートされていません"
+          }
+        }
+      }
+    },
+    "operation not permitted" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作は許可されていません"
+          }
+        }
+      }
+    },
+    "sample failed for %@ (PID %d) with exit status %d. The process may have exited, or macOS may not allow this process to be sampled." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (PID %2$d) の sample が終了ステータス %3$d で失敗しました。プロセスが終了したか、macOS がこのプロセスのサンプリングを許可していない可能性があります。"
+          }
+        }
+      }
+    },
+    "sample reported success, but no output file was written at:\n\n%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sample は成功を報告しましたが、次の場所に出力ファイルが書き込まれていません:\n\n%@"
+          }
+        }
+      }
+    },
+    "the privileged helper is not installed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーがインストールされていません"
+          }
+        }
+      }
+    },
+    "the process has exited" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスが終了しました"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

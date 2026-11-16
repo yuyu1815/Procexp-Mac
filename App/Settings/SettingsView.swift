@@ -78,8 +78,8 @@ private struct GeneralSettingsView: View {
 
     private static func label(for value: TimeInterval) -> String {
         value < 1
-            ? String(format: "%.1f seconds", value)
-            : "\(Int(value)) second\(value == 1 ? "" : "s")"
+            ? String(format: String(localized: "%.1f seconds"), value)
+            : String(localized: "\(Int(value)) seconds")
     }
 }
 
@@ -94,8 +94,7 @@ private struct ColorSettingsView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Row colors")
                 .font(.headline)
-            Text("Colors apply to the process tree in order — the first enabled "
-                 + "rule that matches a process wins.")
+            Text("Colors apply to the process tree in order — the first enabled rule that matches a process wins.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -144,14 +143,14 @@ private struct ColorSettingsView: View {
     /// Human-readable label for a legend flag (there is no `.title` on `ProcessFlags`).
     static func name(for flag: ProcessFlags) -> String {
         switch flag {
-        case .ownProcess:  return "Own Processes"
-        case .service:     return "System Daemons (inferred)"
-        case .suspended:   return "Suspended"
-        case .sandboxed:   return "Sandboxed"
-        case .packed:      return "Packed Images"
-        case .newProcess:  return "New Processes"
-        case .deadProcess: return "Exited Processes"
-        default:           return "Other"
+        case .ownProcess:  return String(localized: "Own Processes")
+        case .service:     return String(localized: "System Daemons (inferred)")
+        case .suspended:   return String(localized: "Suspended")
+        case .sandboxed:   return String(localized: "Sandboxed")
+        case .packed:      return String(localized: "Packed Images")
+        case .newProcess:  return String(localized: "New Processes")
+        case .deadProcess: return String(localized: "Exited Processes")
+        default:           return String(localized: "Other")
         }
     }
 }
@@ -166,8 +165,7 @@ private struct ColumnSettingsView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Visible columns")
                 .font(.headline)
-            Text("Choose which columns appear in the process tree. Drag to reorder "
-                 + "the selected columns.")
+            Text("Choose which columns appear in the process tree. Drag to reorder the selected columns.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 

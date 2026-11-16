@@ -45,13 +45,13 @@ final class ActionCoordinator {
         /// Verb for the confirm button.
         var confirmButtonTitle: String {
             switch kind {
-            case .kill: return "Force Quit"
-            case .killTree: return "Force Quit Tree"
-            case .restart: return "Restart"
-            case .suspend: return "Suspend"
-            case .resume: return "Resume"
-            case .setNice: return "Set Nice Value"
-            case .bringToFront: return "Bring to Front"
+            case .kill: return String(localized: "Force Quit")
+            case .killTree: return String(localized: "Force Quit Tree")
+            case .restart: return String(localized: "Restart")
+            case .suspend: return String(localized: "Suspend")
+            case .resume: return String(localized: "Resume")
+            case .setNice: return String(localized: "Set Nice Value")
+            case .bringToFront: return String(localized: "Bring to Front")
             }
         }
     }
@@ -126,28 +126,28 @@ final class ActionCoordinator {
             }
         } catch ProviderError.notPermitted {
             errorPresentation = presentation
-            errorTitle = "Action Not Permitted"
+            errorTitle = String(localized: "Action Not Permitted")
             let helperNote = model.privileged != nil
-                ? "The privileged helper is enabled, but macOS protections can still deny access."
-                : "The privileged helper is not enabled. Enabling it can permit additional actions, but does not bypass macOS process protection."
+                ? String(localized: "The privileged helper is enabled, but macOS protections can still deny access.")
+                : String(localized: "The privileged helper is not enabled. Enabling it can permit additional actions, but does not bypass macOS process protection.")
             let niceNote = kind == .setNice
-                ? " Lowering a nice value can require elevated privileges, even for your own process."
+                ? String(localized: " Lowering a nice value can require elevated privileges, even for your own process.")
                 : ""
-            errorMessage = "macOS denied this action for “\(record.name)” (PID \(record.id.pid)). This may be due to credentials or process protection; the denial alone does not establish the cause. \(helperNote)\(niceNote)"
+            errorMessage = String(localized: "macOS denied this action for “\(record.name)” (PID \(record.id.pid)). This may be due to credentials or process protection; the denial alone does not establish the cause. \(helperNote)\(niceNote)")
         } catch ProviderError.processGone {
             // The process already exited; nothing to report. The next refresh
             // removes its row.
         } catch ProviderError.unsupported {
             errorPresentation = presentation
-            errorTitle = "Action Not Supported"
-            errorMessage = "This action isn’t available for “\(record.name)” (PID \(record.id.pid))."
+            errorTitle = String(localized: "Action Not Supported")
+            errorMessage = String(localized: "This action isn’t available for “\(record.name)” (PID \(record.id.pid)).")
         } catch let ProviderError.underlying(detail) {
             errorPresentation = presentation
-            errorTitle = "Action Failed"
+            errorTitle = String(localized: "Action Failed")
             errorMessage = detail
         } catch {
             errorPresentation = presentation
-            errorTitle = "Action Failed"
+            errorTitle = String(localized: "Action Failed")
             errorMessage = error.localizedDescription
         }
     }

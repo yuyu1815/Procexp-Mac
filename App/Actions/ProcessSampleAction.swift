@@ -25,16 +25,16 @@ extension AppModel {
     func sampleProcess(_ pid: ProcessID) {
         guard let record = snapshot.info(pid) else {
             processActionAlert = ProcessActionAlert(
-                title: "Process Not Found",
-                message: "The selected process is no longer present in the current snapshot."
+                title: String(localized: "Process Not Found"),
+                message: String(localized: "The selected process is no longer present in the current snapshot.")
             )
             return
         }
 
         let panel = NSSavePanel()
-        panel.title = "Sample Process"
-        panel.prompt = "Sample"
-        panel.message = "Choose where to save a \(Self.sampleDurationSeconds)-second sample of \(record.name) (PID \(record.id.pid)). Sampling protected processes may require elevated privileges."
+        panel.title = String(localized: "Sample Process")
+        panel.prompt = String(localized: "Sample")
+        panel.message = String(localized: "Choose where to save a \(Self.sampleDurationSeconds)-second sample of \(record.name) (PID \(record.id.pid)). Sampling protected processes may require elevated privileges.")
         panel.nameFieldStringValue = Self.defaultSampleFileName(for: record)
         panel.allowedContentTypes = [.plainText]
         panel.canCreateDirectories = true
@@ -98,8 +98,8 @@ extension AppModel {
             try task.run()
         } catch {
             return ProcessSampleOutcome(
-                title: "Sample Could Not Start",
-                message: "Could not run \(sampleExecutablePath) for \(processName) (PID \(pid)).\n\n\(describeSampleError(error))"
+                title: String(localized: "Sample Could Not Start"),
+                message: String(localized: "Could not run \(sampleExecutablePath) for \(processName) (PID \(pid)).\n\n\(describeSampleError(error))")
             )
         }
 
@@ -110,22 +110,22 @@ extension AppModel {
         let destinationPath = destinationURL.path
         if task.terminationStatus == 0, FileManager.default.fileExists(atPath: destinationPath) {
             return ProcessSampleOutcome(
-                title: "Sample Complete",
-                message: "Saved a \(durationSeconds)-second sample of \(processName) (PID \(pid)) to:\n\n\(destinationPath)"
+                title: String(localized: "Sample Complete"),
+                message: String(localized: "Saved a \(durationSeconds)-second sample of \(processName) (PID \(pid)) to:\n\n\(destinationPath)")
             )
         }
 
         let baseMessage: String
         if isPermissionFailure(output: output) {
-            baseMessage = "macOS denied sampling \(processName) (PID \(pid)). Sampling uses /usr/bin/sample with the current user's credentials; the privileged helper is not used for sampling. Try a process owned by your user. System Integrity Protection may still prevent sampling protected processes."
+            baseMessage = String(localized: "macOS denied sampling \(processName) (PID \(pid)). Sampling uses /usr/bin/sample with the current user's credentials; the privileged helper is not used for sampling. Try a process owned by your user. System Integrity Protection may still prevent sampling protected processes.")
         } else if !FileManager.default.fileExists(atPath: destinationPath), task.terminationStatus == 0 {
-            baseMessage = "sample reported success, but no output file was written at:\n\n\(destinationPath)"
+            baseMessage = String(localized: "sample reported success, but no output file was written at:\n\n\(destinationPath)")
         } else {
-            baseMessage = "sample failed for \(processName) (PID \(pid)) with exit status \(task.terminationStatus). The process may have exited, or macOS may not allow this process to be sampled."
+            baseMessage = String(localized: "sample failed for \(processName) (PID \(pid)) with exit status \(task.terminationStatus). The process may have exited, or macOS may not allow this process to be sampled.")
         }
 
         return ProcessSampleOutcome(
-            title: "Sample Failed",
+            title: String(localized: "Sample Failed"),
             message: appendSampleOutput(to: baseMessage, output: output)
         )
     }
@@ -144,7 +144,7 @@ extension AppModel {
         guard !trimmed.isEmpty else { return message }
         let limited = String(trimmed.prefix(4000))
         let suffix = trimmed.count > limited.count ? "\n..." : ""
-        return "\(message)\n\nsample output:\n\(limited)\(suffix)"
+        return String(localized: "\(message)\n\nsample output:\n\(limited)\(suffix)")
     }
 
     nonisolated private static func describeSampleError(_ error: Error) -> String {

@@ -69,7 +69,7 @@ struct ProcessExplorerHelpView: View {
         .frame(minWidth: 560, minHeight: 420)
     }
 
-    private func topic(_ title: String, _ text: String) -> some View {
+    private func topic(_ title: LocalizedStringKey, _ text: LocalizedStringKey) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title).font(.headline)
             Text(text).font(.body)

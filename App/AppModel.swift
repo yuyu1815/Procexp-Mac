@@ -317,7 +317,7 @@ final class AppModel {
     /// explicit user approval in System Settings. It never crashes; any failure
     /// is surfaced as a clean message and the app stays unprivileged.
     func installPrivilegedHelper() async -> (ok: Bool, message: String) {
-        guard !helperChanging else { return (false, "A helper operation is already in progress.") }
+        guard !helperChanging else { return (false, String(localized: "A helper operation is already in progress.")) }
         helperChanging = true
         defer { helperChanging = false }
         do {
@@ -326,7 +326,7 @@ final class AppModel {
             }
         } catch {
             refreshHelperStatus()
-            return (false, """
+            return (false, String(localized: """
             The privileged helper could not be registered.
 
             \(error.localizedDescription)
@@ -335,19 +335,19 @@ final class AppModel {
             installed in /Applications, then approve the helper in System \
             Settings ▸ General ▸ Login Items & Extensions. The app continues to \
             work in unprivileged mode.
-            """)
+            """))
         }
 
         refreshHelperStatus()
         guard helperInstalled else {
             if helperApprovalPending {
-                return (true, """
+                return (true, String(localized: """
                 The helper is registered and awaiting user approval, not yet enabled. \
                 Approve it in System Settings ▸ General ▸ Login Items & Extensions, \
                 then relaunch. The app is still using unprivileged access.
-                """)
+                """))
             }
-            return (false, "Helper registration returned, but no enabled helper is available. The app is still using unprivileged access.")
+            return (false, String(localized: "Helper registration returned, but no enabled helper is available. The app is still using unprivileged access."))
         }
 
         providerDidChange()
@@ -356,23 +356,23 @@ final class AppModel {
         await forceRefresh()
         await start()
         guard privileged != nil else {
-            return (false, helperFailure ?? "The helper could not be reached. The app is still using unprivileged access.")
+            return (false, helperFailure ?? String(localized: "The helper could not be reached. The app is still using unprivileged access."))
         }
-        return (true, "The privileged helper is registered and enabled. Access to individual processes and thread details still depends on macOS permissions and process protection. Stack capture, process-memory strings, and privileged sampling are not implemented.")
+        return (true, String(localized: "The privileged helper is registered and enabled. Access to individual processes and thread details still depends on macOS permissions and process protection. Stack capture, process-memory strings, and privileged sampling are not implemented."))
     }
 
     /// W2 — unregister the privileged helper via `SMAppService` (no sudo needed;
     /// the app manages its own daemon registration) and revert to the
     /// unprivileged provider. Useful for testing the first-install flow.
     func uninstallPrivilegedHelper() async -> (ok: Bool, message: String) {
-        guard !helperChanging else { return (false, "A helper operation is already in progress.") }
+        guard !helperChanging else { return (false, String(localized: "A helper operation is already in progress.")) }
         helperChanging = true
         defer { helperChanging = false }
         do {
             try await helperConnection.unregister()
         } catch {
             refreshHelperStatus()
-            return (false, "The privileged helper could not be unregistered: \(error.localizedDescription)")
+            return (false, String(localized: "The privileged helper could not be unregistered: \(error.localizedDescription)"))
         }
 
         // Revert to the always-available unprivileged path.
@@ -381,7 +381,7 @@ final class AppModel {
         refreshHelperStatus()
         await forceRefresh()
         await start()
-        return (true, "The privileged helper has been removed. The app is now running unprivileged.")
+        return (true, String(localized: "The privileged helper has been removed. The app is now running unprivileged."))
     }
 
     private func refreshHelperStatus() {
@@ -419,7 +419,7 @@ final class AppModel {
                     data = helper
                     actions = ProcessActions(privileged: helper)
                     helperFailure = nil
-                    if processActionAlert?.title == "Privileged Helper Unavailable" {
+                    if processActionAlert?.title == String(localized: "Privileged Helper Unavailable") {
                         processActionAlert = nil
                     }
                 }
@@ -429,17 +429,17 @@ final class AppModel {
                 guard providerGeneration == generation else { continue }
                 useLocalProvider()
                 refreshHelperStatus()
-                let message = """
+                let message = String(localized: """
                 \(error.localizedDescription)
 
                 The app has switched to unprivileged access for process sampling, details, \
                 and actions. You can retry the helper or uninstall it from the app menu. \
                 If approval is pending, approve it in System Settings > General > Login Items & Extensions.
-                """
+                """)
                 helperFailure = message
                 // Explicit installs already present their result in a modal alert.
                 if !helperChanging {
-                    processActionAlert = ProcessActionAlert(title: "Privileged Helper Unavailable", message: message)
+                    processActionAlert = ProcessActionAlert(title: String(localized: "Privileged Helper Unavailable"), message: message)
                 }
                 return await libproc.snapshot()
             }
@@ -554,10 +554,10 @@ final class AppModel {
 
     func defaultColumnSetName() -> String {
         var index = columnSets.count + 1
-        while hasColumnSet(named: "Column Set \(index)") {
+        while hasColumnSet(named: String(localized: "Column Set \(index)")) {
             index += 1
         }
-        return "Column Set \(index)"
+        return String(localized: "Column Set \(index)")
     }
 
     // MARK: - Process / image actions
@@ -570,8 +570,8 @@ final class AppModel {
     func searchOnline(forProcess pid: ProcessID) {
         guard let record = snapshot.info(pid) else {
             processActionAlert = ProcessActionAlert(
-                title: "Process Not Found",
-                message: "The selected process is no longer present in the current snapshot."
+                title: String(localized: "Process Not Found"),
+                message: String(localized: "The selected process is no longer present in the current snapshot.")
             )
             return
         }
@@ -592,15 +592,15 @@ final class AppModel {
     func checkVirusTotal(forProcess pid: ProcessID) async {
         guard let record = snapshot.info(pid) else {
             processActionAlert = ProcessActionAlert(
-                title: "Process Not Found",
-                message: "The selected process is no longer present in the current snapshot."
+                title: String(localized: "Process Not Found"),
+                message: String(localized: "The selected process is no longer present in the current snapshot.")
             )
             return
         }
         guard let path = record.executablePath, !path.isEmpty else {
             processActionAlert = ProcessActionAlert(
-                title: "VirusTotal Unavailable",
-                message: "No executable path is available for \(record.name)."
+                title: String(localized: "VirusTotal Unavailable"),
+                message: String(localized: "No executable path is available for \(record.name).")
             )
             return
         }
@@ -610,8 +610,8 @@ final class AppModel {
     func checkVirusTotalForImage(name: String, path: String, signature: SignatureInfo? = nil) async {
         guard !path.isEmpty else {
             processActionAlert = ProcessActionAlert(
-                title: "VirusTotal Unavailable",
-                message: "No image path is available for \(name)."
+                title: String(localized: "VirusTotal Unavailable"),
+                message: String(localized: "No image path is available for \(name).")
             )
             return
         }
@@ -637,8 +637,8 @@ final class AppModel {
         components.queryItems = [URLQueryItem(name: "q", value: query)]
         guard let url = components.url else {
             processActionAlert = ProcessActionAlert(
-                title: "Search Online Unavailable",
-                message: "Could not build a search URL for \"\(query)\"."
+                title: String(localized: "Search Online Unavailable"),
+                message: String(localized: "Could not build a search URL for \"\(query)\".")
             )
             return
         }
@@ -656,8 +656,8 @@ final class AppModel {
 
         guard let sha = signature.sha256, !sha.isEmpty else {
             processActionAlert = ProcessActionAlert(
-                title: "VirusTotal Unavailable",
-                message: "No SHA-256 hash is available for \(displayName). The file may no longer exist or may not be readable."
+                title: String(localized: "VirusTotal Unavailable"),
+                message: String(localized: "No SHA-256 hash is available for \(displayName). The file may no longer exist or may not be readable.")
             )
             return
         }
@@ -682,25 +682,25 @@ final class AppModel {
                 snapshot = ProcessSnapshot(timestamp: snapshot.timestamp, interval: snapshot.interval,
                     processes: processes, roots: snapshot.roots, children: snapshot.children, system: snapshot.system)
                 processActionAlert = ProcessActionAlert(
-                    title: "VirusTotal Result",
+                    title: String(localized: "VirusTotal Result"),
                     message: virusTotalMessage(displayName: displayName, result: result)
                 )
             } else {
                 processActionAlert = ProcessActionAlert(
-                    title: "VirusTotal Result",
-                    message: "No VirusTotal report is available for \(displayName). Configure a VirusTotal API key in the login Keychain, or the file may be unknown to VirusTotal."
+                    title: String(localized: "VirusTotal Result"),
+                    message: String(localized: "No VirusTotal report is available for \(displayName). Configure a VirusTotal API key in the login Keychain, or the file may be unknown to VirusTotal.")
                 )
             }
         } catch {
             processActionAlert = ProcessActionAlert(
-                title: "VirusTotal Lookup Failed",
-                message: "VirusTotal lookup failed for \(displayName): \(describe(error))"
+                title: String(localized: "VirusTotal Lookup Failed"),
+                message: String(localized: "VirusTotal lookup failed for \(displayName): \(describe(error))")
             )
         }
     }
 
     private func virusTotalMessage(displayName: String, result: VirusTotalResult) -> String {
-        var message = "\(displayName): \(result.positives)/\(result.total) engines flagged this file."
+        var message = String(localized: "\(displayName): \(result.positives)/\(result.total) engines flagged this file.")
         if let permalink = result.permalink, !permalink.isEmpty {
             message += "\n\n\(permalink)"
         }
@@ -874,8 +874,8 @@ final class AppModel {
         guard let globalMonitor else {
             finishTargetWindowPicker()
             targetWindowPickerAlert = TargetWindowPickerAlert(
-                title: "Window Picker Unavailable",
-                message: "macOS did not allow ProcexpMac to monitor the next mouse click. Grant Accessibility access in System Settings > Privacy & Security > Accessibility, then try again.",
+                title: String(localized: "Window Picker Unavailable"),
+                message: String(localized: "macOS did not allow ProcexpMac to monitor the next mouse click. Grant Accessibility access in System Settings > Privacy & Security > Accessibility, then try again."),
                 offersAccessibilitySettings: true
             )
             return
@@ -914,8 +914,8 @@ final class AppModel {
         if selectProcess(ownerPID: ownerPID) { return }
 
         targetWindowPickerAlert = TargetWindowPickerAlert(
-            title: "Process Not Listed",
-            message: "The selected window belongs to PID \(ownerPID), but that process is not present in the current snapshot. It may have exited, or macOS may be hiding it from the unprivileged sampler."
+            title: String(localized: "Process Not Listed"),
+            message: String(localized: "The selected window belongs to PID \(ownerPID), but that process is not present in the current snapshot. It may have exited, or macOS may be hiding it from the unprivileged sampler.")
         )
     }
 
@@ -990,13 +990,13 @@ final class AppModel {
     private static func noWindowPIDAlert() -> TargetWindowPickerAlert {
         if AXIsProcessTrusted() {
             return TargetWindowPickerAlert(
-                title: "No Window Process Found",
-                message: "The click did not hit an on-screen application window with an exposed process identifier. Try a visible app window rather than the desktop, menu bar, Dock, or a transient system surface."
+                title: String(localized: "No Window Process Found"),
+                message: String(localized: "The click did not hit an on-screen application window with an exposed process identifier. Try a visible app window rather than the desktop, menu bar, Dock, or a transient system surface.")
             )
         }
         return TargetWindowPickerAlert(
-            title: "No Window Process Found",
-            message: "The CoreGraphics window list did not expose a process identifier for that point. Some system or protected windows can require Accessibility access. Grant ProcexpMac access in System Settings > Privacy & Security > Accessibility, then try again.",
+            title: String(localized: "No Window Process Found"),
+            message: String(localized: "The CoreGraphics window list did not expose a process identifier for that point. Some system or protected windows can require Accessibility access. Grant ProcexpMac access in System Settings > Privacy & Security > Accessibility, then try again."),
             offersAccessibilitySettings: true
         )
     }
@@ -1269,9 +1269,9 @@ enum AppTheme: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .system: return "System"
-        case .light: return "Light"
-        case .dark: return "Dark"
+        case .system: return String(localized: "System")
+        case .light: return String(localized: "Light")
+        case .dark: return String(localized: "Dark")
         }
     }
 

@@ -68,7 +68,7 @@ enum ModuleMetadata {
             // attribute a company for well-known system paths.
             let company = systemCompany(forPath: path)
             return Meta(description: "", company: company, version: "",
-                        companySource: company.isEmpty ? "" : "System file location: \(path)")
+                        companySource: company.isEmpty ? "" : String(localized: "System file location: \(path)"))
         }
 
         let description =
@@ -85,8 +85,8 @@ enum ModuleMetadata {
 
         let identifier = info["CFBundleIdentifier"] as? String ?? ""
         let source = identifier.split(separator: ".").count >= 2
-            ? "Bundle identifier: \(identifier)"
-            : "System file location: \(path)"
+            ? String(localized: "Bundle identifier: \(identifier)")
+            : String(localized: "System file location: \(path)")
         return Meta(description: description, company: company, version: version,
                     companySource: company.isEmpty ? "" : source)
     }
@@ -203,7 +203,7 @@ struct ModuleDetailView: View {
             detail("Version", meta.version)
             detail("Mapped Base", hex(id.loadAddress))
             detail("Size", ByteFormat.bytes(id.size))
-            detail("Kind", id.isMappedFile ? "Mapped file" : "Dynamic library / framework")
+            detail("Kind", id.isMappedFile ? String(localized: "Mapped file") : String(localized: "Dynamic library / framework"))
         }
     }
 
@@ -234,7 +234,7 @@ struct ModuleDetailView: View {
                 }
                 detail("Notarized", signature.notarizationDescription)
                 detail("Platform binary", signature.platformBinaryDescription)
-                if signature.isAdHoc { detail("Ad-hoc", "Yes") }
+                if signature.isAdHoc { detail("Ad-hoc", String(localized: "Yes")) }
                 if let sha = signature.sha256, !sha.isEmpty {
                     detail("SHA-256", sha, scroll: true)
                 }
@@ -286,14 +286,14 @@ struct ModuleDetailView: View {
 
     // MARK: Building blocks
 
-    private func sectionTitle(_ text: String) -> some View {
+    private func sectionTitle(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .font(.headline)
             .foregroundStyle(.secondary)
     }
 
     @ViewBuilder
-    private func detail(_ label: String, _ value: String, scroll: Bool = false) -> some View {
+    private func detail(_ label: LocalizedStringKey, _ value: String, scroll: Bool = false) -> some View {
         if !value.isEmpty {
             HStack(alignment: scroll ? .center : .firstTextBaseline, spacing: 10) {
                 Text(label)
@@ -330,18 +330,18 @@ struct ModuleDetailView: View {
     private func runVirusTotal() {
         guard let sha = signature?.sha256, !sha.isEmpty else { return }
         vtBusy = true
-        vtStatus = "Querying VirusTotal…"
+        vtStatus = String(localized: "Querying VirusTotal…")
         vtPermalink = nil
         Task {
             do {
                 if let result = try await model.signing.virusTotal(sha256: sha) {
-                    vtStatus = "VirusTotal: \(result.positives)/\(result.total) engines flagged this file."
+                    vtStatus = String(localized: "VirusTotal: \(result.positives)/\(result.total) engines flagged this file.")
                     vtPermalink = result.permalink
                 } else {
-                    vtStatus = "VirusTotal: no report available (add an API key in Keychain, or the file is unknown)."
+                    vtStatus = String(localized: "VirusTotal: no report available (add an API key in Keychain, or the file is unknown).")
                 }
             } catch {
-                vtStatus = "VirusTotal lookup failed: \(error.localizedDescription)"
+                vtStatus = String(localized: "VirusTotal lookup failed: \(error.localizedDescription)")
             }
             vtBusy = false
         }

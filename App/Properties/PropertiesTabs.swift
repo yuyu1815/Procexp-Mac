@@ -35,7 +35,7 @@ private struct TruncatedValue: View {
 
 /// A right-aligned label + selectable value laid out in a `Grid`.
 private struct InfoRow: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
     var mono: Bool = false
 
@@ -116,7 +116,7 @@ private struct HorizontalOverflowTextField: NSViewRepresentable {
 /// A `Grid` row whose value is a single-line, horizontally scrollable and
 /// selectable field (see `ScrollingValue`).
 private struct InfoScrollRow: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
 
     var body: some View {
@@ -288,7 +288,7 @@ private struct AlwaysVisibleVerticalScrollView<Content: View>: NSViewRepresentab
 
 /// A titled `GroupBox` section wrapper used across tabs.
 private struct Section<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder var content: Content
 
     var body: some View {
@@ -373,10 +373,10 @@ struct ImageTab: View {
                 Text(record.displayDescription?.isEmpty == false
                      ? record.displayDescription! : record.name)
                     .font(.title3).bold()
-                Text(record.companyName.map { "Organization (inferred): \($0)" } ?? "")
+                Text(record.companyName.map { String(localized: "Organization (inferred): \($0)") } ?? "")
                     .foregroundStyle(.secondary)
                     .help("Bundle identifier: \(record.bundleIdentifier ?? "unavailable"). The organization is inferred, not a verified publisher.")
-                Text(record.version.map { "Version \($0)" } ?? "")
+                Text(record.version.map { String(localized: "Version \($0)") } ?? "")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -432,13 +432,13 @@ struct ImageTab: View {
     private var mitigationsText: String {
         var items: [String] = []
         if detail.securityCode?.appSandboxEntitlement == true || record.flags.contains(.sandboxed) {
-            items.append("Sandboxed")
+            items.append(String(localized: "Sandboxed"))
         }
         if detail.signature?.isPlatformBinary == true || record.flags.contains(.platformBinary) {
-            items.append("Platform Binary")
+            items.append(String(localized: "Platform Binary"))
         }
-        if detail.securityCode?.hardenedRuntime == true { items.append("Hardened Runtime") }
-        return items.isEmpty ? "None detected" : items.joined(separator: ", ")
+        if detail.securityCode?.hardenedRuntime == true { items.append(String(localized: "Hardened Runtime")) }
+        return items.isEmpty ? String(localized: "None detected") : items.joined(separator: ", ")
     }
 
     private func reveal() {
@@ -470,7 +470,7 @@ struct SignatureTab: View {
                             InfoRow(label: "Platform Binary", value: sig.platformBinaryDescription)
                             InfoRow(label: "SHA-256", value: sig.sha256 ?? "", mono: true)
                             if let vt = sig.virusTotal {
-                                InfoRow(label: "VirusTotal", value: "\(vt.positives) / \(vt.total) detections")
+                                InfoRow(label: "VirusTotal", value: String(localized: "\(vt.positives) / \(vt.total) detections"))
                             }
                         }
                         authorityChain(sig.authority)
@@ -483,7 +483,7 @@ struct SignatureTab: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
-                    Text((record.executablePath ?? "").isEmpty ? "No executable path was reported for this process." : "No signature information is available.")
+                    Text((record.executablePath ?? "").isEmpty ? String(localized: "No executable path was reported for this process.") : String(localized: "No signature information is available."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -615,7 +615,7 @@ struct PerformanceGraphTab: View {
                 values: detail.cpuRing.values,
                 color: RGBA(0, 200, 0),
                 maxValue: max(100, (detail.cpuRing.values.filter(\.isFinite).max() ?? 0) * 1.1),
-                readout: detail.cpuRing.latest.flatMap { $0.isFinite ? String(format: "%.2f %%", $0) : nil } ?? "Unavailable"
+                readout: detail.cpuRing.latest.flatMap { $0.isFinite ? String(format: "%.2f %%", $0) : nil } ?? String(localized: "Unavailable")
             )
             GraphPanel(
                 title: "Physical Footprint",
@@ -637,7 +637,7 @@ struct PerformanceGraphTab: View {
 
 /// One labelled history graph with a current-value readout.
 private struct GraphPanel: View {
-    let title: String
+    let title: LocalizedStringKey
     let values: [Double]
     let color: RGBA
     let maxValue: Double
@@ -675,7 +675,7 @@ struct ThreadsTab: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             if detail.threads.isEmpty {
-                Text(detail.threadNote ?? "Per-thread detail is unavailable. The process sampler reports \(record.threadCount) thread(s); this count does not provide thread identifiers or individual measurements. Access depends on macOS permissions and process protection.")
+                Text(detail.threadNote ?? String(localized: "Per-thread detail is unavailable. The process sampler reports \(record.threadCount) thread(s); this count does not provide thread identifiers or individual measurements. Access depends on macOS permissions and process protection."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -754,9 +754,9 @@ private struct ThreadRowsTable: NSViewRepresentable {
         }
 
         static let columns = [
-            ColumnDef(id: "tid", title: "Thread Identifier", width: 180),
-            ColumnDef(id: "cpu", title: "CPU %", width: 90),
-            ColumnDef(id: "state", title: "State", width: 180),
+            ColumnDef(id: "tid", title: String(localized: "Thread Identifier"), width: 180),
+            ColumnDef(id: "cpu", title: String(localized: "CPU %"), width: 90),
+            ColumnDef(id: "state", title: String(localized: "State"), width: 180),
         ]
 
         var threads: [ThreadInfo] = []
@@ -891,7 +891,7 @@ struct TCPIPTab: View {
     var body: some View {
         VStack {
             if detail.sockets.isEmpty {
-                Text(detail.socketNote ?? "No TCP/IP sockets were returned.")
+                Text(detail.socketNote ?? String(localized: "No TCP/IP sockets were returned."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -970,11 +970,11 @@ private struct SocketRowsTable: NSViewRepresentable {
         }
 
         static let columns = [
-            ColumnDef(id: "proto", title: "Proto", width: 80),
-            ColumnDef(id: "local", title: "Local Address", width: 240),
-            ColumnDef(id: "remote", title: "Remote Address", width: 240),
-            ColumnDef(id: "remoteName", title: "Remote Name", width: 220),
-            ColumnDef(id: "state", title: "State", width: 120),
+            ColumnDef(id: "proto", title: String(localized: "Proto"), width: 80),
+            ColumnDef(id: "local", title: String(localized: "Local Address"), width: 240),
+            ColumnDef(id: "remote", title: String(localized: "Remote Address"), width: 240),
+            ColumnDef(id: "remoteName", title: String(localized: "Remote Name"), width: 220),
+            ColumnDef(id: "state", title: String(localized: "State"), width: 120),
         ]
         static let persistenceKey = "properties.tcpip.columns"
 
@@ -1125,7 +1125,7 @@ struct EnvironmentTab: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             if detail.environment.isEmpty {
-                Text(detail.environmentNote ?? "No environment variables.")
+                Text(detail.environmentNote ?? String(localized: "No environment variables."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -1199,8 +1199,8 @@ private struct EnvironmentRowsTable: NSViewRepresentable {
         }
 
         static let columns = [
-            ColumnDef(id: "variable", title: "Variable", width: 180),
-            ColumnDef(id: "value", title: "Value", width: 520),
+            ColumnDef(id: "variable", title: String(localized: "Variable"), width: 180),
+            ColumnDef(id: "value", title: String(localized: "Value"), width: 520),
         ]
         static let persistenceKey = "properties.environment.columns"
 
@@ -1358,7 +1358,7 @@ struct StringsTab: View {
                 ProgressView("Scanning strings…")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if detail.strings.isEmpty {
-                Text(detail.stringsNote ?? "Select the tab to scan image strings.")
+                Text(detail.stringsNote ?? String(localized: "Select the tab to scan image strings."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -1417,7 +1417,7 @@ private struct StringsRowsTable: NSViewRepresentable {
         tableView.typeSelectHandler = { text in context.coordinator.handleTypeSelect(text) }
 
         let column = NSTableColumn(identifier: Coordinator.columnID)
-        column.title = "Strings"
+        column.title = String(localized: "Strings")
         column.minWidth = 120
         column.width = 600
         column.resizingMask = [.autoresizingMask]
@@ -1592,7 +1592,7 @@ struct SecurityTab: View {
                         value: group(identity?.accountPrimaryGID, identity?.accountPrimaryGroupName))
                 InfoRow(label: "Terminal (TTY)", value: record.sessionTTY ?? "—")
                 InfoRow(label: "System Daemon (inferred)",
-                        value: record.flags.contains(.service) ? "Yes" : "No")
+                        value: record.flags.contains(.service) ? String(localized: "Yes") : String(localized: "No"))
                     .help("Heuristic: parent PID is 1 and UID is below 500. This is not verification of a registered launchd job.")
             }
         }
@@ -1602,7 +1602,7 @@ struct SecurityTab: View {
         Section(title: "Entitlements") {
             if let code = detail.securityCode {
                 if code.entitlements.isEmpty {
-                    Text(code.entitlementsNote ?? "No entitlements.")
+                    Text(code.entitlementsNote ?? String(localized: "No entitlements."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
@@ -1639,10 +1639,10 @@ struct SecurityTab: View {
                 InfoRow(label: "App Sandbox", value: sandboxStatus)
                 InfoRow(label: "Sandbox Source", value: sandboxSource)
                 InfoRow(label: "Hardened Runtime", value: hardenedRuntimeStatus)
-                InfoRow(label: "Runtime Source", value: detail.securityCode?.hardenedRuntimeNote ?? "Loading…")
+                InfoRow(label: "Runtime Source", value: detail.securityCode?.hardenedRuntimeNote ?? String(localized: "Loading…"))
                 InfoRow(label: "Platform Binary",
-                        value: record.flags.contains(.platformBinary) ? "Yes"
-                            : detail.signature?.platformBinaryDescription ?? "Unknown")
+                        value: record.flags.contains(.platformBinary) ? String(localized: "Yes")
+                            : detail.signature?.platformBinaryDescription ?? String(localized: "Unknown"))
             }
         }
     }
@@ -1662,27 +1662,27 @@ struct SecurityTab: View {
     }
 
     private var sandboxStatus: String {
-        if detail.securityCode?.appSandboxEntitlement == true { return "Yes" }
-        if record.flags.contains(.sandboxed) { return "Yes" }
-        if detail.securityCode?.appSandboxEntitlement == false { return "No" }
-        return "No sandbox signal detected"
+        if detail.securityCode?.appSandboxEntitlement == true { return String(localized: "Yes") }
+        if record.flags.contains(.sandboxed) { return String(localized: "Yes") }
+        if detail.securityCode?.appSandboxEntitlement == false { return String(localized: "No") }
+        return String(localized: "No sandbox signal detected")
     }
 
     private var sandboxSource: String {
         if detail.securityCode?.appSandboxEntitlement == true {
-            return "com.apple.security.app-sandbox entitlement"
+            return String(localized: "com.apple.security.app-sandbox entitlement")
         }
         if record.flags.contains(.sandboxed) {
-            return "Process flag from sampler"
+            return String(localized: "Process flag from sampler")
         }
         if detail.securityCode?.appSandboxEntitlement == false {
-            return "App Sandbox entitlement is false"
+            return String(localized: "App Sandbox entitlement is false")
         }
-        return "No App Sandbox entitlement or sampler flag"
+        return String(localized: "No App Sandbox entitlement or sampler flag")
     }
 
     private var hardenedRuntimeStatus: String {
-        guard let hardened = detail.securityCode?.hardenedRuntime else { return "Unavailable" }
-        return hardened ? "Yes" : "No"
+        guard let hardened = detail.securityCode?.hardenedRuntime else { return String(localized: "Unavailable") }
+        return hardened ? String(localized: "Yes") : String(localized: "No")
     }
 }

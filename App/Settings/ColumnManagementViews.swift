@@ -91,10 +91,10 @@ private enum ColumnSelectionTab: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .process: return "Process"
-        case .dlls: return "Mapped Images / Files"
-        case .handles: return "File Descriptors"
-        case .threads: return "Threads"
+        case .process: return String(localized: "Process")
+        case .dlls: return String(localized: "Mapped Images / Files")
+        case .handles: return String(localized: "File Descriptors")
+        case .threads: return String(localized: "Threads")
         }
     }
 }
@@ -129,7 +129,7 @@ struct SaveColumnSetSheet: View {
                 Spacer()
                 Button("Cancel") { dismiss() }
                     .keyboardShortcut(.cancelAction)
-                Button(replacesExisting ? "Replace" : "Save") {
+                Button(replacesExisting ? String(localized: "Replace") : String(localized: "Save")) {
                     if model.saveCurrentColumnSet(named: name) {
                         dismiss()
                     }
@@ -149,7 +149,7 @@ struct SaveColumnSetSheet: View {
     private var summary: String {
         let columns = AppModel.normalizedColumns(model.columns)
         let metricCount = max(0, columns.count - 1)
-        return "Process column plus \(metricCount) metric column\(metricCount == 1 ? "" : "s")."
+        return String(localized: "Process column plus \(metricCount) metric columns.")
     }
 }
 

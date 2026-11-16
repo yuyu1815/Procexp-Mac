@@ -129,7 +129,7 @@ struct MainWindowView: View {
         @Bindable var model = model
         return actionDialogContent
             .alert(
-                model.targetWindowPickerAlert?.title ?? "Window Picker",
+                model.targetWindowPickerAlert?.title ?? String(localized: "Window Picker"),
                 isPresented: Binding(
                     get: { model.targetWindowPickerAlert != nil },
                     set: { if !$0 { model.targetWindowPickerAlert = nil } }
@@ -150,7 +150,7 @@ struct MainWindowView: View {
         @Bindable var model = model
         return targetWindowAlertContent
             .alert(
-                model.processActionAlert?.title ?? "Process Action",
+                model.processActionAlert?.title ?? String(localized: "Process Action"),
                 isPresented: Binding(
                     get: { model.processActionAlert != nil },
                     set: { if !$0 { model.processActionAlert = nil } }
@@ -339,7 +339,7 @@ struct MainWindowView: View {
     /// A plain colored-icon toolbar button.
     @ViewBuilder
     private func iconButton(_ asset: String,
-                            tip: String,
+                            tip: LocalizedStringKey,
                             shortcut: KeyboardShortcut? = nil,
                             disabled: Bool = false,
                             action: @escaping () -> Void) -> some View {
@@ -368,7 +368,7 @@ struct MainWindowView: View {
     @ViewBuilder
     private func iconToggle(_ asset: String,
                             isOn: Bool,
-                            tip: String,
+                            tip: LocalizedStringKey,
                             shortcut: KeyboardShortcut? = nil,
                             action: @escaping () -> Void) -> some View {
         let button = Button(action: action) {
@@ -419,21 +419,21 @@ struct MainWindowView: View {
     }
 
     private var cpuTip: String {
-        if model.snapshot.system.unavailableMetrics.contains(.cpu) { return "CPU: Unavailable" }
+        if model.snapshot.system.unavailableMetrics.contains(.cpu) { return String(localized: "CPU: Unavailable") }
         return String(format: "CPU: %.1f%%", model.snapshot.system.cpuTotalPercent)
     }
 
     private var memTip: String {
         let s = model.snapshot.system
-        guard !s.unavailableMetrics.contains(.memory) else { return "Memory: Unavailable" }
-        guard s.memoryTotal > 0 else { return "Memory" }
-        return "Memory: \(ByteFormat.bytes(s.memoryUsed)) / \(ByteFormat.bytes(s.memoryTotal))"
+        guard !s.unavailableMetrics.contains(.memory) else { return String(localized: "Memory: Unavailable") }
+        guard s.memoryTotal > 0 else { return String(localized: "Memory") }
+        return String(localized: "Memory: \(ByteFormat.bytes(s.memoryUsed)) / \(ByteFormat.bytes(s.memoryTotal))")
     }
 
     private var ioTip: String {
         let rate = model.ioHistory.latest ?? 0
-        guard rate.isFinite else { return "I/O (disk + network): Unavailable" }
-        return "I/O (disk + network): \(GraphUnit.bytesPerSecond.format(rate))"
+        guard rate.isFinite else { return String(localized: "I/O (disk + network): Unavailable") }
+        return String(localized: "I/O (disk + network): \(GraphUnit.bytesPerSecond.format(rate))")
     }
 
     /// CSV is a separate raw-metric export, not the displayed text report.
@@ -441,14 +441,14 @@ struct MainWindowView: View {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.commaSeparatedText]
         panel.nameFieldStringValue = "processes.csv"
-        panel.title = "Export Process List"
+        panel.title = String(localized: "Export Process List")
         guard panel.runModal() == .OK, let url = panel.url else { return }
         let csv = processListCSV()
         do {
             try csv.write(to: url, atomically: true, encoding: .utf8)
         } catch {
             model.processActionAlert = ProcessActionAlert(
-                title: "Could Not Export Process List",
+                title: String(localized: "Could Not Export Process List"),
                 message: "\(url.path)\n\n\(error.localizedDescription)"
             )
         }
@@ -532,19 +532,19 @@ struct MainWindowView: View {
     private var statusBar: some View {
         let system = model.snapshot.system
         return HStack(spacing: 0) {
-            statusSegment("CPU Usage",
-                          system.unavailableMetrics.contains(.cpu) ? "Unavailable" : String(format: "%.1f%%", system.cpuTotalPercent))
+            statusSegment(String(localized: "CPU Usage"),
+                          system.unavailableMetrics.contains(.cpu) ? String(localized: "Unavailable") : String(format: "%.1f%%", system.cpuTotalPercent))
                 .help("Whole-machine CPU usage, normalized to 100% across all logical cores.")
             statusSeparator
-            statusSegment("RAM In Use", memoryText(system))
+            statusSegment(String(localized: "RAM In Use"), memoryText(system))
                 .help("Active + wired + compressed memory, relative to installed RAM. Not memory pressure or committed memory.")
             statusSeparator
-            statusSegment("Processes", "\(system.processCount)")
+            statusSegment(String(localized: "Processes"), "\(system.processCount)")
             statusSeparator
-            statusSegment("RAM Used (%)", physicalUsageText(system))
+            statusSegment(String(localized: "RAM Used (%)"), physicalUsageText(system))
                 .help("(Active + wired + compressed memory) / installed RAM × 100.")
             Spacer(minLength: 8)
-            statusSegment("Refresh", refreshLabel)
+            statusSegment(String(localized: "Refresh"), refreshLabel)
         }
         .font(.system(size: 11))
         .monospacedDigit()
@@ -572,14 +572,14 @@ struct MainWindowView: View {
 
     private var refreshLabel: String {
         model.paused
-            ? "Paused"
+            ? String(localized: "Paused")
             : (model.refreshInterval < 1
                 ? String(format: "%.1fs", model.refreshInterval)
                 : "\(Int(model.refreshInterval))s")
     }
 
     private func memoryText(_ system: SystemStats) -> String {
-        guard !system.unavailableMetrics.contains(.memory) else { return "Unavailable" }
+        guard !system.unavailableMetrics.contains(.memory) else { return String(localized: "Unavailable") }
         guard system.memoryTotal > 0 else { return "—" }
         let used = ByteFormat.bytes(system.memoryUsed)
         let total = ByteFormat.bytes(system.memoryTotal)
@@ -588,7 +588,7 @@ struct MainWindowView: View {
 
     /// Physical memory usage as a percentage of installed RAM.
     private func physicalUsageText(_ system: SystemStats) -> String {
-        guard !system.unavailableMetrics.contains(.memory) else { return "Unavailable" }
+        guard !system.unavailableMetrics.contains(.memory) else { return String(localized: "Unavailable") }
         guard system.memoryTotal > 0 else { return "—" }
         let pct = Double(system.memoryUsed) / Double(system.memoryTotal) * 100
         return String(format: "%.0f%%", pct)
@@ -780,7 +780,7 @@ struct RunProcessSheet: View {
         if isApp || !isExecutable {
             // Apps, documents and folders — let the workspace open them.
             guard NSWorkspace.shared.open(url) else {
-                errorMessage = "Could not open: \(url.path)"
+                errorMessage = String(localized: "Could not open: \(url.path)")
                 return
             }
             dismiss()
@@ -793,7 +793,7 @@ struct RunProcessSheet: View {
             try process.run()
             dismiss()
         } catch {
-            errorMessage = "Could not launch: \(error.localizedDescription)"
+            errorMessage = String(localized: "Could not launch: \(error.localizedDescription)")
         }
     }
 }

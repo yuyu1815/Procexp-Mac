@@ -53,13 +53,13 @@ extension AppModel {
             }
             if enabled, dependencies.loginItem.status() != .enabled {
                 processActionAlert = ProcessActionAlert(
-                    title: "Launch at Login Not Enabled",
-                    message: "Approve Sysinternals Process Explorer in System Settings > General > Login Items & Extensions. If it is not listed, install a signed copy of the app in Applications and try again."
+                    title: String(localized: "Launch at Login Not Enabled"),
+                    message: String(localized: "Approve Sysinternals Process Explorer in System Settings > General > Login Items & Extensions. If it is not listed, install a signed copy of the app in Applications and try again.")
                 )
             }
         } catch {
             processActionAlert = ProcessActionAlert(
-                title: "Could Not Change Launch at Login",
+                title: String(localized: "Could Not Change Launch at Login"),
                 message: error.localizedDescription
             )
         }

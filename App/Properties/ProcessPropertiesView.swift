@@ -164,7 +164,7 @@ struct ProcessPropertiesView: View {
                 Button {
                     selectedTab = tab
                 } label: {
-                    Text(tab.rawValue)
+                    Text(LocalizedStringKey(tab.rawValue))
                         .font(.system(size: 11, weight: selected ? .semibold : .regular))
                         .lineLimit(1)
                         .fixedSize(horizontal: true, vertical: false)
