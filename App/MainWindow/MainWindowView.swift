@@ -713,33 +713,37 @@ private struct ResizableMiniGraph: View {
 
     private let minWidth: Double = 28
     private let maxWidth: Double = 320
-    private let graphHeight: CGFloat = 16
+    /// Matches the toolbar buttons beside the graphs; the top band holds the name and value so they never overlap the plotted line.
+    private let graphHeight: CGFloat = 24
+    private let labelHeight: CGFloat = 11
 
     var body: some View {
         HStack(spacing: 2) {
             Button(action: action) {
-                SparklineRepresentable(
-                    values: values,
-                    maxValue: maxValue,
-                    lineColor: color,
-                    fillColor: RGBA(r: color.r, g: color.g, b: color.b, a: 0.28),
-                    backgroundColor: RGBA(12, 12, 12)
-                )
-                .frame(width: max(minWidth, width), height: graphHeight)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 2)
-                        .stroke(Color.primary.opacity(0.25), lineWidth: 0.5)
-                )
-                .overlay(alignment: .leading) {
+                VStack(spacing: 0) {
                     Text("\(label) \(value)")
                         .font(.system(size: 9, weight: .medium))
                         .monospacedDigit()
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                         .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 1)
                         .padding(.horizontal, 3)
+                        .frame(maxWidth: .infinity, minHeight: labelHeight, maxHeight: labelHeight, alignment: .leading)
+                        .background(Color(red: 12 / 255, green: 12 / 255, blue: 12 / 255))
+                    SparklineRepresentable(
+                        values: values,
+                        maxValue: maxValue,
+                        lineColor: color,
+                        fillColor: RGBA(r: color.r, g: color.g, b: color.b, a: 0.28),
+                        backgroundColor: RGBA(12, 12, 12)
+                    )
                 }
+                .frame(width: max(minWidth, width), height: graphHeight)
+                .clipShape(RoundedRectangle(cornerRadius: 2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 2)
+                        .stroke(Color.primary.opacity(0.25), lineWidth: 0.5)
+                )
                 .contentShape(Rectangle())
                 .accessibilityHidden(true)
             }
