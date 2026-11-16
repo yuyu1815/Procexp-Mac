@@ -172,13 +172,13 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         case .name:         return p.name
         case .pid:          return String(p.id.pid)
         case .ppid:         return p.parent.map { String($0.pid) } ?? ""
-        case .cpu:          return p.hasTaskInfo ? (p.cpuPercent < 0.01 ? "" : String(format: "%.2f", p.cpuPercent)) : ""
-        case .cpuTime:      return p.hasTaskInfo ? ByteFormat.duration(nanos: p.cpuTime) : ""
-        case .privateBytes: return p.hasTaskInfo ? p.physFootprint.map(ByteFormat.bytes) ?? "" : ""
-        case .workingSet:   return p.hasTaskInfo ? ByteFormat.bytes(p.residentSize) : ""
-        case .virtualSize:  return p.hasTaskInfo ? ByteFormat.bytes(p.virtualSize) : ""
-        case .threads:      return p.hasTaskInfo ? String(p.threadCount) : ""
-        case .handles:      return p.fileDescriptorCount.map(String.init) ?? ""
+        case .cpu:          return p.hasTaskInfo ? (p.cpuPercent < 0.01 ? "" : String(format: "%.2f", p.cpuPercent)) : "-"
+        case .cpuTime:      return p.hasTaskInfo ? ByteFormat.duration(nanos: p.cpuTime) : "-"
+        case .privateBytes: return p.hasTaskInfo ? p.physFootprint.map(ByteFormat.bytes) ?? "-" : "-"
+        case .workingSet:   return p.hasTaskInfo ? ByteFormat.bytes(p.residentSize) : "-"
+        case .virtualSize:  return p.hasTaskInfo ? ByteFormat.bytes(p.virtualSize) : "-"
+        case .threads:      return p.hasTaskInfo ? String(p.threadCount) : "-"
+        case .handles:      return p.fileDescriptorCount.map(String.init) ?? "-"
         case .description:  return p.displayDescription ?? ""
         case .company:      return p.companyName ?? ""
         case .version:      return p.version ?? ""
@@ -187,21 +187,21 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         case .user:         return p.userName ?? String(p.uid)
         case .session:      return p.sessionTTY ?? ""
         case .startTime:    return ByteFormat.dateTime(p.startTimeDate)
-        case .priority:     return p.hasTaskInfo ? String(p.priority) : ""
+        case .priority:     return p.hasTaskInfo ? String(p.priority) : "-"
         case .nice:         return String(p.nice)
-        case .ioRead:       return p.diskBytesRead.map(ByteFormat.bytes) ?? ""
-        case .ioWrite:      return p.diskBytesWritten.map(ByteFormat.bytes) ?? ""
-        case .runningThreads: return p.hasTaskInfo ? p.runningThreadCount.map(String.init) ?? "" : ""
-        case .pageIns:      return p.hasTaskInfo ? p.pageIns.map(String.init) ?? "" : ""
-        case .cowFaults:    return p.hasTaskInfo ? p.copyOnWriteFaults.map(String.init) ?? "" : ""
-        case .machMessagesSent: return p.hasTaskInfo ? p.machMessagesSent.map(String.init) ?? "" : ""
-        case .machMessagesReceived: return p.hasTaskInfo ? p.machMessagesReceived.map(String.init) ?? "" : ""
-        case .machSyscalls: return p.hasTaskInfo ? p.machSyscalls.map(String.init) ?? "" : ""
-        case .unixSyscalls: return p.hasTaskInfo ? p.unixSyscalls.map(String.init) ?? "" : ""
-        case .threadUserTime: return p.hasTaskInfo ? p.threadUserTime.map(ByteFormat.duration) ?? "" : ""
-        case .threadSystemTime: return p.hasTaskInfo ? p.threadSystemTime.map(ByteFormat.duration) ?? "" : ""
-        case .taskPolicy:   return p.hasTaskInfo ? p.taskPolicy.map(String.init) ?? "" : ""
-        case .bsdFlags:     return p.bsdFlagsRaw.map { String(format: "0x%08X", $0) } ?? ""
+        case .ioRead:       return p.diskBytesRead.map(ByteFormat.bytes) ?? "-"
+        case .ioWrite:      return p.diskBytesWritten.map(ByteFormat.bytes) ?? "-"
+        case .runningThreads: return p.hasTaskInfo ? p.runningThreadCount.map(String.init) ?? "-" : "-"
+        case .pageIns:      return p.hasTaskInfo ? p.pageIns.map(String.init) ?? "-" : "-"
+        case .cowFaults:    return p.hasTaskInfo ? p.copyOnWriteFaults.map(String.init) ?? "-" : "-"
+        case .machMessagesSent: return p.hasTaskInfo ? p.machMessagesSent.map(String.init) ?? "-" : "-"
+        case .machMessagesReceived: return p.hasTaskInfo ? p.machMessagesReceived.map(String.init) ?? "-" : "-"
+        case .machSyscalls: return p.hasTaskInfo ? p.machSyscalls.map(String.init) ?? "-" : "-"
+        case .unixSyscalls: return p.hasTaskInfo ? p.unixSyscalls.map(String.init) ?? "-" : "-"
+        case .threadUserTime: return p.hasTaskInfo ? p.threadUserTime.map(ByteFormat.duration) ?? "-" : "-"
+        case .threadSystemTime: return p.hasTaskInfo ? p.threadSystemTime.map(ByteFormat.duration) ?? "-" : "-"
+        case .taskPolicy:   return p.hasTaskInfo ? p.taskPolicy.map(String.init) ?? "-" : "-"
+        case .bsdFlags:     return p.bsdFlagsRaw.map { String(format: "0x%08X", $0) } ?? "-"
         case .network:      return p.networkBytesPerSec.map { ByteFormat.bytes($0) + "/s" } ?? ""
         case .gpu:          return p.gpuPercent.map { String(format: "%.1f", $0) } ?? ""
         case .gpuMemory:    return ""
@@ -260,9 +260,9 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         }
     }
 
-    /// A sensible default column layout matching Process Explorer's defaults.
+    /// First-launch column layout. `.description` and `.company` stay available from the column menu.
     public static let defaultColumns: [Column] = [
-        .name, .pid, .cpu, .privateBytes, .workingSet, .description, .company, .signature
+        .name, .pid, .cpu, .privateBytes, .workingSet, .signature
     ]
 }
 
