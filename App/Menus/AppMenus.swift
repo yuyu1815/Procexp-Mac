@@ -61,9 +61,9 @@ private struct FindMenu: View {
 
     var body: some View {
         Button("Find Mapped Files or File Descriptors…") { openWindow(id: FindHandleDLLWindow.id) }
-            .keyboardShortcut("f", modifiers: .command)
-        Button("Filter Processes…") { model.focusSearchToken += 1 }
             .keyboardShortcut("f", modifiers: [.command, .shift])
+        Button("Filter Processes…") { model.focusSearchToken += 1 }
+            .keyboardShortcut("f", modifiers: .command)
         Toggle("Find Window's Process", isOn: Binding(
             get: { model.targetWindowPickerActive },
             set: { _ in model.toggleTargetWindowPicker() }

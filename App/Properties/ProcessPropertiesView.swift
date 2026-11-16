@@ -245,10 +245,17 @@ struct EscapeKeyMonitor: NSViewRepresentable {
             monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
                 guard let self else { return event }
                 guard event.keyCode == 53, let window = self.view?.window,
-                      event.window === window else { return event }
+                      event.window === window,
+                      !Self.isEditingText(window.firstResponder) else { return event }
                 self.action()
                 return nil
             }
+        }
+
+        /// True only for the field editor (a text/search field being edited). A plain
+        /// read-only NSTextView is not a field editor, so Esc still closes the window there.
+        private static func isEditingText(_ responder: NSResponder?) -> Bool {
+            (responder as? NSTextView)?.isFieldEditor == true
         }
     }
 }
