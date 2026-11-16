@@ -899,11 +899,7 @@ struct ProcessOutlineView: NSViewRepresentable {
                 guard let rowIndex = rowIndex(at: point), visibleRows.indices.contains(rowIndex) else { return }
                 let row = visibleRows[rowIndex]
                 if kind == .processRows, clickedDisclosure(at: point, row: row) {
-                    if expanded.contains(row.id) { expanded.remove(row.id) } else { expanded.insert(row.id) }
-                    rebuildVisibleRows()
-                    rebuildProcessWidthCache()
-                    rebuildUsageMaxima()
-                    updateCanvasFrames()
+                    toggleExpanded(row.id)
                     return
                 }
                 model.selection = row.id
@@ -979,6 +975,46 @@ struct ProcessOutlineView: NSViewRepresentable {
             model.selection = visibleRows[next].id
             scrollRowToVisible(next)
             invalidateAll()
+        }
+
+        private func toggleExpanded(_ id: ProcessID) {
+            if expanded.contains(id) { expanded.remove(id) } else { expanded.insert(id) }
+            rebuildVisibleRows()
+            rebuildProcessWidthCache()
+            rebuildUsageMaxima()
+            updateCanvasFrames()
+        }
+
+        private var selectedRowIndex: Int? {
+            model.selection.flatMap { selection in visibleRows.firstIndex { $0.id == selection } }
+        }
+
+        func expandSelection() {
+            guard let index = selectedRowIndex, isExpandable(visibleRows[index].id),
+                  !expanded.contains(visibleRows[index].id) else { return }
+            toggleExpanded(visibleRows[index].id)
+            invalidateAll()
+        }
+
+        func collapseSelectionOrSelectParent() {
+            guard let index = selectedRowIndex else { return }
+            let row = visibleRows[index]
+            if isExpandable(row.id), expanded.contains(row.id) {
+                toggleExpanded(row.id)
+                invalidateAll()
+            } else if let parent = visibleRows[..<index].lastIndex(where: { $0.depth < row.depth }) {
+                moveSelection(delta: parent - index)
+            }
+        }
+
+        func moveSelectionToEdge(last: Bool) {
+            moveSelection(delta: last ? visibleRows.count : -visibleRows.count)
+        }
+
+        func moveSelectionByPage(down: Bool) {
+            guard let metricsBodyScrollView else { return }
+            let page = max(1, Int(metricsBodyScrollView.contentView.bounds.height / Self.rowHeight))
+            moveSelection(delta: down ? page : -page)
         }
 
         func handleTypeSelect(_ text: String) -> Bool {
@@ -1800,8 +1836,9 @@ final class ProcessListSurfaceView: NSView {
     }
 
     override func keyDown(with event: NSEvent) {
+        let bare = event.modifierFlags.intersection([.command, .control, .option]).isEmpty
         switch event.keyCode {
-        case 117 where event.modifierFlags.intersection([.command, .control, .option]).isEmpty:
+        case 117 where bare:
             coordinator?.requestKillForSelection(tree: event.modifierFlags.contains(.shift))
         case 36, 76:
             coordinator?.openPropertiesForSelection()
@@ -1809,6 +1846,18 @@ final class ProcessListSurfaceView: NSView {
             coordinator?.moveSelection(delta: 1)
         case 126:
             coordinator?.moveSelection(delta: -1)
+        case 124 where bare:
+            coordinator?.expandSelection()
+        case 123 where bare:
+            coordinator?.collapseSelectionOrSelectParent()
+        case 115 where bare:
+            coordinator?.moveSelectionToEdge(last: false)
+        case 119 where bare:
+            coordinator?.moveSelectionToEdge(last: true)
+        case 116 where bare:
+            coordinator?.moveSelectionByPage(down: false)
+        case 121 where bare:
+            coordinator?.moveSelectionByPage(down: true)
         default:
             if let text = event.typeSelectText, coordinator?.handleTypeSelect(text) == true {
                 return
