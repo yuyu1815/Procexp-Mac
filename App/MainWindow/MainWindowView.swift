@@ -38,6 +38,10 @@ struct MainWindowView: View {
                     .transition(.opacity.combined(with: .move(edge: .top)))
             }
 
+            if !model.helperBannerDismissed, model.helperAvailability == .notInstalled || model.helperAvailability == .awaitingApproval {
+                helperBanner
+            }
+
             Divider()
             if model.showLowerPane {
                 VSplitView {
@@ -323,6 +327,42 @@ struct MainWindowView: View {
                 .lineLimit(1)
                 .truncationMode(.tail)
             Spacer(minLength: 8)
+        }
+        .font(.system(size: 12))
+        .padding(.horizontal, 12)
+        .padding(.vertical, 5)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.accentColor.opacity(0.12))
+        .overlay(alignment: .bottom) {
+            Rectangle()
+                .fill(Color.accentColor.opacity(0.35))
+                .frame(height: 1)
+        }
+    }
+
+    /// Explains why other users' / system process values are "-" and offers the next step.
+    private var helperBanner: some View {
+        let awaiting = model.helperAvailability == .awaitingApproval
+        return HStack(spacing: 8) {
+            Image(systemName: "lock.shield")
+            Text(awaiting ? "Waiting for the privileged helper to be approved in System Settings."
+                          : "Other users and system processes show “-” until the privileged helper is installed.")
+                .lineLimit(1)
+                .truncationMode(.tail)
+            Spacer(minLength: 8)
+            if awaiting {
+                Button("Open System Settings") { model.dependencies.loginItem.openSettings() }
+            } else {
+                Button("Install Privileged Helper…") {
+                    let model = model
+                    Task { await runHelperInstall(model) }
+                }
+                .disabled(model.helperChanging)
+            }
+            Button { model.helperBannerDismissed = true } label: { Image(systemName: "xmark") }
+                .buttonStyle(.borderless)
+                .help("Close")
+                .accessibilityLabel("Close")
         }
         .font(.system(size: 12))
         .padding(.horizontal, 12)
