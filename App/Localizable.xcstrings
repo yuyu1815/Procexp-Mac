@@ -1702,12 +1702,12 @@
         }
       }
     },
-    "Filter by name or PID using the toolbar, or choose Find > Filter Processes. Show Process Tree switches between a hierarchy and a flat list; sorting a column switches to a flat list. View > Show Processes From All Users controls visibility, not access permissions.\n\nFind Window's Process on the toolbar lets you click another app's window. It selects and reveals its process, clearing filters when needed. macOS may require Accessibility approval." : {
+    "Filter by name or PID using the toolbar, or choose Find > Filter Processes. Show Process Tree switches between a hierarchy and a flat list; sorting a column switches to a flat list. View > Show Processes From All Users controls visibility, not access permissions.\n\nFind > Find Window's Process lets you click another app's window. It selects and reveals its process, clearing filters when needed. macOS may require Accessibility approval." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ツールバーで名前または PID によるフィルタをかけるか、検索 > プロセスをフィルタ を選択します。プロセスツリーを表示 は階層表示とフラット表示を切り替えます。列で並べ替えるとフラット表示になります。表示 > すべてのユーザーのプロセスを表示 が制御するのは表示の有無であり、アクセス権限ではありません。\n\nツールバーの「ウインドウのプロセスを検索」を使うと、他の App のウインドウをクリックして、そのプロセスを選択・表示できます。必要に応じてフィルタも解除されます。macOS のアクセシビリティの承認が必要になる場合があります。"
+            "value" : "ツールバーで名前または PID によるフィルタをかけるか、検索 > プロセスをフィルタ を選択します。プロセスツリーを表示 は階層表示とフラット表示を切り替えます。列で並べ替えるとフラット表示になります。表示 > すべてのユーザーのプロセスを表示 が制御するのは表示の有無であり、アクセス権限ではありません。\n\n検索 > ウインドウのプロセスを検索 を使うと、他の App のウインドウをクリックして、そのプロセスを選択・表示できます。必要に応じてフィルタも解除されます。macOS のアクセシビリティの承認が必要になる場合があります。"
           }
         }
       }
@@ -1748,6 +1748,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "マップされたファイルまたはファイルディスクリプタを検索… (⌘F)"
+          }
+        }
+      }
+    },
+    "Find Window's Process" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウのプロセスを検索"
           }
         }
       }
@@ -3537,6 +3547,16 @@
         }
       }
     },
+    "Properties" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロパティ"
+          }
+        }
+      }
+    },
     "Properties..." : {
       "localizations" : {
         "ja" : {
@@ -5045,6 +5065,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "トポロジ"
+          }
+        }
+      }
+    },
+    "Tree" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ツリー"
           }
         }
       }

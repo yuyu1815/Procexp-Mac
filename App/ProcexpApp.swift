@@ -39,7 +39,7 @@ struct ProcexpApp: App {
             }
             // W4 — open the System Information window (⌘I).
             CommandGroup(after: .toolbar) {
-                SystemInfoMenuCommand()
+                SystemInfoMenuCommand(model: model)
                 Divider()
             }
 
@@ -169,10 +169,13 @@ private struct AboutMenuCommand: View {
 }
 
 /// Menu command that opens the shared System Information window (⌘I).
-private struct SystemInfoMenuCommand: View {    @Environment(\.openWindow) private var openWindow
+private struct SystemInfoMenuCommand: View {
+    let model: AppModel
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         Button("System Information") {
+            model.systemInfoTab = .summary
             openWindow(id: SystemInfoWindow.id)
         }
         .keyboardShortcut("i", modifiers: .command)

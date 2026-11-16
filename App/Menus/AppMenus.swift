@@ -64,6 +64,10 @@ private struct FindMenu: View {
             .keyboardShortcut("f", modifiers: .command)
         Button("Filter Processes…") { model.focusSearchToken += 1 }
             .keyboardShortcut("f", modifiers: [.command, .shift])
+        Toggle("Find Window's Process", isOn: Binding(
+            get: { model.targetWindowPickerActive },
+            set: { _ in model.toggleTargetWindowPicker() }
+        ))
     }
 }
 
