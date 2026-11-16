@@ -12,7 +12,7 @@ struct ProcessExplorerHelpView: View {
                 Show Process Tree switches between a hierarchy and a flat list; sorting a column switches to a flat list. \
                 View > Show Processes From All Users controls visibility, not access permissions.
 
-                Find Window's Process on the toolbar lets you click another app's window. \
+                Find > Find Window's Process lets you click another app's window. \
                 It selects and reveals its process, clearing filters when needed. macOS may require Accessibility approval.
                 """)
                 topic("Save a report or export CSV", """

@@ -178,10 +178,9 @@ struct MainWindowView: View {
 
     // MARK: Toolbar
 
-    /// Icon toolbar mirroring Windows Process Explorer: Save · Refresh · System
-    /// Information · Show Process Tree · Properties · Kill · Lower Pane · Find,
-    /// followed by the live, individually-resizable CPU/Memory/I-O mini graphs
-    /// and the filter field.
+    /// Labeled toolbar: Tree · Properties · Force Quit · Lower Pane, followed by
+    /// the live, individually-resizable CPU/Memory/I-O mini graphs and the
+    /// filter field.
     private var toolbar: some View {
         ViewThatFits(in: .horizontal) {
             HStack(spacing: 6) {
@@ -211,39 +210,20 @@ struct MainWindowView: View {
     private var toolbarActions: some View {
         @Bindable var model = model
         return Group {
-            iconButton("save",
-                       tip: "Save Process Explorer Data (⌘S)",
-                       shortcut: .init("s", modifiers: .command)) {
-                model.saveProcessReport()
-            }
-            iconButton("refresh",
-                       tip: "Refresh Now (F5)",
-                       shortcut: .init(KeyEquivalent(Character(UnicodeScalar(0xF708)!)), modifiers: [])) {
-                Task { await model.forceRefresh() }
-            }
-
-            toolbarDivider
-
-            iconButton("sysinfo",
-                       tip: "System Information (⌘I)",
-                       shortcut: .init("i", modifiers: .command)) {
-                model.systemInfoTab = .summary
-                openWindow(id: SystemInfoWindow.id)
-            }
-
-            toolbarDivider
-
-            iconToggle("tree", isOn: model.showProcessTree,
-                       tip: "Show Process Tree (⌥T)",
-                       shortcut: .init("t", modifiers: .option)) {
+            // Save, Refresh, System Information, Find and Find Window's Process
+            // live in the menus (File / View / Find); their shortcuts are
+            // defined there only.
+            iconToggle("tree", label: "Tree", isOn: model.showProcessTree,
+                       tip: "Show Process Tree (⌥T)") {
                 model.setProcessTreeView(!model.showProcessTree)
             }
-            iconButton("props", tip: "Properties… (⌥↩)",
+            iconButton("props", label: "Properties", tip: "Properties… (⌥↩)",
                        shortcut: .init(.return, modifiers: .option),
                        disabled: model.selection == nil) {
                 if let pid = model.selection { openProperties(pid) }
             }
-            iconButton("kill", tip: "Force Quit Process using SIGKILL (Forward Delete in the process list)",
+            iconButton("kill", label: "Force Quit",
+                       tip: "Force Quit Process using SIGKILL (Forward Delete in the process list)",
                        disabled: model.selection == nil) {
                 if let pid = model.selection {
                     coordinator.request(.kill, pid: pid, model: model)
@@ -252,22 +232,9 @@ struct MainWindowView: View {
 
             toolbarDivider
 
-            iconToggle("split", isOn: model.showLowerPane,
-                       tip: "Show Lower Pane (⌘L)",
-                       shortcut: .init("l", modifiers: .command)) {
+            iconToggle("split", label: "Lower Pane", isOn: model.showLowerPane,
+                       tip: "Show Lower Pane (⌘L)") {
                 model.showLowerPane.toggle()
-            }
-
-            toolbarDivider
-
-            iconButton("find",
-                       tip: "Find Mapped Files or File Descriptors… (⌘F)",
-                       shortcut: .init("f", modifiers: .command)) {
-                openWindow(id: FindHandleDLLWindow.id)
-            }
-            iconToggle("target", isOn: model.targetWindowPickerActive,
-                       tip: "Find Window's Process — click a window in another app to select its process") {
-                model.toggleTargetWindowPicker()
             }
 
             toolbarDivider
@@ -336,18 +303,30 @@ struct MainWindowView: View {
         }
     }
 
+    /// Icon plus optional text label to its right.
+    @ViewBuilder
+    private func iconLabel(_ asset: String, _ label: LocalizedStringKey?) -> some View {
+        let icon = Image(asset)
+            .resizable()
+            .interpolation(.high)
+            .frame(width: 18, height: 18)
+        if let label {
+            HStack(spacing: 4) { icon; Text(label).font(.system(size: 12)) }
+        } else {
+            icon
+        }
+    }
+
     /// A plain colored-icon toolbar button.
     @ViewBuilder
     private func iconButton(_ asset: String,
+                            label: LocalizedStringKey? = nil,
                             tip: LocalizedStringKey,
                             shortcut: KeyboardShortcut? = nil,
                             disabled: Bool = false,
                             action: @escaping () -> Void) -> some View {
         let button = Button(action: action) {
-            Image(asset)
-                .resizable()
-                .interpolation(.high)
-                .frame(width: 18, height: 18)
+            iconLabel(asset, label)
         }
         .accessibilityIdentifier("toolbar-\(asset)")
         if let shortcut {
@@ -365,17 +344,13 @@ struct MainWindowView: View {
     }
 
     /// A colored-icon toggle button that highlights while active.
-    @ViewBuilder
     private func iconToggle(_ asset: String,
+                            label: LocalizedStringKey? = nil,
                             isOn: Bool,
                             tip: LocalizedStringKey,
-                            shortcut: KeyboardShortcut? = nil,
                             action: @escaping () -> Void) -> some View {
-        let button = Button(action: action) {
-            Image(asset)
-                .resizable()
-                .interpolation(.high)
-                .frame(width: 18, height: 18)
+        Button(action: action) {
+            iconLabel(asset, label)
                 .padding(3)
                 .background {
                     RoundedRectangle(cornerRadius: 5)
@@ -383,16 +358,8 @@ struct MainWindowView: View {
                 }
                 .accessibilityIdentifier("toolbar-\(asset)")
         }
-        if let shortcut {
-            button
-                .keyboardShortcut(shortcut)
-                .buttonStyle(.borderless)
-                .help(tip)
-        } else {
-            button
-                .buttonStyle(.borderless)
-                .help(tip)
-        }
+        .buttonStyle(.borderless)
+        .help(tip)
     }
 
     /// A small live sparkline whose width is bound to `model.graphWidths[index]`
