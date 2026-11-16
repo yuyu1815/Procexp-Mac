@@ -1742,12 +1742,12 @@
         }
       }
     },
-    "Find Mapped Files or File Descriptors… (⌘F)" : {
+    "Find Mapped Files or File Descriptors… (⇧⌘F)" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "マップされたファイルまたはファイルディスクリプタを検索… (⌘F)"
+            "value" : "マップされたファイルまたはファイルディスクリプタを検索… (⇧⌘F)"
           }
         }
       }
