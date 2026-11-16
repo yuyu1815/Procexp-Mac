@@ -36,46 +36,46 @@ public enum Column: String, CaseIterable, Sendable, Codable {
 
     public var title: String {
         switch self {
-        case .name:         return "Process"
-        case .pid:          return "PID"
-        case .ppid:         return "Parent PID"
-        case .cpu:          return "CPU"
-        case .cpuTime:      return "CPU Time"
-        case .privateBytes: return "Physical Footprint"
-        case .workingSet:   return "Resident Memory (RSS)"
-        case .virtualSize:  return "Virtual Size"
-        case .threads:      return "Threads"
-        case .handles:      return "File Descriptors"
-        case .description:  return "Description"
-        case .company:      return "Organization (inferred)"
-        case .version:      return "Version"
-        case .path:         return "Path"
-        case .commandLine:  return "Command Line"
-        case .user:         return "User Name"
-        case .session:      return "Terminal (TTY)"
-        case .startTime:    return "Start Time"
-        case .priority:     return "Task Priority"
-        case .nice:         return "Nice Value"
-        case .ioRead:       return "Bytes Read (cumulative)"
-        case .ioWrite:      return "Bytes Written (cumulative)"
-        case .runningThreads: return "Running Threads"
-        case .pageIns:      return "Page Ins"
-        case .cowFaults:    return "COW Faults"
-        case .machMessagesSent: return "Mach Msg Sent"
-        case .machMessagesReceived: return "Mach Msg Received"
-        case .machSyscalls: return "Mach Syscalls"
-        case .unixSyscalls: return "Unix Syscalls"
-        case .threadUserTime: return "Thread User Time"
-        case .threadSystemTime: return "Thread Kernel Time"
-        case .taskPolicy:   return "Task Policy"
-        case .bsdFlags:     return "BSD Flags"
-        case .network:      return "Network"
-        case .gpu:          return "GPU"
-        case .gpuMemory:    return "GPU Memory"
-        case .integrity:    return "Integrity"
-        case .signature:    return "Verified Signer"
-        case .virusTotal:   return "VirusTotal"
-        case .autostart:    return "Autostart Location"
+        case .name:         return String(localized: "Process", bundle: .module)
+        case .pid:          return String(localized: "PID", bundle: .module)
+        case .ppid:         return String(localized: "Parent PID", bundle: .module)
+        case .cpu:          return String(localized: "CPU", bundle: .module)
+        case .cpuTime:      return String(localized: "CPU Time", bundle: .module)
+        case .privateBytes: return String(localized: "Physical Footprint", bundle: .module)
+        case .workingSet:   return String(localized: "Resident Memory (RSS)", bundle: .module)
+        case .virtualSize:  return String(localized: "Virtual Size", bundle: .module)
+        case .threads:      return String(localized: "Threads", bundle: .module)
+        case .handles:      return String(localized: "File Descriptors", bundle: .module)
+        case .description:  return String(localized: "Description", bundle: .module)
+        case .company:      return String(localized: "Organization (inferred)", bundle: .module)
+        case .version:      return String(localized: "Version", bundle: .module)
+        case .path:         return String(localized: "Path", bundle: .module)
+        case .commandLine:  return String(localized: "Command Line", bundle: .module)
+        case .user:         return String(localized: "User Name", bundle: .module)
+        case .session:      return String(localized: "Terminal (TTY)", bundle: .module)
+        case .startTime:    return String(localized: "Start Time", bundle: .module)
+        case .priority:     return String(localized: "Task Priority", bundle: .module)
+        case .nice:         return String(localized: "Nice Value", bundle: .module)
+        case .ioRead:       return String(localized: "Bytes Read (cumulative)", bundle: .module)
+        case .ioWrite:      return String(localized: "Bytes Written (cumulative)", bundle: .module)
+        case .runningThreads: return String(localized: "Running Threads", bundle: .module)
+        case .pageIns:      return String(localized: "Page Ins", bundle: .module)
+        case .cowFaults:    return String(localized: "COW Faults", bundle: .module)
+        case .machMessagesSent: return String(localized: "Mach Msg Sent", bundle: .module)
+        case .machMessagesReceived: return String(localized: "Mach Msg Received", bundle: .module)
+        case .machSyscalls: return String(localized: "Mach Syscalls", bundle: .module)
+        case .unixSyscalls: return String(localized: "Unix Syscalls", bundle: .module)
+        case .threadUserTime: return String(localized: "Thread User Time", bundle: .module)
+        case .threadSystemTime: return String(localized: "Thread Kernel Time", bundle: .module)
+        case .taskPolicy:   return String(localized: "Task Policy", bundle: .module)
+        case .bsdFlags:     return String(localized: "BSD Flags", bundle: .module)
+        case .network:      return String(localized: "Network", bundle: .module)
+        case .gpu:          return String(localized: "GPU", bundle: .module)
+        case .gpuMemory:    return String(localized: "GPU Memory", bundle: .module)
+        case .integrity:    return String(localized: "Integrity", bundle: .module)
+        case .signature:    return String(localized: "Verified Signer", bundle: .module)
+        case .virusTotal:   return String(localized: "VirusTotal", bundle: .module)
+        case .autostart:    return String(localized: "Autostart Location", bundle: .module)
         }
     }
 
@@ -185,7 +185,7 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         case .network:      return p.networkBytesPerSec.map { ByteFormat.bytes($0) + "/s" } ?? ""
         case .gpu:          return p.gpuPercent.map { String(format: "%.1f", $0) } ?? ""
         case .gpuMemory:    return ""
-        case .integrity:    return p.flags.contains(.sandboxed) ? "Sandboxed" : (p.flags.contains(.platformBinary) ? "Platform" : "")
+        case .integrity:    return p.flags.contains(.sandboxed) ? String(localized: "Sandboxed", bundle: .module) : (p.flags.contains(.platformBinary) ? String(localized: "Platform", bundle: .module) : "")
         case .signature:    return p.signing?.signerDescription ?? ""
         case .virusTotal:
             guard let vt = p.signing?.virusTotal else { return "" }

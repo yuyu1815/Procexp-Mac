@@ -71,17 +71,17 @@ public final class PrivilegedDataProvider: PrivilegedSampling, @unchecked Sendab
         let executableURL = helperDirectory.appendingPathComponent(HelperConstants.machServiceName)
         guard FileManager.default.fileExists(atPath: plistURL.path),
               FileManager.default.isExecutableFile(atPath: executableURL.path) else {
-            throw ProviderError.underlying("""
+            throw ProviderError.underlying(String(localized: """
             This app build does not contain a complete, executable privileged helper. \
             Plain Xcode builds omit it. Use a packaged, signed build with the helper \
             embedded before enabling privileged mode.
-            """)
+            """, bundle: .module))
         }
         let service = SMAppService.daemon(plistName: HelperConstants.daemonPlistName)
         do {
             try service.register()
         } catch {
-            throw ProviderError.underlying("Helper registration failed: \(error.localizedDescription)")
+            throw ProviderError.underlying(String(localized: "Helper registration failed: \(error.localizedDescription)", bundle: .module))
         }
     }
 
@@ -90,7 +90,7 @@ public final class PrivilegedDataProvider: PrivilegedSampling, @unchecked Sendab
         do {
             try await service.unregister()
         } catch {
-            throw ProviderError.underlying("Helper removal failed: \(error.localizedDescription)")
+            throw ProviderError.underlying(String(localized: "Helper removal failed: \(error.localizedDescription)", bundle: .module))
         }
     }
 
@@ -127,7 +127,7 @@ public final class PrivilegedDataProvider: PrivilegedSampling, @unchecked Sendab
         let data = try await requireData { $0.snapshot(withReply: $1) }
         let snapshot = try Self.decode(ProcessSnapshotDTO.self, data).model
         guard !snapshot.processes.isEmpty else {
-            throw ProviderError.underlying("The privileged helper returned an empty process snapshot.")
+            throw ProviderError.underlying(String(localized: "The privileged helper returned an empty process snapshot.", bundle: .module))
         }
         return snapshot
     }
@@ -284,7 +284,7 @@ public final class PrivilegedDataProvider: PrivilegedSampling, @unchecked Sendab
                 }
                 let onError: (Error) -> Void = { error in
                     box.resume(throwing: ProviderError.underlying(
-                        "Could not communicate with the privileged helper: \(error.localizedDescription)"
+                        String(localized: "Could not communicate with the privileged helper: \(error.localizedDescription)", bundle: .module)
                     ))
                 }
                 let proxy: ProcexpHelperProtocol?
@@ -348,7 +348,7 @@ private final class ContinuationBox<T>: @unchecked Sendable {
     func scheduleTimeout(after seconds: TimeInterval, onTimeout: @escaping () -> Void) {
         let item = DispatchWorkItem { [weak self] in
             if self?.finish(.failure(ProviderError.underlying(
-                "The privileged helper did not respond within \(seconds) seconds."
+                String(localized: "The privileged helper did not respond within \(seconds) seconds.", bundle: .module)
             ))) == true { onTimeout() }
         }
         lock.lock()

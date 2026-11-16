@@ -104,7 +104,7 @@ public struct ProcessActions: Sendable {
             let rc = setpriority(PRIO_PROCESS, id_t(id.pid), nice)
             if rc == -1 {
                 throw errno == 0
-                    ? ProviderError.underlying("setpriority failed without an OS error.")
+                    ? ProviderError.underlying(String(localized: "setpriority failed without an OS error.", bundle: .module))
                     : Self.mapErrno(errno)
             }
         } catch ProviderError.notPermitted {
@@ -144,7 +144,7 @@ public struct ProcessActions: Sendable {
             do {
                 try process.run()
             } catch {
-                throw ProviderError.underlying("relaunch failed: \(error.localizedDescription)")
+                throw ProviderError.underlying(String(localized: "relaunch failed: \(error.localizedDescription)", bundle: .module))
             }
         } else {
             // Nothing to relaunch from.

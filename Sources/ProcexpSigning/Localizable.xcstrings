@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Keychain %@ failed (OSStatus %d): %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keychain %@ failed (OSStatus %d): %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーチェーンの%1$@に失敗しました (OSStatus %2$d): %3$@"
+          }
+        }
+      }
+    },
+    "Keychain API key is not valid UTF-8 data." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keychain API key is not valid UTF-8 data."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーチェーンの API キーが有効な UTF-8 データではありません。"
+          }
+        }
+      }
+    },
+    "VirusTotal HTTP %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal HTTP %lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal HTTP %lld"
+          }
+        }
+      }
+    },
+    "VirusTotal decode failed: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal decode failed: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal の応答をデコードできませんでした: %@"
+          }
+        }
+      }
+    },
+    "VirusTotal engine counts exceed the supported range" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal engine counts exceed the supported range"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal のエンジン数がサポート範囲を超えています。"
+          }
+        }
+      }
+    },
+    "VirusTotal returned a non-HTTP response" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal returned a non-HTTP response"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal が HTTP 以外の応答を返しました。"
+          }
+        }
+      }
+    },
+    "VirusTotal returned negative engine counts" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal returned negative engine counts"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal が負のエンジン数を返しました。"
+          }
+        }
+      }
+    },
+    "read" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "read"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み取り"
+          }
+        }
+      }
+    },
+    "write" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "write"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き込み"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

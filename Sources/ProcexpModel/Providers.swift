@@ -51,13 +51,13 @@ public enum ProviderError: LocalizedError, Sendable {
     public var errorDescription: String? {
         switch self {
         case .notPermitted:
-            return "Operation not permitted."
+            return String(localized: "Operation not permitted.", bundle: .module)
         case .processGone:
-            return "The process has exited."
+            return String(localized: "The process has exited.", bundle: .module)
         case .unsupported:
-            return "This operation is not supported on this system."
+            return String(localized: "This operation is not supported on this system.", bundle: .module)
         case .helperUnavailable:
-            return "The privileged helper is not available."
+            return String(localized: "The privileged helper is not available.", bundle: .module)
         case .underlying(let message):
             return message
         }

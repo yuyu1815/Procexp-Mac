@@ -14,28 +14,28 @@ public enum FileDescriptorFlagFormatter {
         var names: [String]
         // libproc reports fileglob FREAD/FWRITE, not open(2)'s O_ACCMODE.
         switch flags & 0x3 {
-        case 1: names = ["Read"]
-        case 2: names = ["Write"]
-        case 3: names = ["Read/Write"]
+        case 1: names = [String(localized: "Read", bundle: .module)]
+        case 2: names = [String(localized: "Write", bundle: .module)]
+        case 3: names = [String(localized: "Read/Write", bundle: .module)]
         default: return String(format: "0x%X", flags)
         }
         let definitions: [(UInt32, String)] = [
-            (0x0000_0004, "Non-blocking"),
-            (0x0000_0008, "Append"),
-            (0x0000_0010, "Shared lock"),
-            (0x0000_0020, "Exclusive lock"),
-            (0x0000_0040, "Async"),
-            (0x0000_0100, "No-follow"),
-            (0x0000_0200, "Create"),
-            (0x0000_0400, "Truncate"),
-            (0x0000_0800, "Exclusive create"),
-            (0x0000_8000, "Event-only"),
-            (0x0002_0000, "No controlling TTY"),
-            (0x0010_0000, "Directory"),
-            (0x0020_0000, "Symlink"),
-            (0x0100_0000, "Close-on-exec"),
-            (0x2000_0000, "No-follow-any"),
-            (0x4000_0000, "Execute"),
+            (0x0000_0004, String(localized: "Non-blocking", bundle: .module)),
+            (0x0000_0008, String(localized: "Append", bundle: .module)),
+            (0x0000_0010, String(localized: "Shared lock", bundle: .module)),
+            (0x0000_0020, String(localized: "Exclusive lock", bundle: .module)),
+            (0x0000_0040, String(localized: "Async", bundle: .module)),
+            (0x0000_0100, String(localized: "No-follow", bundle: .module)),
+            (0x0000_0200, String(localized: "Create", bundle: .module)),
+            (0x0000_0400, String(localized: "Truncate", bundle: .module)),
+            (0x0000_0800, String(localized: "Exclusive create", bundle: .module)),
+            (0x0000_8000, String(localized: "Event-only", bundle: .module)),
+            (0x0002_0000, String(localized: "No controlling TTY", bundle: .module)),
+            (0x0010_0000, String(localized: "Directory", bundle: .module)),
+            (0x0020_0000, String(localized: "Symlink", bundle: .module)),
+            (0x0100_0000, String(localized: "Close-on-exec", bundle: .module)),
+            (0x2000_0000, String(localized: "No-follow-any", bundle: .module)),
+            (0x4000_0000, String(localized: "Execute", bundle: .module)),
         ]
         names += definitions.compactMap { mask, name in (flags & mask) != 0 ? name : nil }
         return "\(names.joined(separator: ", ")) (\(String(format: "0x%X", flags)))"
@@ -43,19 +43,19 @@ public enum FileDescriptorFlagFormatter {
 
     public static func status(_ flags: UInt32?) -> String {
         namedFlags(flags, definitions: [
-            (1, "Shared"),
-            (2, "Close-on-exec"),
-            (4, "Guarded"),
-            (8, "Close-on-fork"),
+            (1, String(localized: "Shared", bundle: .module)),
+            (2, String(localized: "Close-on-exec", bundle: .module)),
+            (4, String(localized: "Guarded", bundle: .module)),
+            (8, String(localized: "Close-on-fork", bundle: .module)),
         ])
     }
 
     public static func guardFlags(_ flags: UInt32?) -> String {
         namedFlags(flags, definitions: [
-            (1, "Close"),
-            (2, "Dup"),
-            (4, "Socket IPC"),
-            (8, "Fileport"),
+            (1, String(localized: "Close", bundle: .module)),
+            (2, String(localized: "Dup", bundle: .module)),
+            (4, String(localized: "Socket IPC", bundle: .module)),
+            (8, String(localized: "Fileport", bundle: .module)),
         ])
     }
 
@@ -72,9 +72,9 @@ public enum ThreadFlagFormatter {
         guard flags != 0 else { return "" }
         let unsigned = UInt32(bitPattern: flags)
         let definitions: [(UInt32, String)] = [
-            (1, "Swapped"),
-            (2, "Idle"),
-            (4, "Forced Idle"),
+            (1, String(localized: "Swapped", bundle: .module)),
+            (2, String(localized: "Idle", bundle: .module)),
+            (4, String(localized: "Forced Idle", bundle: .module)),
         ]
         let names = definitions.compactMap { mask, name in (unsigned & mask) != 0 ? name : nil }
         let value = String(format: "0x%X", unsigned)
@@ -106,14 +106,14 @@ public enum ModuleColumn: String, LowerPaneColumn {
 
     public var title: String {
         switch self {
-        case .name: return "Name"
-        case .description: return "Description"
-        case .company: return "Organization (inferred)"
-        case .version: return "Version"
-        case .path: return "Path"
-        case .signer: return "Signer"
-        case .base: return "Base"
-        case .size: return "Size"
+        case .name: return String(localized: "Name", bundle: .module)
+        case .description: return String(localized: "Description", bundle: .module)
+        case .company: return String(localized: "Organization (inferred)", bundle: .module)
+        case .version: return String(localized: "Version", bundle: .module)
+        case .path: return String(localized: "Path", bundle: .module)
+        case .signer: return String(localized: "Signer", bundle: .module)
+        case .base: return String(localized: "Base", bundle: .module)
+        case .size: return String(localized: "Size", bundle: .module)
         }
     }
 
@@ -163,22 +163,22 @@ public enum HandleColumn: String, LowerPaneColumn {
 
     public var title: String {
         switch self {
-        case .kind: return "Type"
-        case .name: return "Name"
-        case .fd: return "FD"
-        case .access: return "Access"
-        case .offset: return "Offset"
-        case .size: return "Size"
-        case .status: return "Status"
-        case .guardFlags: return "Guard"
-        case .vnodeType: return "Vnode Type"
-        case .inode: return "Inode"
-        case .socketFamily: return "Family"
-        case .socketProtocol: return "Protocol"
-        case .socketState: return "Socket State"
-        case .socketQueues: return "Queues"
-        case .receiveBuffer: return "Recv Buffer"
-        case .sendBuffer: return "Send Buffer"
+        case .kind: return String(localized: "Type", bundle: .module)
+        case .name: return String(localized: "Name", bundle: .module)
+        case .fd: return String(localized: "FD", bundle: .module)
+        case .access: return String(localized: "Access", bundle: .module)
+        case .offset: return String(localized: "Offset", bundle: .module)
+        case .size: return String(localized: "Size", bundle: .module)
+        case .status: return String(localized: "Status", bundle: .module)
+        case .guardFlags: return String(localized: "Guard", bundle: .module)
+        case .vnodeType: return String(localized: "Vnode Type", bundle: .module)
+        case .inode: return String(localized: "Inode", bundle: .module)
+        case .socketFamily: return String(localized: "Family", bundle: .module)
+        case .socketProtocol: return String(localized: "Protocol", bundle: .module)
+        case .socketState: return String(localized: "Socket State", bundle: .module)
+        case .socketQueues: return String(localized: "Queues", bundle: .module)
+        case .receiveBuffer: return String(localized: "Recv Buffer", bundle: .module)
+        case .sendBuffer: return String(localized: "Send Buffer", bundle: .module)
         }
     }
 
@@ -230,21 +230,21 @@ public enum ThreadColumn: String, LowerPaneColumn {
 
     public var title: String {
         switch self {
-        case .state: return "State"
-        case .tid: return "Thread Identifier"
-        case .name: return "Name"
-        case .userTime: return "User Time"
-        case .kernelTime: return "Kernel Time"
-        case .cpu: return "CPU"
-        case .cpuTime: return "CPU Time"
-        case .startAddress: return "Start Address"
-        case .basePriority: return "Base Pri"
-        case .currentPriority: return "Cur Pri"
-        case .maxPriority: return "Max Pri"
-        case .policy: return "Policy"
-        case .sleepTime: return "Sleep"
-        case .flags: return "Flags"
-        case .dispatchQueue: return "Dispatch Q"
+        case .state: return String(localized: "State", bundle: .module)
+        case .tid: return String(localized: "Thread Identifier", bundle: .module)
+        case .name: return String(localized: "Name", bundle: .module)
+        case .userTime: return String(localized: "User Time", bundle: .module)
+        case .kernelTime: return String(localized: "Kernel Time", bundle: .module)
+        case .cpu: return String(localized: "CPU", bundle: .module)
+        case .cpuTime: return String(localized: "CPU Time", bundle: .module)
+        case .startAddress: return String(localized: "Start Address", bundle: .module)
+        case .basePriority: return String(localized: "Base Pri", bundle: .module)
+        case .currentPriority: return String(localized: "Cur Pri", bundle: .module)
+        case .maxPriority: return String(localized: "Max Pri", bundle: .module)
+        case .policy: return String(localized: "Policy", bundle: .module)
+        case .sleepTime: return String(localized: "Sleep", bundle: .module)
+        case .flags: return String(localized: "Flags", bundle: .module)
+        case .dispatchQueue: return String(localized: "Dispatch Q", bundle: .module)
         }
     }
 
@@ -348,8 +348,8 @@ public struct ThreadInfo: Identifiable, Sendable, Hashable {
 
     public var identifierDescription: String {
         switch identifierSource {
-        case .unknown: return "Unknown"
-        case .libprocHandle: return "Handle \(id)"
+        case .unknown: return String(localized: "Unknown", bundle: .module)
+        case .libprocHandle: return String(localized: "Handle \(id)", bundle: .module)
         case .machThreadID: return "TID \(id)"
         }
     }
@@ -685,35 +685,35 @@ public struct SignatureInfo: Sendable, Codable, Hashable {
     }
 
     public var notarizationDescription: String {
-        if status == .unsigned { return "Not Applicable" }
-        guard status == .signed else { return "Unknown" }
-        if isPlatformBinary || isAdHoc { return "Not Applicable" }
-        guard let isNotarized else { return "Unknown" }
-        return isNotarized ? "Yes" : "No"
+        if status == .unsigned { return String(localized: "Not Applicable", bundle: .module) }
+        guard status == .signed else { return String(localized: "Unknown", bundle: .module) }
+        if isPlatformBinary || isAdHoc { return String(localized: "Not Applicable", bundle: .module) }
+        guard let isNotarized else { return String(localized: "Unknown", bundle: .module) }
+        return isNotarized ? String(localized: "Yes", bundle: .module) : String(localized: "No", bundle: .module)
     }
 
     public var platformBinaryDescription: String {
-        platformBinaryStatus.map { $0 ? "Yes" : "No" } ?? "Unknown"
+        platformBinaryStatus.map { $0 ? String(localized: "Yes", bundle: .module) : String(localized: "No", bundle: .module) } ?? String(localized: "Unknown", bundle: .module)
     }
 
     /// Best single-line signer string for the "Verified Signer" column.
     public var signerDescription: String {
         switch status {
-        case .unverified: return "(Verifying…)"
-        case .verifying:  return "(Verifying…)"
-        case .unsigned:   return "(Unsigned)"
+        case .unverified: return String(localized: "(Verifying…)", bundle: .module)
+        case .verifying:  return String(localized: "(Verifying…)", bundle: .module)
+        case .unsigned:   return String(localized: "(Unsigned)", bundle: .module)
         case .invalid:
             // Surface the specific Security.framework reason (e.g. "a sealed
             // resource is missing or invalid") instead of a generic label.
             if let message = validationErrorMessage, !message.isEmpty {
                 return "(\(message.prefix(1).uppercased() + message.dropFirst()))"
             }
-            return "(Invalid signature)"
+            return String(localized: "(Invalid signature)", bundle: .module)
         case .signed:
-            if isPlatformBinary { return "Apple (platform)" }
+            if isPlatformBinary { return String(localized: "Apple (platform)", bundle: .module) }
             if let first = authority.first { return first }
             if let team = teamID { return "Team \(team)" }
-            return isAdHoc ? "(Ad-hoc signed)" : "(Signed)"
+            return isAdHoc ? String(localized: "(Ad-hoc signed)", bundle: .module) : String(localized: "(Signed)", bundle: .module)
         }
     }
 
@@ -743,7 +743,7 @@ public struct SignatureInfo: Sendable, Codable, Hashable {
 
     public var publisherDescription: String? {
         guard status == .signed else { return nil }
-        if isPlatformBinary { return "Apple (platform)" }
+        if isPlatformBinary { return String(localized: "Apple (platform)", bundle: .module) }
         if let first = authority.first, !first.isEmpty { return first }
         if let teamID, !teamID.isEmpty { return "Team \(teamID)" }
         return nil
