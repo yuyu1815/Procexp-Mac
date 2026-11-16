@@ -165,6 +165,13 @@ struct ProcexpModelTests {
         #expect(Column.supportedOnMac.contains(.pid))
     }
 
+    @Test("Process-list defaults omit Description and Organization but keep them selectable")
+    func processColumnDefaults() {
+        #expect(Column.defaultColumns == [.name, .pid, .cpu, .privateBytes, .workingSet, .signature])
+        #expect(Column.supportedOnMac.contains(.description))
+        #expect(Column.supportedOnMac.contains(.company))
+    }
+
     @Test("Lower-pane column defaults include supported visible columns")
     func lowerPaneColumnDefaults() {
         #expect(ModuleColumn.defaultColumns == [.name, .description, .company, .path])
