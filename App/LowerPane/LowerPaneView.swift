@@ -150,13 +150,14 @@ struct LowerPaneView: View {
             .pickerStyle(.segmented)
             .accessibilityIdentifier("lower-pane-mode")
             .labelsHidden()
-            .frame(width: 380)
+            .fixedSize()
             .help("Show mapped images / files (⌘D), file descriptors (⇧⌘H), or threads (⌘Y)")
 
             Text(countLabel)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .monospacedDigit()
+                .lineLimit(1)
 
             Spacer()
 
