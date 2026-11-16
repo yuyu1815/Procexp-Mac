@@ -29,7 +29,7 @@ struct FindHandleDLLView: View {
             resultTable
             Divider()
             if readFailureCount > 0 {
-                Text("\(readFailureCount) resource \(readFailureCount == 1 ? "read" : "reads") failed. \(firstReadFailure)")
+                Text(verbatim: "\(String(localized: "\(readFailureCount) resource reads failed.")) \(firstReadFailure)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -49,7 +49,7 @@ struct FindHandleDLLView: View {
             TextField("Mapped image, mapped file, file descriptor path, or name", text: $query)
                 .textFieldStyle(.roundedBorder)
                 .onSubmit { startSearch() }
-            Button(isSearching ? "Stop" : "Search") {
+            Button(isSearching ? String(localized: "Stop") : String(localized: "Search")) {
                 isSearching ? stopSearch() : startSearch()
             }
             .keyboardShortcut(.defaultAction)
@@ -67,8 +67,8 @@ struct FindHandleDLLView: View {
         .overlay {
             if results.isEmpty {
                 ContentUnavailableView(
-                    isSearching ? "Searching…" : wasStopped ? "Search Stopped"
-                        : readFailureCount > 0 ? "Search Incomplete" : "No Results",
+                    isSearching ? String(localized: "Searching…") : wasStopped ? String(localized: "Search Stopped")
+                        : readFailureCount > 0 ? String(localized: "Search Incomplete") : String(localized: "No Results"),
                     systemImage: isSearching ? "magnifyingglass" : "doc.text.magnifyingglass",
                     description: Text(emptyDescription)
                 )
@@ -105,15 +105,15 @@ struct FindHandleDLLView: View {
 
     private var emptyDescription: String {
         if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return "Enter text to find matching mapped images or handles."
+            return String(localized: "Enter text to find matching mapped images or handles.")
         }
         if wasStopped {
-            return "Only completed resource reads are included. Search again to scan all processes."
+            return String(localized: "Only completed resource reads are included. Search again to scan all processes.")
         }
         if !isSearching && readFailureCount > 0 {
-            return "Some mapped images or handles could not be read. See the acquisition error below."
+            return String(localized: "Some mapped images or handles could not be read. See the acquisition error below.")
         }
-        return isSearching ? "Matches appear as they are found." : "No mapped image or handle path matched."
+        return isSearching ? String(localized: "Matches appear as they are found.") : String(localized: "No mapped image or handle path matched.")
     }
 
     private var selectedResult: FindHandleDLLResult? {
@@ -172,7 +172,7 @@ struct FindHandleDLLView: View {
             }
         } catch {
             guard !Task.isCancelled else { return }
-            recordReadFailure("Mapped images", record: record, error: error)
+            recordReadFailure(String(localized: "Mapped images"), record: record, error: error)
         }
         do {
             let handles = try await data.fileDescriptors(of: record.id)
@@ -188,14 +188,14 @@ struct FindHandleDLLView: View {
             }
         } catch {
             guard !Task.isCancelled else { return }
-            recordReadFailure("File descriptors", record: record, error: error)
+            recordReadFailure(String(localized: "File descriptors"), record: record, error: error)
         }
     }
 
     private func recordReadFailure(_ source: String, record: ProcessRecord, error: Error) {
         readFailureCount += 1
         if readFailureCount == 1 {
-            firstReadFailure = "\(source) for \(record.name) (PID \(record.id.pid)): \(error)"
+            firstReadFailure = String(localized: "\(source) for \(record.name) (PID \(record.id.pid)): \(error)")
         }
     }
 
@@ -223,9 +223,9 @@ private struct FindHandleDLLResult: Identifiable, Hashable {
 
         var title: String {
             switch self {
-            case .dll: return "Mapped Image"
-            case .mappedFile: return "Mapped File"
-            case .handle: return "File Descriptor"
+            case .dll: return String(localized: "Mapped Image")
+            case .mappedFile: return String(localized: "Mapped File")
+            case .handle: return String(localized: "File Descriptor")
             }
         }
     }
@@ -321,10 +321,10 @@ private struct FindResultsTable: NSViewRepresentable {
         }
 
         static let columns = [
-            ColumnDef(id: "process", title: "Process", width: 190, alignment: .left),
-            ColumnDef(id: "pid", title: "PID", width: 70, alignment: .right),
-            ColumnDef(id: "type", title: "Type", width: 90, alignment: .left),
-            ColumnDef(id: "name", title: "Name", width: 480, alignment: .left),
+            ColumnDef(id: "process", title: String(localized: "Process"), width: 190, alignment: .left),
+            ColumnDef(id: "pid", title: String(localized: "PID"), width: 70, alignment: .right),
+            ColumnDef(id: "type", title: String(localized: "Type"), width: 90, alignment: .left),
+            ColumnDef(id: "name", title: String(localized: "Name"), width: 480, alignment: .left),
         ]
         static let persistenceKey = "findHandleDLL.columns"
 

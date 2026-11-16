@@ -183,7 +183,7 @@ private struct ViewMenu: View {
     }
 
     private func speedLabel(_ seconds: TimeInterval) -> String {
-        seconds < 1 ? String(format: "%.1f sec", seconds) : "\(Int(seconds)) sec"
+        seconds < 1 ? String(format: String(localized: "%.1f sec"), seconds) : String(localized: "\(Int(seconds)) sec")
     }
 }
 
@@ -196,7 +196,7 @@ private struct ProcessMenu: View {
     private let priorities: [(String, Int32)] = [
         ("19", 19),
         ("10", 10),
-        ("0 (default)", 0),
+        (String(localized: "0 (default)"), 0),
         ("-10", -10),
         ("-20", -20),
     ]
@@ -249,7 +249,7 @@ private struct ProcessMenu: View {
     }
 
     private var suspendTitle: String {
-        model.selectedProcessIsSuspended ? "Resume" : "Suspend"
+        model.selectedProcessIsSuspended ? String(localized: "Resume") : String(localized: "Suspend")
     }
 
     private func request(_ kind: ProcessActionKind) {

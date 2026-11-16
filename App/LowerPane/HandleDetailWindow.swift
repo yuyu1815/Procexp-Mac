@@ -42,17 +42,17 @@ struct HandleDetailView: View {
 
     private var kindTitle: String {
         switch FDKind(rawValue: id.kind) ?? .other {
-        case .vnode:    return "File / vnode"
-        case .socket:   return "Socket"
-        case .pipe:     return "Pipe"
-        case .kqueue:   return "Kernel queue"
-        case .fsevent:  return "File-system events"
-        case .machPort: return "Mach port"
-        case .other:    return "Other"
+        case .vnode:    return String(localized: "File / vnode")
+        case .socket:   return String(localized: "Socket")
+        case .pipe:     return String(localized: "Pipe")
+        case .kqueue:   return String(localized: "Kernel queue")
+        case .fsevent:  return String(localized: "File-system events")
+        case .machPort: return String(localized: "Mach port")
+        case .other:    return String(localized: "Other")
         }
     }
 
-    private var nameLabel: String {
+    private var nameLabel: LocalizedStringKey {
         switch FDKind(rawValue: id.kind) ?? .other {
         case .vnode:  return "Path"
         case .socket: return "Address"
@@ -101,7 +101,7 @@ struct HandleDetailView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("File Descriptor \(id.fd) — \(kindTitle)")
                     .font(.title3).bold()
-                Text(id.name.isEmpty ? "(no name)" : id.name)
+                Text(id.name.isEmpty ? String(localized: "(no name)") : id.name)
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -131,7 +131,7 @@ struct HandleDetailView: View {
     }
 
     @ViewBuilder
-    private func detail(_ label: String, _ value: String, scroll: Bool = false) -> some View {
+    private func detail(_ label: LocalizedStringKey, _ value: String, scroll: Bool = false) -> some View {
         HStack(alignment: scroll ? .center : .firstTextBaseline, spacing: 10) {
             Text(label)
                 .font(.callout)

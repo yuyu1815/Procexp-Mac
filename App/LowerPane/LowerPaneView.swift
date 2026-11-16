@@ -32,18 +32,18 @@ enum LowerPaneMode: String, CaseIterable, Identifiable, Sendable {
     /// Short segmented-control label.
     var title: String {
         switch self {
-        case .modules: return "Mapped Images / Files"
-        case .handles: return "File Descriptors"
-        case .threads: return "Threads"
+        case .modules: return String(localized: "Mapped Images / Files")
+        case .handles: return String(localized: "File Descriptors")
+        case .threads: return String(localized: "Threads")
         }
     }
 
-    /// Used in the empty-state sentence.
-    var pluralNoun: String {
+    /// Empty-state sentence.
+    var selectPrompt: LocalizedStringKey {
         switch self {
-        case .modules: return "mapped images or files"
-        case .handles: return "open file descriptors"
-        case .threads: return "threads"
+        case .modules: return "Select a process to view its mapped images or files."
+        case .handles: return "Select a process to view its open file descriptors."
+        case .threads: return "Select a process to view its threads."
         }
     }
 }
@@ -173,13 +173,13 @@ struct LowerPaneView: View {
         switch model.lowerPaneMode {
         case .modules:
             let count = filteredModules.count
-            return "\(count) mapped \(count == 1 ? "file" : "files")"
+            return String(localized: "\(count) mapped files")
         case .handles:
             let count = filteredDescriptors.count
-            return "\(count) file \(count == 1 ? "descriptor" : "descriptors")"
+            return String(localized: "\(count) file descriptors")
         case .threads:
             let count = filteredThreads.count
-            return "\(count) \(count == 1 ? "thread" : "threads")"
+            return String(localized: "\(count) threads")
         }
     }
 
@@ -188,7 +188,7 @@ struct LowerPaneView: View {
     @ViewBuilder
     private var content: some View {
         if model.selection == nil {
-            message("Select a process to view its \(model.lowerPaneMode.pluralNoun).")
+            message(model.lowerPaneMode.selectPrompt)
         } else if isRetrieving && currentModeIsEmpty {
             message("Retrieving data…")
         } else {
@@ -270,7 +270,7 @@ struct LowerPaneView: View {
             .background(.bar)
     }
 
-    private func message(_ text: String) -> some View {
+    private func message(_ text: LocalizedStringKey) -> some View {
         VStack {
             Spacer()
             Text(text)
@@ -429,7 +429,7 @@ struct LowerPaneView: View {
             } catch is CancellationError {
                 return
             } catch {
-                note = "Refresh unavailable: \(describe(error))"
+                note = String(localized: "Refresh unavailable: \(describe(error))")
                 reportError = note
                 return
             }
@@ -461,7 +461,7 @@ struct LowerPaneView: View {
             } catch {
                 guard !Task.isCancelled, model.selection == pid, model.lowerPaneMode == mode else { return }
                 moduleRows = []
-                note = "Mapped images unavailable: \(describe(error))"
+                note = String(localized: "Mapped images unavailable: \(describe(error))")
                 reportError = note
             }
         case .handles:
@@ -476,7 +476,7 @@ struct LowerPaneView: View {
             } catch {
                 guard !Task.isCancelled, model.selection == pid, model.lowerPaneMode == mode else { return }
                 descriptors = []
-                note = "File descriptors unavailable: \(describe(error))"
+                note = String(localized: "File descriptors unavailable: \(describe(error))")
                 reportError = note
             }
         case .threads:
@@ -489,7 +489,7 @@ struct LowerPaneView: View {
             } catch {
                 guard !Task.isCancelled, model.selection == pid, model.lowerPaneMode == mode else { return }
                 threads = []
-                note = "Threads unavailable: \(describe(error))"
+                note = String(localized: "Threads unavailable: \(describe(error))")
                 reportError = note
             }
         }
@@ -631,30 +631,30 @@ struct LowerPaneView: View {
     }
 
     private func emptyModulesNote(record: ProcessRecord?) -> String {
-        let base = "No mapped images were returned."
+        let base = String(localized: "No mapped images were returned.")
         if !model.data.capabilities.contains(.modules) {
-            return "\(base) Mapped-image enumeration is not available from the current provider."
+            return "\(base) \(String(localized: "Mapped-image enumeration is not available from the current provider."))"
         }
-        if let visibility = visibilityExplanation(for: "mapped image details", record: record) {
+        if let visibility = visibilityExplanation(for: String(localized: "mapped image details"), record: record) {
             return "\(base) \(visibility)"
         }
-        return "\(base) The process may have exited, or macOS returned no image mappings."
+        return "\(base) \(String(localized: "The process may have exited, or macOS returned no image mappings."))"
     }
 
     private func emptyHandlesNote(record: ProcessRecord?) -> String {
-        let base = "No open file descriptors were returned."
-        if let visibility = visibilityExplanation(for: "handle details", record: record) {
+        let base = String(localized: "No open file descriptors were returned.")
+        if let visibility = visibilityExplanation(for: String(localized: "handle details"), record: record) {
             return "\(base) \(visibility)"
         }
-        return "\(base) The process may have exited, or it currently has no enumerable descriptors."
+        return "\(base) \(String(localized: "The process may have exited, or it currently has no enumerable descriptors."))"
     }
 
     private func visibilityExplanation(for resource: String, record: ProcessRecord?) -> String? {
         let providerHasCrossUserVisibility = model.data.capabilities.contains(.crossUser)
         guard let record else {
             return providerHasCrossUserVisibility
-                ? "The process may have exited before details could be enumerated."
-                : "macOS may restrict \(resource). A helper can request broader access, but protected processes may remain inaccessible."
+                ? String(localized: "The process may have exited before details could be enumerated.")
+                : String(localized: "macOS may restrict \(resource). A helper can request broader access, but protected processes may remain inaccessible.")
         }
 
         let otherUser = !record.flags.contains(.ownProcess)
@@ -663,20 +663,20 @@ struct LowerPaneView: View {
             || record.flags.contains(.service)
 
         if !providerHasCrossUserVisibility && (otherUser || protected) {
-            return "macOS may restrict \(resource) for other-user or protected processes. Enabling the helper does not guarantee access."
+            return String(localized: "macOS may restrict \(resource) for other-user or protected processes. Enabling the helper does not guarantee access.")
         }
         if providerHasCrossUserVisibility && protected {
-            return "macOS may still hide \(resource) for platform-protected system processes."
+            return String(localized: "macOS may still hide \(resource) for platform-protected system processes.")
         }
         return nil
     }
 
     private func threadDetailNote(for threads: [ThreadInfo]) -> String? {
         guard !threads.isEmpty else {
-            return "No threads were returned for this process."
+            return String(localized: "No threads were returned for this process.")
         }
         if threads.contains(where: { $0.currentPriority == nil || $0.basePriority == nil }) {
-            return "Some thread scheduling details are unavailable. Unavailable values are not measured zeroes."
+            return String(localized: "Some thread scheduling details are unavailable. Unavailable values are not measured zeroes.")
         }
         return nil
     }
@@ -841,11 +841,11 @@ private struct ModuleRowsTable: NSViewRepresentable {
                 item.target = self
                 rowMenu.addItem(item)
             }
-            add("Search Online", #selector(menuSearchOnline(_:)))
-            add("Check VirusTotal", #selector(menuCheckVirusTotal(_:)))
+            add(String(localized: "Search Online"), #selector(menuSearchOnline(_:)))
+            add(String(localized: "Check VirusTotal"), #selector(menuCheckVirusTotal(_:)))
             rowMenu.addItem(.separator())
-            add("Reveal in Finder", #selector(menuRevealInFinder(_:)))
-            add("Properties...", #selector(menuProperties(_:)))
+            add(String(localized: "Reveal in Finder"), #selector(menuRevealInFinder(_:)))
+            add(String(localized: "Properties..."), #selector(menuProperties(_:)))
             tableView.menu = rowMenu
         }
 
@@ -899,7 +899,7 @@ private struct ModuleRowsTable: NSViewRepresentable {
             rowMenu.items.forEach { $0.isEnabled = row != nil }
             if let row {
                 let exists = FileManager.default.fileExists(atPath: row.path)
-                rowMenu.item(withTitle: "Reveal in Finder")?.isEnabled = exists
+                rowMenu.item(withTitle: String(localized: "Reveal in Finder"))?.isEnabled = exists
             }
         }
 

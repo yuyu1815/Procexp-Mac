@@ -9,10 +9,10 @@ enum MenuBarMetric: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .cpu: return "CPU"
-        case .memory: return "Physical Memory"
+        case .memory: return String(localized: "Physical Memory")
         case .io: return "I/O"
-        case .disk: return "Disk"
-        case .network: return "Network"
+        case .disk: return String(localized: "Disk")
+        case .network: return String(localized: "Network")
         case .gpu: return "GPU"
         }
     }
@@ -35,7 +35,7 @@ enum MenuBarMetric: String, CaseIterable, Identifiable {
     }
 
     func readout(_ value: Double?) -> String {
-        guard let value, value.isFinite else { return "\(title): Unavailable" }
+        guard let value, value.isFinite else { return String(localized: "\(title): Unavailable") }
         let formatted = isPercentage ? String(format: "%.1f%%", value) : GraphUnit.bytesPerSecond.format(value)
         return "\(title): \(formatted)"
     }

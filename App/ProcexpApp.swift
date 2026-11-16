@@ -185,10 +185,10 @@ private struct InstallHelperMenuCommand: View {
     @Bindable var model: AppModel
 
     var body: some View {
-        Button(model.privileged != nil ? "Privileged Helper Enabled"
-               : model.helperInstalled ? "Retry Privileged Helper…"
-               : model.helperApprovalPending ? "Privileged Helper Awaiting Approval"
-               : "Install Privileged Helper…") {
+        Button(model.privileged != nil ? String(localized: "Privileged Helper Enabled")
+               : model.helperInstalled ? String(localized: "Retry Privileged Helper…")
+               : model.helperApprovalPending ? String(localized: "Privileged Helper Awaiting Approval")
+               : String(localized: "Install Privileged Helper…")) {
             let model = model
             Task { await runHelperInstall(model) }
         }
@@ -220,11 +220,11 @@ private func runHelperInstall(_ model: AppModel) async {
     let result = await model.installPrivilegedHelper()
     let alert = NSAlert()
     alert.messageText = result.ok
-        ? (model.helperApprovalPending ? "Helper Awaiting Approval" : "Privileged Helper Enabled")
-        : "Could Not Enable Helper"
+        ? (model.helperApprovalPending ? String(localized: "Helper Awaiting Approval") : String(localized: "Privileged Helper Enabled"))
+        : String(localized: "Could Not Enable Helper")
     alert.informativeText = result.message
     alert.alertStyle = result.ok ? .informational : .warning
-    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: String(localized: "OK"))
     alert.runModal()
 }
 
@@ -233,9 +233,9 @@ private func runHelperInstall(_ model: AppModel) async {
 private func runHelperUninstall(_ model: AppModel) async {
     let result = await model.uninstallPrivilegedHelper()
     let alert = NSAlert()
-    alert.messageText = result.ok ? "Privileged Helper Removed" : "Could Not Remove Helper"
+    alert.messageText = result.ok ? String(localized: "Privileged Helper Removed") : String(localized: "Could Not Remove Helper")
     alert.informativeText = result.message
     alert.alertStyle = result.ok ? .informational : .warning
-    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: String(localized: "OK"))
     alert.runModal()
 }

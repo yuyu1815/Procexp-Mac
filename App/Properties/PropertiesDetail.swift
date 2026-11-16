@@ -172,12 +172,12 @@ final class PropertiesDetail {
                 .map { EnvVar(id: $0.key, value: $0.value) }
                 .sorted { $0.id.lowercased() < $1.id.lowercased() }
             environmentNote = env.isEmpty
-                ? "No environment variables were returned. The environment may be empty, the process may have exited, or macOS may have restricted access. Helper access does not bypass process protection."
+                ? String(localized: "No environment variables were returned. The environment may be empty, the process may have exited, or macOS may have restricted access. Helper access does not bypass process protection.")
                 : nil
         } catch {
             guard !Task.isCancelled else { return }
             environment = []
-            environmentNote = "Environment unavailable: \(describe(error))"
+            environmentNote = String(localized: "Environment unavailable: \(describe(error))")
         }
 
         // On-disk image facts (best-effort — omitted in the UI when nil).
@@ -186,7 +186,7 @@ final class PropertiesDetail {
             imageArch = Self.imageArchitecture(path)
             securityCode = Self.securityCodeDetails(path: path)
         } else {
-            securityCode = .unavailable("No executable path was reported for this process.")
+            securityCode = .unavailable(String(localized: "No executable path was reported for this process."))
         }
 
         // Autostart location. Prefer the value already resolved on the record
@@ -233,11 +233,11 @@ final class PropertiesDetail {
             let extracted = try await data.strings(of: pid)
             guard !Task.isCancelled, stringsLoadToken == token else { return }
             strings = extracted
-            stringsNote = extracted.isEmpty ? "No printable strings were extracted from the image." : nil
+            stringsNote = extracted.isEmpty ? String(localized: "No printable strings were extracted from the image.") : nil
         } catch {
             guard !Task.isCancelled, stringsLoadToken == token else { return }
             strings = []
-            stringsNote = "Strings unavailable: \(describe(error))"
+            stringsNote = String(localized: "Strings unavailable: \(describe(error))")
         }
     }
 
@@ -257,7 +257,7 @@ final class PropertiesDetail {
         } catch {
             guard !Task.isCancelled else { return }
             threads = []
-            threadNote = "Threads unavailable: \(describe(error))"
+            threadNote = String(localized: "Threads unavailable: \(describe(error))")
         }
         do {
             let updated = try await network.sockets(of: pid)
@@ -268,15 +268,15 @@ final class PropertiesDetail {
             sockets = []
             liveSocketKeys = []
             socketHighlights = [:]
-            socketNote = "TCP/IP sockets unavailable: \(describe(error))"
+            socketNote = String(localized: "TCP/IP sockets unavailable: \(describe(error))")
         }
     }
 
     private static func emptySocketsNote(record: ProcessRecord?, data: any ProcessDataProviding) -> String {
-        let base = "No TCP/IP sockets were returned."
+        let base = String(localized: "No TCP/IP sockets were returned.")
         let providerHasCrossUserVisibility = data.capabilities.contains(.crossUser)
         guard let record else {
-            return "\(base) The process may have exited, or macOS returned no socket details."
+            return String(localized: "\(base) The process may have exited, or macOS returned no socket details.")
         }
 
         let otherUser = !record.flags.contains(.ownProcess)
@@ -285,9 +285,9 @@ final class PropertiesDetail {
             || record.flags.contains(.service)
 
         if otherUser || protected || !providerHasCrossUserVisibility {
-            return "\(base) macOS may refuse socket enumeration for protected or other-user processes, so this is not proof the process has no network sockets."
+            return String(localized: "\(base) macOS may refuse socket enumeration for protected or other-user processes, so this is not proof the process has no network sockets.")
         }
-        return "\(base) This can mean the process has no TCP/IP sockets, the process exited, or macOS returned no socket details."
+        return String(localized: "\(base) This can mean the process has no TCP/IP sockets, the process exited, or macOS returned no socket details.")
     }
 
     private func mergeSockets(_ incoming: [SocketInfo], highlightDuration: TimeInterval) -> [SocketInfo] {
@@ -438,7 +438,7 @@ final class PropertiesDetail {
     /// Looks up the current image's SHA-256 on VirusTotal (best-effort).
     func checkVirusTotal(signing: any SigningProviding) async {
         guard let sha = signature?.sha256, !sha.isEmpty else {
-            virusTotalNote = "No SHA-256 is available to look up. Verify the signature first."
+            virusTotalNote = String(localized: "No SHA-256 is available to look up. Verify the signature first.")
             return
         }
         isCheckingVirusTotal = true
@@ -450,11 +450,11 @@ final class PropertiesDetail {
                 signature?.virusTotal = vt
             } else {
                 guard !Task.isCancelled, signature?.sha256 == sha else { return }
-                virusTotalNote = "No VirusTotal result (no API key configured, or the file is unknown to VirusTotal)."
+                virusTotalNote = String(localized: "No VirusTotal result (no API key configured, or the file is unknown to VirusTotal).")
             }
         } catch {
             guard !Task.isCancelled, signature?.sha256 == sha else { return }
-            virusTotalNote = "VirusTotal lookup failed: \(describe(error))"
+            virusTotalNote = String(localized: "VirusTotal lookup failed: \(describe(error))")
         }
     }
 
@@ -525,7 +525,7 @@ final class PropertiesDetail {
         var staticCode: SecStaticCode?
         let createStatus = SecStaticCodeCreateWithPath(url as CFURL, [], &staticCode)
         guard createStatus == errSecSuccess, let code = staticCode else {
-            return .unavailable("Code-signing metadata unavailable: \(securityError(createStatus)).")
+            return .unavailable(String(localized: "Code-signing metadata unavailable: \(securityError(createStatus))."))
         }
 
         let flags = SecCSFlags(
@@ -533,7 +533,7 @@ final class PropertiesDetail {
         var infoCF: CFDictionary?
         let copyStatus = SecCodeCopySigningInformation(code, flags, &infoCF)
         guard copyStatus == errSecSuccess, let infoCF else {
-            return .unavailable("Code-signing metadata unavailable: \(securityError(copyStatus)).")
+            return .unavailable(String(localized: "Code-signing metadata unavailable: \(securityError(copyStatus))."))
         }
 
         let info = infoCF as NSDictionary
@@ -542,20 +542,20 @@ final class PropertiesDetail {
         let hardenedRuntime = codeFlags.map { ($0 & runtimeBit) != 0 }
         let hardenedRuntimeNote: String
         if hardenedRuntime == true {
-            hardenedRuntimeNote = "Best-effort: detected from the code-signing runtime flag."
+            hardenedRuntimeNote = String(localized: "Best-effort: detected from the code-signing runtime flag.")
         } else if hardenedRuntime == false {
-            hardenedRuntimeNote = "Best-effort: no hardened-runtime flag was found in the code signature."
+            hardenedRuntimeNote = String(localized: "Best-effort: no hardened-runtime flag was found in the code signature.")
         } else {
-            hardenedRuntimeNote = "Best-effort: code-directory flags were not returned."
+            hardenedRuntimeNote = String(localized: "Best-effort: code-directory flags were not returned.")
         }
 
         let entitlementsDict = info[kSecCodeInfoEntitlementsDict as String] as? NSDictionary
         let entitlements = entitlementsDict.map(formatEntitlements) ?? []
         let entitlementsNote: String?
         if entitlementsDict == nil {
-            entitlementsNote = "No entitlements dictionary was returned for this image."
+            entitlementsNote = String(localized: "No entitlements dictionary was returned for this image.")
         } else if entitlements.isEmpty {
-            entitlementsNote = "The image has an empty entitlements dictionary."
+            entitlementsNote = String(localized: "The image has an empty entitlements dictionary.")
         } else {
             entitlementsNote = nil
         }
@@ -669,10 +669,10 @@ final class PropertiesDetail {
 private func describe(_ error: Error) -> String {
     if let providerError = error as? ProviderError {
         switch providerError {
-        case .notPermitted:      return "operation not permitted"
-        case .processGone:       return "the process has exited"
-        case .unsupported:       return "not supported on this system"
-        case .helperUnavailable: return "the privileged helper is not installed"
+        case .notPermitted:      return String(localized: "operation not permitted")
+        case .processGone:       return String(localized: "the process has exited")
+        case .unsupported:       return String(localized: "not supported on this system")
+        case .helperUnavailable: return String(localized: "the privileged helper is not installed")
         case .underlying(let message): return message
         }
     }

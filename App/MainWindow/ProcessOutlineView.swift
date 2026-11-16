@@ -244,15 +244,15 @@ struct ProcessOutlineView: NSViewRepresentable {
                 item.target = self
                 rowMenu.addItem(item)
             }
-            add("Force Quit Process", #selector(menuKill(_:)))
-            add("Force Quit Process Tree", #selector(menuKillTree(_:)))
-            add("Suspend / Resume", #selector(menuSuspendResume(_:)))
+            add(String(localized: "Force Quit Process"), #selector(menuKill(_:)))
+            add(String(localized: "Force Quit Process Tree"), #selector(menuKillTree(_:)))
+            add(String(localized: "Suspend / Resume"), #selector(menuSuspendResume(_:)))
             rowMenu.addItem(.separator())
 
-            let priorityItem = NSMenuItem(title: "Set Nice Value", action: nil, keyEquivalent: "")
-            priorityItem.toolTip = "Lower POSIX nice values request more CPU scheduling preference and may require elevated privileges. Not a QoS class."
+            let priorityItem = NSMenuItem(title: String(localized: "Set Nice Value"), action: nil, keyEquivalent: "")
+            priorityItem.toolTip = String(localized: "Lower POSIX nice values request more CPU scheduling preference and may require elevated privileges. Not a QoS class.")
             let priorityMenu = NSMenu()
-            for (title, nice) in [("19", 19), ("10", 10), ("0 (default)", 0), ("-10", -10), ("-20", -20)] {
+            for (title, nice) in [("19", 19), ("10", 10), (String(localized: "0 (default)"), 0), ("-10", -10), ("-20", -20)] {
                 let item = NSMenuItem(title: title, action: #selector(menuSetNice(_:)), keyEquivalent: "")
                 item.target = self
                 item.tag = nice
@@ -260,15 +260,15 @@ struct ProcessOutlineView: NSViewRepresentable {
             }
             priorityItem.submenu = priorityMenu
             rowMenu.addItem(priorityItem)
-            add("Bring to Front", #selector(menuBringToFront(_:)))
-            add("Restart", #selector(menuRestart(_:)))
-            add("Sample Process…", #selector(menuSample(_:)))
+            add(String(localized: "Bring to Front"), #selector(menuBringToFront(_:)))
+            add(String(localized: "Restart"), #selector(menuRestart(_:)))
+            add(String(localized: "Sample Process…"), #selector(menuSample(_:)))
             rowMenu.addItem(.separator())
-            add("Search Online", #selector(menuSearchOnline(_:)))
-            add("Check VirusTotal", #selector(menuCheckVirusTotal(_:)))
+            add(String(localized: "Search Online"), #selector(menuSearchOnline(_:)))
+            add(String(localized: "Check VirusTotal"), #selector(menuCheckVirusTotal(_:)))
             rowMenu.addItem(.separator())
-            add("Properties...", #selector(menuProperties(_:)))
-            add("Copy", #selector(menuCopy(_:)))
+            add(String(localized: "Properties..."), #selector(menuProperties(_:)))
+            add(String(localized: "Copy"), #selector(menuCopy(_:)))
         }
 
         func installScrollSync() {
@@ -1283,19 +1283,19 @@ struct ProcessOutlineView: NSViewRepresentable {
                 lines.append(description)
             }
             if let company = record.companyName, !company.isEmpty {
-                lines.append("Organization (inferred): \(company)")
+                lines.append(String(localized: "Organization (inferred): \(company)"))
                 if let identifier = record.bundleIdentifier {
-                    lines.append("Bundle identifier: \(identifier)")
+                    lines.append(String(localized: "Bundle identifier: \(identifier)"))
                 }
             }
             if let version = record.version, !version.isEmpty {
                 lines.append(version)
             }
             let path = record.executablePath ?? ""
-            lines.append("Path:\n    \(path.isEmpty ? "—" : path)")
+            lines.append("\(String(localized: "Path:"))\n    \(path.isEmpty ? "—" : path)")
             scheduleCommandLineLookup(for: record.id)
             if let commandLine = record.commandLine ?? commandLineCache[record.id], !commandLine.isEmpty {
-                lines.append("Command Line:\n    \(commandLine)")
+                lines.append("\(String(localized: "Command Line:"))\n    \(commandLine)")
             }
             return lines.joined(separator: "\n")
         }
@@ -1311,20 +1311,20 @@ struct ProcessOutlineView: NSViewRepresentable {
                       let rect = metricCellRect(for: column, rowIndex: rowIndex)?.insetBy(dx: 4, dy: 1),
                       rect.contains(point) else { return nil }
                 let value = column.string(for: record)
-                let readout = "\(column.title): \(value.isEmpty ? "Unavailable" : value)"
+                let readout = "\(column.title): \(value.isEmpty ? String(localized: "Unavailable") : value)"
                 switch column {
                 case .cpu:
-                    return "\(readout)\n100% is one fully busy logical core. A multithreaded process can exceed 100%."
+                    return "\(readout)\n\(String(localized: "100% is one fully busy logical core. A multithreaded process can exceed 100%."))"
                 case .privateBytes:
-                    return "\(readout)\nPhysical footprint: memory charged to this process. Not resident memory or Windows private bytes. Unavailable values remain blank."
+                    return "\(readout)\n\(String(localized: "Physical footprint: memory charged to this process. Not resident memory or Windows private bytes. Unavailable values remain blank."))"
                 case .workingSet:
-                    return "\(readout)\nResident memory (RSS): physical pages resident for the process, distinct from physical footprint."
+                    return "\(readout)\n\(String(localized: "Resident memory (RSS): physical pages resident for the process, distinct from physical footprint."))"
                 case .company:
-                    return "\(record.companyName ?? "Unavailable")\nInferred from bundle identifier: \(record.bundleIdentifier ?? "unavailable"). Not a verified publisher."
+                    return "\(record.companyName ?? String(localized: "Unavailable"))\n" + String(localized: "Inferred from bundle identifier: \(record.bundleIdentifier ?? "unavailable"). Not a verified publisher.")
                 case .priority:
-                    return "\(readout)\nObserved task priority, not a Windows priority class, POSIX nice value, or QoS class."
+                    return "\(readout)\n\(String(localized: "Observed task priority, not a Windows priority class, POSIX nice value, or QoS class."))"
                 case .nice:
-                    return "\(readout)\nPOSIX nice value. Lower values request more CPU scheduling preference and may require elevated privileges."
+                    return "\(readout)\n\(String(localized: "POSIX nice value. Lower values request more CPU scheduling preference and may require elevated privileges."))"
                 default:
                     break
                 }
@@ -1950,7 +1950,7 @@ private final class ProcessInstantTooltip {
         let font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
         let attributes: [NSAttributedString.Key: Any] = [.font: font]
         let maxContentWidth = maxWidth - horizontalPadding * 2
-        let minimumLabelWidth = max(labelWidth("Path:"), labelWidth("Command Line:"))
+        let minimumLabelWidth = max(labelWidth(String(localized: "Path:")), labelWidth(String(localized: "Command Line:")))
         var width: CGFloat = minimumLabelWidth
         for line in text.components(separatedBy: "\n") {
             let isValue = line.hasPrefix("    ")
