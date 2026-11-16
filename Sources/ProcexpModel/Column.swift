@@ -138,7 +138,7 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         case .cpu:
             return String(localized: "Share of CPU time used since the previous refresh. 100% is one fully busy logical core, so a multithreaded process can exceed 100%.", bundle: .module)
         case .privateBytes:
-            return String(localized: "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable.", bundle: .module)
+            return String(localized: "Physical footprint: memory the system charges to this process. Not the same as resident memory. Shows - when it cannot be read.", bundle: .module)
         case .workingSet:
             return String(localized: "Resident memory (RSS): physical pages currently resident for the process. Distinct from physical footprint.", bundle: .module)
         case .signature:

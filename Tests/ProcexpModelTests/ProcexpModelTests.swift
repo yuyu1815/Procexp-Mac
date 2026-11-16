@@ -23,7 +23,7 @@ struct ProcexpModelTests {
 
     @Test("The six default columns have a header explanation")
     func defaultColumnsHaveHeaderExplanation() {
-        for column: Column in [.name, .pid, .cpu, .privateBytes, .workingSet, .signature] {
+        for column in Column.defaultColumns {
             #expect(column.headerExplanation?.isEmpty == false)
         }
     }

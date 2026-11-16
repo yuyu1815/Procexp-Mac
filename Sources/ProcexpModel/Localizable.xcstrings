@@ -1105,18 +1105,18 @@
         }
       }
     },
-    "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable." : {
+    "Physical footprint: memory the system charges to this process. Not the same as resident memory. Shows - when it cannot be read." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable."
+            "value" : "Physical footprint: memory the system charges to this process. Not the same as resident memory. Shows - when it cannot be read."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "物理フットプリント：システムがこのプロセスに計上しているメモリ。常駐メモリとは異なります。取得できない場合は空欄になります。"
+            "value" : "物理フットプリント：システムがこのプロセスに計上しているメモリ。常駐メモリとは異なります。読み取れない場合は「-」と表示されます。"
           }
         }
       }
