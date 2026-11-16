@@ -240,9 +240,9 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         }
     }
 
-    /// A sensible default column layout matching Process Explorer's defaults.
+    /// First-launch column layout. `.description` and `.company` stay available from the column menu.
     public static let defaultColumns: [Column] = [
-        .name, .pid, .cpu, .privateBytes, .workingSet, .description, .company, .signature
+        .name, .pid, .cpu, .privateBytes, .workingSet, .signature
     ]
 }
 
