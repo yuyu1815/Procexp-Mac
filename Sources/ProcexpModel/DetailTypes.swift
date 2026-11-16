@@ -349,7 +349,7 @@ public struct ThreadInfo: Identifiable, Sendable, Hashable {
     public var identifierDescription: String {
         switch identifierSource {
         case .unknown: return String(localized: "Unknown", bundle: .module)
-        case .libprocHandle: return String(localized: "Handle \(id)", bundle: .module)
+        case .libprocHandle: return String(localized: "Handle \(String(id))", bundle: .module)
         case .machThreadID: return "TID \(id)"
         }
     }

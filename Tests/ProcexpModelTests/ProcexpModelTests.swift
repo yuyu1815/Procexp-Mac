@@ -227,4 +227,10 @@ struct LocalizationTests {
         #expect(ja.values.allSatisfy { !$0.isEmpty })
         #expect(ja["Operation not permitted."] == "操作は許可されていません。")
     }
+
+    @Test("Integer interpolations stay free of locale digit grouping")
+    func handleIdentifierHasNoGrouping() {
+        let thread = ThreadInfo(id: 1_000_000, identifierSource: .libprocHandle)
+        #expect(thread.identifierDescription == "Handle 1000000")
+    }
 }

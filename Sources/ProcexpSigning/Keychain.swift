@@ -68,6 +68,6 @@ enum Keychain {
 
     private static func failure(_ operation: String, status: OSStatus) -> ProviderError {
         let detail = SecCopyErrorMessageString(status, nil) as String? ?? "Security.framework error"
-        return .underlying(String(localized: "Keychain \(operation) failed (OSStatus \(status)): \(detail)", bundle: .module))
+        return .underlying(String(localized: "Keychain \(operation) failed (OSStatus \(String(status))): \(detail)", bundle: .module))
     }
 }

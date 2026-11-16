@@ -96,7 +96,7 @@ actor VirusTotalClient {
                 // File not present in VT corpus — a valid "no data" answer.
                 return nil
             default:
-                throw ProviderError.underlying(String(localized: "VirusTotal HTTP \(http.statusCode)", bundle: .module))
+                throw ProviderError.underlying(String(localized: "VirusTotal HTTP \(String(http.statusCode))", bundle: .module))
         }
 
         let decoded: VTResponse

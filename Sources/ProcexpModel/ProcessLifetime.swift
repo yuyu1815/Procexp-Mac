@@ -6,7 +6,7 @@ public enum ProcessLifetime {
     /// against two PID lifetimes beginning in the same whole second.
     public static func validateForControl(_ id: ProcessID) throws {
         guard id.pid > 0 else {
-            throw ProviderError.underlying(String(localized: "Process control requires a positive PID.", bundle: .module))
+            throw ProviderError.underlying("Process control requires a positive PID.")
         }
         guard id.startTime != 0 else { throw ProviderError.unsupported }
         guard try nativeStartTime(id.pid) == id.startTime else { throw ProviderError.processGone }
@@ -23,7 +23,7 @@ public enum ProcessLifetime {
             case ESRCH: throw ProviderError.processGone
             case EPERM, EACCES: throw ProviderError.notPermitted
             default:
-                throw ProviderError.underlying(String(localized: "Cannot establish process lifetime (OS error \(code), \(count)/\(size) bytes).", bundle: .module))
+                throw ProviderError.underlying("Cannot establish process lifetime (OS error \(code), \(count)/\(size) bytes).")
             }
         }
         return info.pbi_start_tvsec

@@ -289,22 +289,6 @@
         }
       }
     },
-    "Cannot establish process lifetime (OS error %d, %d/%d bytes)." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cannot establish process lifetime (OS error %d, %d/%d bytes)."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プロセスの存続期間を確立できません (OS エラー %1$d、%2$d/%3$d バイト)。"
-          }
-        }
-      }
-    },
     "Close" : {
       "localizations" : {
         "en" : {
@@ -689,18 +673,18 @@
         }
       }
     },
-    "Handle %llu" : {
+    "Handle %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Handle %llu"
+            "value" : "Handle %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ハンドル %llu"
+            "value" : "ハンドル %@"
           }
         }
       }
@@ -1149,22 +1133,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プロセス"
-          }
-        }
-      }
-    },
-    "Process control requires a positive PID." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Process control requires a positive PID."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プロセスを制御するには、正の PID が必要です。"
           }
         }
       }

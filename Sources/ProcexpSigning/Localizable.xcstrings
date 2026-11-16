@@ -1,18 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Keychain %@ failed (OSStatus %d): %@" : {
+    "Keychain %@ failed (OSStatus %@): %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keychain %@ failed (OSStatus %d): %@"
+            "value" : "Keychain %@ failed (OSStatus %@): %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キーチェーンの%1$@に失敗しました (OSStatus %2$d): %3$@"
+            "value" : "キーチェーンの%1$@に失敗しました (OSStatus %2$@): %3$@"
           }
         }
       }
@@ -33,18 +33,18 @@
         }
       }
     },
-    "VirusTotal HTTP %lld" : {
+    "VirusTotal HTTP %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "VirusTotal HTTP %lld"
+            "value" : "VirusTotal HTTP %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "VirusTotal HTTP %lld"
+            "value" : "VirusTotal HTTP %@"
           }
         }
       }

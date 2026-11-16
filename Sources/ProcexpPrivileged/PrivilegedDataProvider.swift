@@ -348,7 +348,7 @@ private final class ContinuationBox<T>: @unchecked Sendable {
     func scheduleTimeout(after seconds: TimeInterval, onTimeout: @escaping () -> Void) {
         let item = DispatchWorkItem { [weak self] in
             if self?.finish(.failure(ProviderError.underlying(
-                String(localized: "The privileged helper did not respond within \(seconds) seconds.", bundle: .module)
+                String(localized: "The privileged helper did not respond within \(String(seconds)) seconds.", bundle: .module)
             ))) == true { onTimeout() }
         }
         lock.lock()

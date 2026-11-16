@@ -82,6 +82,15 @@ struct HelperClientTests {
         }
     }
 
+    @Test("Timeout message formats seconds like a plain Double")
+    func timeoutMessage() async {
+        let stub = HelperStub()
+        stub.onSnapshot = { _ in }
+        let provider = stub.provider(timeout: 0.5)
+        #expect(await failure { _ = try await provider.checkedSnapshot() }
+            == "The privileged helper did not respond within 0.5 seconds.")
+    }
+
     @Test("Late and duplicate replies after timeout or cancellation are ignored")
     func lateReplies() async throws {
         let stub = HelperStub()

@@ -49,18 +49,18 @@
         }
       }
     },
-    "The privileged helper did not respond within %lf seconds." : {
+    "The privileged helper did not respond within %@ seconds." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The privileged helper did not respond within %lf seconds."
+            "value" : "The privileged helper did not respond within %@ seconds."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "特権ヘルパーが %lf 秒以内に応答しませんでした。"
+            "value" : "特権ヘルパーが %@ 秒以内に応答しませんでした。"
           }
         }
       }
