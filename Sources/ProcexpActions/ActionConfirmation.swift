@@ -53,63 +53,63 @@ public struct ActionConfirmation: Sendable, Hashable, Codable {
         _ kind: ProcessActionKind,
         processName: String? = nil
     ) -> ActionConfirmation {
-        let target = processName.map { "“\($0)”" } ?? "this process"
+        let target = processName.map { "“\($0)”" } ?? String(localized: "this process", bundle: .module)
         switch kind {
         case .kill:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: true,
                 destructive: true,
-                title: "Force Quit Process?",
-                message: "Force quit \(target) using SIGKILL? The process cannot save or clean up. Unsaved data may be lost."
+                title: String(localized: "Force Quit Process?", bundle: .module),
+                message: String(localized: "Force quit \(target) using SIGKILL? The process cannot save or clean up. Unsaved data may be lost.", bundle: .module)
             )
         case .killTree:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: true,
                 destructive: true,
-                title: "Force Quit Process Tree?",
-                message: "Force quit \(target) and its descendant processes using SIGKILL? They cannot save or clean up. Unsaved data may be lost."
+                title: String(localized: "Force Quit Process Tree?", bundle: .module),
+                message: String(localized: "Force quit \(target) and its descendant processes using SIGKILL? They cannot save or clean up. Unsaved data may be lost.", bundle: .module)
             )
         case .restart:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: true,
                 destructive: true,
-                title: "Restart Process?",
-                message: "Restarting \(target) will terminate it and launch it again. Unsaved data may be lost, and command-line arguments may not be preserved."
+                title: String(localized: "Restart Process?", bundle: .module),
+                message: String(localized: "Restarting \(target) will terminate it and launch it again. Unsaved data may be lost, and command-line arguments may not be preserved.", bundle: .module)
             )
         case .suspend:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: false,
                 destructive: false,
-                title: "Suspend Process",
-                message: "Suspend \(target)."
+                title: String(localized: "Suspend Process", bundle: .module),
+                message: String(localized: "Suspend \(target).", bundle: .module)
             )
         case .resume:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: false,
                 destructive: false,
-                title: "Resume Process",
-                message: "Resume \(target)."
+                title: String(localized: "Resume Process", bundle: .module),
+                message: String(localized: "Resume \(target).", bundle: .module)
             )
         case .setNice:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: false,
                 destructive: false,
-                title: "Set Nice Value",
-                message: "Set the POSIX nice value of \(target). Lower values request more CPU scheduling preference and may require elevated privileges. This does not change a QoS class."
+                title: String(localized: "Set Nice Value", bundle: .module),
+                message: String(localized: "Set the POSIX nice value of \(target). Lower values request more CPU scheduling preference and may require elevated privileges. This does not change a QoS class.", bundle: .module)
             )
         case .bringToFront:
             return ActionConfirmation(
                 kind: kind,
                 requiresConfirmation: false,
                 destructive: false,
-                title: "Bring to Front",
-                message: "Bring \(target) to the front."
+                title: String(localized: "Bring to Front", bundle: .module),
+                message: String(localized: "Bring \(target) to the front.", bundle: .module)
             )
         }
     }

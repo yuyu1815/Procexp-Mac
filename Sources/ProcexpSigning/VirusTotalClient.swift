@@ -87,7 +87,7 @@ actor VirusTotalClient {
         }
 
         guard let http = response as? HTTPURLResponse else {
-            throw ProviderError.underlying("VirusTotal returned a non-HTTP response")
+            throw ProviderError.underlying(String(localized: "VirusTotal returned a non-HTTP response", bundle: .module))
         }
         switch http.statusCode {
             case 200:
@@ -96,25 +96,25 @@ actor VirusTotalClient {
                 // File not present in VT corpus — a valid "no data" answer.
                 return nil
             default:
-                throw ProviderError.underlying("VirusTotal HTTP \(http.statusCode)")
+                throw ProviderError.underlying(String(localized: "VirusTotal HTTP \(String(http.statusCode))", bundle: .module))
         }
 
         let decoded: VTResponse
         do {
             decoded = try JSONDecoder().decode(VTResponse.self, from: data)
         } catch {
-            throw ProviderError.underlying("VirusTotal decode failed: \(error)")
+            throw ProviderError.underlying(String(localized: "VirusTotal decode failed: \(String(describing: error))", bundle: .module))
         }
 
         let stats = decoded.data.attributes.last_analysis_stats
         guard stats.values.allSatisfy({ $0 >= 0 }) else {
-            throw ProviderError.underlying("VirusTotal returned negative engine counts")
+            throw ProviderError.underlying(String(localized: "VirusTotal returned negative engine counts", bundle: .module))
         }
         var total = 0
         for count in stats.values {
             let (sum, overflow) = total.addingReportingOverflow(count)
             guard !overflow else {
-                throw ProviderError.underlying("VirusTotal engine counts exceed the supported range")
+                throw ProviderError.underlying(String(localized: "VirusTotal engine counts exceed the supported range", bundle: .module))
             }
             total = sum
         }

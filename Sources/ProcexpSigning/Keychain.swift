@@ -34,9 +34,9 @@ enum Keychain {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         if status == errSecItemNotFound { return nil }
-        guard status == errSecSuccess else { throw failure("read", status: status) }
+        guard status == errSecSuccess else { throw failure(String(localized: "read", bundle: .module), status: status) }
         guard let data = item as? Data, let key = String(data: data, encoding: .utf8) else {
-            throw ProviderError.underlying("Keychain API key is not valid UTF-8 data.")
+            throw ProviderError.underlying(String(localized: "Keychain API key is not valid UTF-8 data.", bundle: .module))
         }
         return key.isEmpty ? nil : key
     }
@@ -62,12 +62,12 @@ enum Keychain {
             }
         }
         guard status == errSecSuccess else {
-            throw failure("write", status: status)
+            throw failure(String(localized: "write", bundle: .module), status: status)
         }
     }
 
     private static func failure(_ operation: String, status: OSStatus) -> ProviderError {
         let detail = SecCopyErrorMessageString(status, nil) as String? ?? "Security.framework error"
-        return .underlying("Keychain \(operation) failed (OSStatus \(status)): \(detail)")
+        return .underlying(String(localized: "Keychain \(operation) failed (OSStatus \(String(status))): \(detail)", bundle: .module))
     }
 }

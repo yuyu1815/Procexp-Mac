@@ -1,0 +1,278 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Bring %@ to the front." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring %@ to the front."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ を最前面に表示します。"
+          }
+        }
+      }
+    },
+    "Bring to Front" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring to Front"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最前面に表示"
+          }
+        }
+      }
+    },
+    "Force Quit Process Tree?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force Quit Process Tree?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスツリーを強制終了しますか?"
+          }
+        }
+      }
+    },
+    "Force Quit Process?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force Quit Process?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを強制終了しますか?"
+          }
+        }
+      }
+    },
+    "Force quit %@ and its descendant processes using SIGKILL? They cannot save or clean up. Unsaved data may be lost." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force quit %@ and its descendant processes using SIGKILL? They cannot save or clean up. Unsaved data may be lost."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ とその子孫プロセスを SIGKILL で強制終了しますか? これらは保存やクリーンアップを行えません。保存されていないデータは失われる可能性があります。"
+          }
+        }
+      }
+    },
+    "Force quit %@ using SIGKILL? The process cannot save or clean up. Unsaved data may be lost." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force quit %@ using SIGKILL? The process cannot save or clean up. Unsaved data may be lost."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ を SIGKILL で強制終了しますか? プロセスは保存やクリーンアップを行えません。保存されていないデータは失われる可能性があります。"
+          }
+        }
+      }
+    },
+    "Restart Process?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Process?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを再起動しますか?"
+          }
+        }
+      }
+    },
+    "Restarting %@ will terminate it and launch it again. Unsaved data may be lost, and command-line arguments may not be preserved." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restarting %@ will terminate it and launch it again. Unsaved data may be lost, and command-line arguments may not be preserved."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ を再起動すると、いったん終了してから再度起動します。保存されていないデータは失われる可能性があり、コマンドライン引数は引き継がれない場合があります。"
+          }
+        }
+      }
+    },
+    "Resume %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ を再開します。"
+          }
+        }
+      }
+    },
+    "Resume Process" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume Process"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを再開"
+          }
+        }
+      }
+    },
+    "Set Nice Value" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Nice Value"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nice 値を設定"
+          }
+        }
+      }
+    },
+    "Set the POSIX nice value of %@. Lower values request more CPU scheduling preference and may require elevated privileges. This does not change a QoS class." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set the POSIX nice value of %@. Lower values request more CPU scheduling preference and may require elevated privileges. This does not change a QoS class."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ の POSIX nice 値を設定します。値を小さくすると CPU スケジューリングの優先を強く要求しますが、管理者権限が必要になる場合があります。QoS クラスは変更されません。"
+          }
+        }
+      }
+    },
+    "Suspend %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suspend %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ を一時停止します。"
+          }
+        }
+      }
+    },
+    "Suspend Process" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suspend Process"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロセスを一時停止"
+          }
+        }
+      }
+    },
+    "relaunch failed: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "relaunch failed: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再起動に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "setpriority failed without an OS error." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "setpriority failed without an OS error."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OS エラーなしで setpriority に失敗しました。"
+          }
+        }
+      }
+    },
+    "this process" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this process"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このプロセス"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

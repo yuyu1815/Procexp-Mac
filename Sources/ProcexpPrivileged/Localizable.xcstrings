@@ -1,0 +1,102 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Could not communicate with the privileged helper: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not communicate with the privileged helper: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーと通信できませんでした: %@"
+          }
+        }
+      }
+    },
+    "Helper registration failed: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helper registration failed: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーの登録に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "Helper removal failed: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helper removal failed: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルパーの削除に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "The privileged helper did not respond within %@ seconds." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The privileged helper did not respond within %@ seconds."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーが %@ 秒以内に応答しませんでした。"
+          }
+        }
+      }
+    },
+    "The privileged helper returned an empty process snapshot." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The privileged helper returned an empty process snapshot."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特権ヘルパーが空のプロセススナップショットを返しました。"
+          }
+        }
+      }
+    },
+    "This app build does not contain a complete, executable privileged helper. Plain Xcode builds omit it. Use a packaged, signed build with the helper embedded before enabling privileged mode." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app build does not contain a complete, executable privileged helper. Plain Xcode builds omit it. Use a packaged, signed build with the helper embedded before enabling privileged mode."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリのビルドには、実行可能な特権ヘルパーが完全な形で含まれていません。通常の Xcode ビルドではヘルパーは含まれません。特権モードを有効にする前に、ヘルパーを組み込んだ署名済みのパッケージ版ビルドを使用してください。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

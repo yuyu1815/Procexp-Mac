@@ -28,7 +28,7 @@ import ProcexpModel
 public final class AutostartProvider: AutostartProviding {
 
     /// Generic label returned when only the login-item heuristic matches.
-    public static let loginItemLabel = "Login Item"
+    public static let loginItemLabel = String(localized: "Login Item", bundle: .module)
 
     private let index = LaunchdIndex()
 

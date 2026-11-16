@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "ProcexpMac",
+    defaultLocalization: "en",
     platforms: [.macOS(.v13)],
     products: [
         .library(name: "ProcexpModel", targets: ["ProcexpModel"]),
@@ -28,7 +29,7 @@ let package = Package(
         .executableTarget(name: "ProcexpTcpFixture"),
 
         // W0 — shared contracts (foundation; blocks everyone)
-        .target(name: "ProcexpModel"),
+        .target(name: "ProcexpModel", resources: [.process("Localizable.xcstrings")]),
         .testTarget(name: "ProcexpModelTests", dependencies: ["ProcexpModel"]),
 
         // W1 — unprivileged sampling engine (libproc/sysctl)
@@ -36,7 +37,7 @@ let package = Package(
         .testTarget(name: "ProcexpSamplingTests", dependencies: ["ProcexpSampling"]),
 
         // W7 — code signing + VirusTotal
-        .target(name: "ProcexpSigning", dependencies: ["ProcexpModel"]),
+        .target(name: "ProcexpSigning", dependencies: ["ProcexpModel"], resources: [.process("Localizable.xcstrings")]),
         .testTarget(name: "ProcexpSigningTests", dependencies: ["ProcexpSigning"]),
 
         // W9 — per-process sockets + best-effort GPU
@@ -48,17 +49,17 @@ let package = Package(
         .testTarget(name: "ProcexpGraphsTests", dependencies: ["ProcexpGraphs"]),
 
         // W12 — autostart detection
-        .target(name: "ProcexpAutostart", dependencies: ["ProcexpModel"]),
+        .target(name: "ProcexpAutostart", dependencies: ["ProcexpModel"], resources: [.process("Localizable.xcstrings")]),
         .testTarget(name: "ProcexpAutostartTests", dependencies: ["ProcexpAutostart"]),
 
         // W8 — process actions (Phase 2)
-        .target(name: "ProcexpActions", dependencies: ["ProcexpModel"]),
+        .target(name: "ProcexpActions", dependencies: ["ProcexpModel"], resources: [.process("Localizable.xcstrings")]),
         .testTarget(name: "ProcexpActionsTests", dependencies: ["ProcexpActions"]),
 
         // W2 — privileged XPC client: connects to the root helper over
         // NSXPCConnection, registers/unregisters it via SMAppService, and
         // exposes it as a `PrivilegedSampling` provider. The app links this.
-        .target(name: "ProcexpPrivileged", dependencies: ["ProcexpModel"]),
+        .target(name: "ProcexpPrivileged", dependencies: ["ProcexpModel"], resources: [.process("Localizable.xcstrings")]),
         .testTarget(name: "ProcexpPrivilegedTests", dependencies: ["ProcexpPrivileged"]),
 
         // W2 — the privileged root daemon. Vends an NSXPCListener implementing
