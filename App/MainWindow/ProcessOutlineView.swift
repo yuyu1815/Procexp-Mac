@@ -1264,6 +1264,14 @@ struct ProcessOutlineView: NSViewRepresentable {
         }
 
         func tooltipText(in kind: ProcessListSurfaceKind, at point: NSPoint) -> String? {
+            switch kind {
+            case .processHeader:
+                return Column.name.headerExplanation
+            case .metricsHeader:
+                return metricColumn(at: point.x)?.headerExplanation
+            case .processRows, .metricsRows:
+                break
+            }
             guard kind == .processRows || kind == .metricsRows,
                   let rowIndex = rowIndex(at: point), visibleRows.indices.contains(rowIndex),
                   let record = snapshot.processes[visibleRows[rowIndex].id]
@@ -1728,6 +1736,8 @@ final class ProcessListSurfaceView: NSView {
 
     override func mouseDown(with event: NSEvent) {
         window?.makeFirstResponder(self)
+        // Dragging does not send mouseMoved, so a header tooltip would otherwise linger over a drag.
+        instantTooltip.hide()
         let point = convert(event.locationInWindow, from: nil)
         coordinator?.handleMouseDown(in: kind, at: point, clickCount: event.clickCount)
     }
@@ -1770,10 +1780,6 @@ final class ProcessListSurfaceView: NSView {
     }
 
     private func updateTooltip(for event: NSEvent) {
-        guard kind == .processRows || kind == .metricsRows else {
-            instantTooltip.hide()
-            return
-        }
         let point = convert(event.locationInWindow, from: nil)
         guard let text = coordinator?.tooltipText(in: kind, at: point), !text.isEmpty else {
             instantTooltip.hide()

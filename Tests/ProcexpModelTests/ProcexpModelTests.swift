@@ -21,6 +21,13 @@ struct ProcexpModelTests {
         }
     }
 
+    @Test("The six default columns have a header explanation")
+    func defaultColumnsHaveHeaderExplanation() {
+        for column: Column in [.name, .pid, .cpu, .privateBytes, .workingSet, .signature] {
+            #expect(column.headerExplanation?.isEmpty == false)
+        }
+    }
+
     @Test("Tree builder computes roots and children, promoting orphans")
     func treeBuilderRootsAndChildren() {
         let root = ProcessID(pid: 1, startTime: 0)

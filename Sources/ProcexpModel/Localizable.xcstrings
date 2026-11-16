@@ -497,6 +497,22 @@
         }
       }
     },
+    "Executable name. Child processes are nested under their parent." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Executable name. Child processes are nested under their parent."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行ファイル名。子プロセスは親プロセスの下に入れ子で表示されます。"
+          }
+        }
+      }
+    },
     "Execute" : {
       "localizations" : {
         "en" : {
@@ -1089,6 +1105,22 @@
         }
       }
     },
+    "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "物理フットプリント：システムがこのプロセスに計上しているメモリ。常駐メモリとは異なります。取得できない場合は空欄になります。"
+          }
+        }
+      }
+    },
     "Platform" : {
       "localizations" : {
         "en" : {
@@ -1133,6 +1165,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プロセス"
+          }
+        }
+      }
+    },
+    "Process ID assigned by the kernel. A PID can be reused after the process exits." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process ID assigned by the kernel. A PID can be reused after the process exits."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カーネルが割り当てるプロセスID。プロセスが終了すると、同じPIDが再利用されることがあります。"
           }
         }
       }
@@ -1233,6 +1281,22 @@
         }
       }
     },
+    "Resident memory (RSS): physical pages currently resident for the process. Distinct from physical footprint." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resident memory (RSS): physical pages currently resident for the process. Distinct from physical footprint."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "常駐メモリ（RSS）：プロセスが現在使用している物理メモリページ。物理フットプリントとは異なります。"
+          }
+        }
+      }
+    },
     "Running Threads" : {
       "localizations" : {
         "en" : {
@@ -1277,6 +1341,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "送信バッファ"
+          }
+        }
+      }
+    },
+    "Share of CPU time used since the previous refresh. 100% is one fully busy logical core, so a multithreaded process can exceed 100%." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share of CPU time used since the previous refresh. 100% is one fully busy logical core, so a multithreaded process can exceed 100%."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前回の更新以降に使用したCPU時間の割合。100%は論理コア1つがフルに稼働している状態で、マルチスレッドのプロセスは100%を超えることがあります。"
           }
         }
       }
@@ -1821,6 +1901,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "vnode の種類"
+          }
+        }
+      }
+    },
+    "Who signed the executable, read from its code signature. Unsigned and invalid signatures are shown in parentheses." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Who signed the executable, read from its code signature. Unsigned and invalid signatures are shown in parentheses."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "実行ファイルの署名者。コード署名から読み取った値です。未署名や無効な署名は括弧付きで表示されます。"
           }
         }
       }

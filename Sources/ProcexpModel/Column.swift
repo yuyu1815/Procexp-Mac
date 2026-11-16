@@ -128,6 +128,26 @@ public enum Column: String, CaseIterable, Sendable, Codable {
         }
     }
 
+    /// Meaning shown when hovering the column header; `nil` shows no tooltip.
+    public var headerExplanation: String? {
+        switch self {
+        case .name:
+            return String(localized: "Executable name. Child processes are nested under their parent.", bundle: .module)
+        case .pid:
+            return String(localized: "Process ID assigned by the kernel. A PID can be reused after the process exits.", bundle: .module)
+        case .cpu:
+            return String(localized: "Share of CPU time used since the previous refresh. 100% is one fully busy logical core, so a multithreaded process can exceed 100%.", bundle: .module)
+        case .privateBytes:
+            return String(localized: "Physical footprint: memory the system charges to this process. Not the same as resident memory. Blank when unavailable.", bundle: .module)
+        case .workingSet:
+            return String(localized: "Resident memory (RSS): physical pages currently resident for the process. Distinct from physical footprint.", bundle: .module)
+        case .signature:
+            return String(localized: "Who signed the executable, read from its code signature. Unsigned and invalid signatures are shown in parentheses.", bundle: .module)
+        default:
+            return nil
+        }
+    }
+
     /// Columns backed by supportable macOS data sources in this app. Unsupported
     /// Windows-only/private-API columns stay decodable for old settings but are
     /// removed from menus, saved layouts, and active column sets.
