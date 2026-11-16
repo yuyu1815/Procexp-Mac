@@ -85,7 +85,7 @@ private struct GeneralSettingsView: View {
 
 // MARK: - Colors
 
-private struct ColorSettingsView: View {
+struct ColorSettingsView: View {
     @Environment(AppModel.self) private var model
     @State private var selectedRules = Set<ProcessColorRule.ID>()
 

@@ -11,6 +11,7 @@ import ProcexpGraphs
 struct MainWindowView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.colorScheme) private var colorScheme
     /// Focus for the search field so ⌘F / the Find button can jump to it.
     @FocusState private var searchFocused: Bool
     /// W8 — routes context-menu / toolbar commands to `ProcessActions` and
@@ -253,18 +254,24 @@ struct MainWindowView: View {
                            values: model.cpuHistory.values,
                            maxValue: 100,
                            color: RGBA(0, 200, 0),
+                           label: String(localized: "CPU"),
+                           value: cpuValue,
                            tip: cpuTip,
                            systemInfoTab: .cpu)
             resizableGraph(index: 1,
                            values: model.memoryHistory.values,
                            maxValue: 100,
                            color: RGBA(230, 120, 40),
+                           label: String(localized: "Memory"),
+                           value: physicalUsageText(model.snapshot.system),
                            tip: memTip,
                            systemInfoTab: .memory)
             resizableGraph(index: 2,
                            values: model.ioHistory.values,
                            maxValue: max(1, model.ioHistory.values.filter(\.isFinite).max() ?? 1),
                            color: RGBA(70, 140, 240),
+                           label: String(localized: "I/O"),
+                           value: ioValue,
                            tip: ioTip,
                            systemInfoTab: .io)
 
@@ -408,6 +415,8 @@ struct MainWindowView: View {
                                 values: [Double],
                                 maxValue: Double,
                                 color: RGBA,
+                                label: String,
+                                value: String,
                                 tip: String,
                                 systemInfoTab: SystemInfoTab) -> some View {
         @Bindable var model = model
@@ -417,12 +426,19 @@ struct MainWindowView: View {
             values: values,
             maxValue: maxValue,
             color: color,
+            label: label,
+            value: value,
             tip: tip,
             action: {
                 model.systemInfoTab = systemInfoTab
                 openWindow(id: SystemInfoWindow.id)
             }
         )
+    }
+
+    private var cpuValue: String {
+        let system = model.snapshot.system
+        return system.unavailableMetrics.contains(.cpu) ? String(localized: "Unavailable") : String(format: "%.1f%%", system.cpuTotalPercent)
     }
 
     private var cpuTip: String {
@@ -435,6 +451,11 @@ struct MainWindowView: View {
         guard !s.unavailableMetrics.contains(.memory) else { return String(localized: "Memory: Unavailable") }
         guard s.memoryTotal > 0 else { return String(localized: "Memory") }
         return String(localized: "Memory: \(ByteFormat.bytes(s.memoryUsed)) / \(ByteFormat.bytes(s.memoryTotal))")
+    }
+
+    private var ioValue: String {
+        let rate = model.ioHistory.latest ?? 0
+        return rate.isFinite ? GraphUnit.bytesPerSecond.format(rate) : String(localized: "Unavailable")
     }
 
     private var ioTip: String {
@@ -539,17 +560,12 @@ struct MainWindowView: View {
     private var statusBar: some View {
         let system = model.snapshot.system
         return HStack(spacing: 0) {
-            statusSegment(String(localized: "CPU Usage"),
-                          system.unavailableMetrics.contains(.cpu) ? String(localized: "Unavailable") : String(format: "%.1f%%", system.cpuTotalPercent))
-                .help("Whole-machine CPU usage, normalized to 100% across all logical cores.")
-            statusSeparator
             statusSegment(String(localized: "RAM In Use"), memoryText(system))
                 .help("Active + wired + compressed memory, relative to installed RAM. Not memory pressure or committed memory.")
             statusSeparator
             statusSegment(String(localized: "Processes"), "\(system.processCount)")
             statusSeparator
-            statusSegment(String(localized: "RAM Used (%)"), physicalUsageText(system))
-                .help("(Active + wired + compressed memory) / installed RAM × 100.")
+            colorLegend
             Spacer(minLength: 8)
             statusSegment(String(localized: "Refresh"), refreshLabel)
         }
@@ -558,6 +574,24 @@ struct MainWindowView: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 3)
         .background(.bar)
+    }
+
+    /// One swatch + name per enabled row-colour rule, named as in Settings ▸ Row colors.
+    private var colorLegend: some View {
+        HStack(spacing: 10) {
+            ForEach(model.colorRules.filter(\.isEnabled)) { rule in
+                HStack(spacing: 4) {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(Color(rgba: colorScheme == .dark ? rule.backgroundDark : rule.backgroundLight))
+                        .overlay(RoundedRectangle(cornerRadius: 2).stroke(Color.primary.opacity(0.3), lineWidth: 0.5))
+                        .frame(width: 12, height: 10)
+                    Text(ColorSettingsView.name(for: rule.flag))
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+        .padding(.horizontal, 8)
+        .fixedSize()
     }
 
     /// A "Label: value" pair for one status-bar segment.
@@ -669,6 +703,8 @@ private struct ResizableMiniGraph: View {
     var values: [Double]
     var maxValue: Double
     var color: RGBA
+    var label: String
+    var value: String
     var tip: String
     var action: () -> Void
 
@@ -694,6 +730,16 @@ private struct ResizableMiniGraph: View {
                     RoundedRectangle(cornerRadius: 2)
                         .stroke(Color.primary.opacity(0.25), lineWidth: 0.5)
                 )
+                .overlay(alignment: .leading) {
+                    Text("\(label) \(value)")
+                        .font(.system(size: 9, weight: .medium))
+                        .monospacedDigit()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                        .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 1)
+                        .padding(.horizontal, 3)
+                }
                 .contentShape(Rectangle())
                 .accessibilityHidden(true)
             }
