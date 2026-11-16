@@ -210,3 +210,21 @@ struct ProcexpModelTests {
         #expect(a != b)
     }
 }
+
+@Suite("ProcexpModel localization")
+struct LocalizationTests {
+    @Test("Every compiled en key has a ja translation, independent of the runtime locale")
+    func jaCatalogIsComplete() throws {
+        func table(_ lang: String) throws -> [String: String] {
+            let url = try #require(Bundle.module.url(forResource: "Localizable", withExtension: "strings",
+                                                     subdirectory: nil, localization: lang))
+            return try #require(NSDictionary(contentsOf: url) as? [String: String])
+        }
+        let en = try table("en")
+        let ja = try table("ja")
+        #expect(!en.isEmpty)
+        #expect(Set(ja.keys) == Set(en.keys))
+        #expect(ja.values.allSatisfy { !$0.isEmpty })
+        #expect(ja["Operation not permitted."] == "操作は許可されていません。")
+    }
+}
