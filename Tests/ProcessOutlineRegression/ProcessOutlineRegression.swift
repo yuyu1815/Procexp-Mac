@@ -127,6 +127,48 @@ struct ProcessOutlineRegression {
         try check(container.metricsBodyScrollView.contentView.bounds.minX == 0,
                   "Narrowed metric document retained an invalid horizontal offset")
         print("PASS: unchanged refresh, document growth, resize, column removal, and synchronized scroll preservation")
+
+        func pid(_ value: Int32) -> ProcessID { ProcessID(pid: value, startTime: 1) }
+        func rowCount() throws -> Int { try coordinator.reportTable().rows.count }
+        update("", treeMode: true)
+        model.selection = nil
+        coordinator.moveSelectionToEdge(last: false)
+        try check(model.selection == pid(1), "Home without a selection should select the first row")
+        coordinator.moveSelectionToEdge(last: true)
+        try check(model.selection == pid(501), "End should select the last row")
+        try checkViewport("End")
+        try check(container.metricsBodyScrollView.contentView.bounds.minY > 0, "End did not scroll the last row into view")
+        coordinator.moveSelectionToEdge(last: false)
+        try check(container.metricsBodyScrollView.contentView.bounds.minY == 0, "Home did not scroll to the top")
+        coordinator.moveSelectionByPage(down: true)
+        let afterPage = model.selection?.pid ?? 0
+        try check(afterPage > 2, "PageDown should move by more than one row")
+        coordinator.moveSelectionByPage(down: false)
+        try check(model.selection == pid(1), "PageUp should undo PageDown")
+        let allRows = try rowCount()
+        coordinator.expandSelection()
+        try check(try rowCount() == allRows, "Right on an expanded row changed the row count")
+        coordinator.collapseSelectionOrSelectParent()
+        try check(try rowCount() == 1 && model.selection == pid(1), "Left should collapse the expanded selected row and keep it selected")
+        coordinator.collapseSelectionOrSelectParent()
+        try check(model.selection == pid(1) && (try rowCount()) == 1, "Left on a collapsed root should do nothing")
+        coordinator.expandSelection()
+        try check(try rowCount() == allRows && model.selection == pid(1), "Right should expand the collapsed selected row")
+        model.selection = pid(5)
+        coordinator.expandSelection()
+        try check(try rowCount() == allRows, "Right on a leaf should do nothing")
+        coordinator.collapseSelectionOrSelectParent()
+        try check(model.selection == pid(1), "Left on a leaf should select its parent")
+        model.selection = nil
+        coordinator.collapseSelectionOrSelectParent()
+        coordinator.expandSelection()
+        try check(model.selection == nil, "Left/Right without a selection should do nothing")
+        update("", treeMode: false)
+        model.selection = pid(5)
+        coordinator.collapseSelectionOrSelectParent()
+        coordinator.expandSelection()
+        try check(model.selection == pid(5) && (try rowCount()) == allRows, "Left/Right in flat mode should do nothing")
+        print("PASS: keyboard expand, collapse, select parent, Home, End, and page moves")
         print("All process-outline regressions passed.")
     }
 }
